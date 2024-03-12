@@ -9,7 +9,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
 Copyright 2020-22 MrGiraffe Creations
-https://www.MrGiraffecreations.eu/
+http://mrgiraffe.space
 
 
 == License ==
