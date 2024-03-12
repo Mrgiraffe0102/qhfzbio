@@ -1400,10 +1400,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.customize-control-cryout-iconselect select,
-.customize-control-cryout-iconselect select option,
-.customize-control-cryout-iconselect .select2-container,
-.select2-container.cryout-iconselect .select2-results__option {
+.customize-control-MrGiraffe-iconselect select,
+.customize-control-MrGiraffe-iconselect select option,
+.customize-control-MrGiraffe-iconselect .select2-container,
+.select2-container.MrGiraffe-iconselect .select2-results__option {
 	font-family: "QHFZBIO-blocks", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 

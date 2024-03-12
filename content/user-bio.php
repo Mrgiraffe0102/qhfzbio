@@ -11,22 +11,22 @@
 $QHFZBIO_heading_tag = ( is_single() ) ? 'h2' : 'h1';
 ?>
 <?php if ( get_the_author_meta( 'description' ) ) : ?>
-<section class="author-info" <?php cryout_schema_microdata( 'author' ); ?>>
+<section class="author-info" <?php MrGiraffe_schema_microdata( 'author' ); ?>>
 
-		<div class="author-avatar" <?php cryout_schema_microdata( 'image' );?>>
-			<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'QHFZBIO_author_bio_avatar_size', 80 ), '', '', array( 'extra_attr' => cryout_schema_microdata( 'url', 0) ) ); ?>
+		<div class="author-avatar" <?php MrGiraffe_schema_microdata( 'image' );?>>
+			<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'QHFZBIO_author_bio_avatar_size', 80 ), '', '', array( 'extra_attr' => MrGiraffe_schema_microdata( 'url', 0) ) ); ?>
 		</div><!-- .author-avatar -->
 
-		<div class="author-description"  <?php cryout_schema_microdata( 'author-description' ); ?>>
+		<div class="author-description"  <?php MrGiraffe_schema_microdata( 'author-description' ); ?>>
 
 			<<?php echo $QHFZBIO_heading_tag ?> class="page-title">
-				<?php echo ' <span' . cryout_schema_microdata( 'author-name', 0) . '>' . esc_attr( get_the_author() ) . '</span>'; ?>
+				<?php echo ' <span' . MrGiraffe_schema_microdata( 'author-name', 0) . '>' . esc_attr( get_the_author() ) . '</span>'; ?>
 			</<?php echo $QHFZBIO_heading_tag ?>>
 			<div class="author-text"><?php the_author_meta( 'description' ); ?></div>
 
 			<?php if ( is_single() ) { ?>
 				<div class="author-link">
-					<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"  <?php cryout_schema_microdata( 'author-url' ); ?>>
+					<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"  <?php MrGiraffe_schema_microdata( 'author-url' ); ?>>
 						<?php printf( __( 'View all posts by ', 'QHFZBIO' ) . '%s', get_the_author() ); ?>
 					</a>
 				</div><!-- .author-link	-->

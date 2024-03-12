@@ -12,29 +12,29 @@
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="schema-image">
-			<?php cryout_featured_hook(); ?>
+			<?php MrGiraffe_featured_hook(); ?>
 		</div>
 		<div class="article-inner">
 			<header>
 				<?php
 					$theme_heading_tag = ( is_front_page() ) ? 'h2' : 'h1';
-					the_title( '<' . $theme_heading_tag . ' class="entry-title singular-title" ' . cryout_schema_microdata( 'entry-title', 0 ) . '>', '</' . $theme_heading_tag . '>' );
+					the_title( '<' . $theme_heading_tag . ' class="entry-title singular-title" ' . MrGiraffe_schema_microdata( 'entry-title', 0 ) . '>', '</' . $theme_heading_tag . '>' );
 				?>
 			</header>
 
-			<?php cryout_singular_before_inner_hook();  ?>
+			<?php MrGiraffe_singular_before_inner_hook();  ?>
 
-			<div class="entry-content" <?php cryout_schema_microdata( 'text' ); ?>>
+			<div class="entry-content" <?php MrGiraffe_schema_microdata( 'text' ); ?>>
 				<?php the_content(); ?>
 				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'QHFZBIO' ), 'after' => '</div>' ) ); ?>
 			</div><!-- .entry-content -->
 
 			<span class="entry-meta">
-				<?php do_action( 'cryout_singular_utility_hook' ); ?>
+				<?php do_action( 'MrGiraffe_singular_utility_hook' ); ?>
 			</span>
 
 		</div><!-- .article-inner -->
-		<?php cryout_singular_after_inner_hook();  ?>
+		<?php MrGiraffe_singular_after_inner_hook();  ?>
 	</article><!-- #post-## -->
 	<?php comments_template( '', true ); ?>
 

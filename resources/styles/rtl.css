@@ -346,7 +346,7 @@ nav#mobile-menu #mobile-nav a{
         left: auto;
     }
 
-    .cryout #site-title a span{
+    .MrGiraffe #site-title a span{
         padding-left: 0;
     }
 
@@ -355,7 +355,7 @@ nav#mobile-menu #mobile-nav a{
         right: 0;
     }
 
-    .cryout #container[class*="three-"] .main, .cryout #container[class*="two-"] .main, .cryout #container[class*="one-"]:not(.QHFZBIO-landing-page) .main{
+    .MrGiraffe #container[class*="three-"] .main, .MrGiraffe #container[class*="two-"] .main, .MrGiraffe #container[class*="one-"]:not(.QHFZBIO-landing-page) .main{
         padding-right: 1em;
         padding-left: 1em;
     }
@@ -365,12 +365,12 @@ nav#mobile-menu #mobile-nav a{
         padding-left: 1em;
     }
 
-    .cryout #container[class*=column] #primary, .cryout #container[class*=column] #secondary{
+    .MrGiraffe #container[class*=column] #primary, .MrGiraffe #container[class*=column] #secondary{
         padding-right: 1em;
         padding-left: 1em;
     }
 
-    .cryout .sidey .widget-container{
+    .MrGiraffe .sidey .widget-container{
         padding-right: 0;
         padding-left: 0;
     }
@@ -665,12 +665,12 @@ body:not(.single) article.hentry .post-thumbnail-container::after{
         right: auto;
     }
 
-    .cryout #breadcrumbs-container{
+    .MrGiraffe #breadcrumbs-container{
         right: calc( 2em + 20px );
         left: auto;
     }
 
-    .cryout #container[class*="two-"] #primary, .cryout #container[class*="two-"] #secondary{
+    .MrGiraffe #container[class*="two-"] #primary, .MrGiraffe #container[class*="two-"] #secondary{
         padding-right: 2em;
         padding-left: 2em;
     }
@@ -910,21 +910,21 @@ a.staticslider-button + a.staticslider-button, .seriousslider-theme .seriousslid
         padding-left: 2em;
     }
 
-    .cryout #container[class*="three-"] #primary, .cryout #container[class*="three-"] #secondary{
+    .MrGiraffe #container[class*="three-"] #primary, .MrGiraffe #container[class*="three-"] #secondary{
         padding-right: 2em;
         padding-left: 2em;
     }
 
-    .cryout #container[class*="three-"] .main{
+    .MrGiraffe #container[class*="three-"] .main{
         margin-right: 20px;
         margin-left: 20px;
     }
 
-    .cryout #container[class*="three-"] .sidey .widget-container{
+    .MrGiraffe #container[class*="three-"] .sidey .widget-container{
         float: right;
     }
 
-    .cryout #container[class*="three-"] .sidey section.widget-container:nth-of-type(2n+1){
+    .MrGiraffe #container[class*="three-"] .sidey section.widget-container:nth-of-type(2n+1){
         margin-left: 5%;
         margin-right: auto;
     }
@@ -1006,12 +1006,12 @@ a.staticslider-button + a.staticslider-button, .seriousslider-theme .seriousslid
     float: right;
 }
 
-#cryout_ajax_more_trigger::after, .lp-port-readmore::after{
+#MrGiraffe_ajax_more_trigger::after, .lp-port-readmore::after{
     right: 0;
     left: auto;
 }
 
-#cryout_ajax_more_trigger::before{
+#MrGiraffe_ajax_more_trigger::before{
     right: 0;
     left: auto;
 }
@@ -1156,28 +1156,28 @@ body .main #content-masonry .post-thumbnail-container .comments-link{
     margin-right: auto;
 }
 
-ul.cryout-wtabs-nav > li, .cryout-wtabs-container > ul > li{
+ul.MrGiraffe-wtabs-nav > li, .MrGiraffe-wtabs-container > ul > li{
     float: right;
 }
 
-.cryout-wtab .tab-item-thumbnail{
-    float: right;
-    margin-left: 15px;
-    margin-right: auto;
-}
-
-.cryout-wtab .tab-item-avatar{
+.MrGiraffe-wtab .tab-item-thumbnail{
     float: right;
     margin-left: 15px;
     margin-right: auto;
 }
 
-.cryout-wtab .tab-item-thumbnail::after,  .cryout-wposts .post-item-thumbnail::after{
+.MrGiraffe-wtab .tab-item-avatar{
+    float: right;
+    margin-left: 15px;
+    margin-right: auto;
+}
+
+.MrGiraffe-wtab .tab-item-thumbnail::after,  .MrGiraffe-wposts .post-item-thumbnail::after{
     right: 0;
     left: auto;
 }
 
-.cryout-wtab .thumb-icon.small{
+.MrGiraffe-wtab .thumb-icon.small{
     right: 8px;
     left: auto;
 }
@@ -1206,11 +1206,11 @@ ul.cryout-wtabs-nav > li, .cryout-wtabs-container > ul > li{
     left: 0;
 }
 
-.widget_cryout_contact address{
+.widget_MrGiraffe_contact address{
     padding-right: 0;
 }
 
-.widget_cryout_contact address > span i{
+.widget_MrGiraffe_contact address > span i{
     float: right;
 }
 
@@ -1225,7 +1225,7 @@ ul.cryout-wtabs-nav > li, .cryout-wtabs-container > ul > li{
     left: auto;
 }
 
-.widget_cryout_getintouch > div i.icon{
+.widget_MrGiraffe_getintouch > div i.icon{
     float: right;
     margin-left: 10px;
     margin-right: auto;
@@ -1386,12 +1386,12 @@ i.icon-continue-reading{
     left: 0;
 }
 
-.cryout-preloader{
+.MrGiraffe-preloader{
     left: 0;
     right: 0;
 }
 
-.cryout-preloader-inside .bounce1, .cryout-preloader-inside .bounce2{
+.MrGiraffe-preloader-inside .bounce1, .MrGiraffe-preloader-inside .bounce2{
     right: 0;
     left: 0;
 }

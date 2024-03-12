@@ -6,7 +6,7 @@
  */
 
 function QHFZBIO_body_classes( $classes ) {
-	$options = cryout_get_option( array(
+	$options = MrGiraffe_get_option( array(
 		'theme_landingpage', 'theme_layoutalign',  'theme_image_style', 'theme_magazinelayout', 'theme_comclosed', 'theme_contenttitles', 'theme_caption_style',
 		'theme_elementborder', 'theme_elementshadow', 'theme_elementborderradius', 'theme_totop', 'theme_menustyle', 'theme_menuposition', 'theme_menulayout',
 		'theme_topsection', 'theme_headerresponsive', 'theme_headerfullscreen', 'theme_fresponsive', 'theme_comlabels', 'theme_comicons', 'theme_comdate',
@@ -62,7 +62,7 @@ function QHFZBIO_body_classes( $classes ) {
 
 	$theme_archive_desc = trim( get_the_archive_description() ); // get_the_archive_description doesn't work with author description
 	
-	if ( ( ( is_archive() && !function_exists( 'is_shop' ) ) || ( is_archive() && !is_shop() ) ) && cryout_get_option('theme_meta_blog_byline') == 2 ) {
+	if ( ( ( is_archive() && !function_exists( 'is_shop' ) ) || ( is_archive() && !is_shop() ) ) && MrGiraffe_get_option('theme_meta_blog_byline') == 2 ) {
 		$classes[] = 'QHFZBIO-desc-in-content';
 	}
 
@@ -92,7 +92,7 @@ add_filter( 'body_class', 'QHFZBIO_body_classes' );
  * Dynamic styles for the frontend
  */
 function QHFZBIO_custom_styles() {
-$options = cryout_get_option();
+$options = MrGiraffe_get_option();
 extract($options);
 
 ob_start();
@@ -170,14 +170,14 @@ $sidebarS = $theme_secondarysidebar;
 /******** FONTS ***********/
 ?>
 html {
-	font-family: <?php cryout_font_select( $theme_fgeneral, $theme_fgeneralgoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fgeneral, $theme_fgeneralgoogle, true ) ?>;
 	font-size: <?php echo esc_html( $theme_fgeneralsize ) ?>px; font-weight: <?php echo esc_html( $theme_fgeneralweight ) ?>;
 	line-height: <?php echo esc_html( (float) $theme_lineheight ) ?>;
 	<?php echo ( ! empty( $theme_fgeneralvariant ) ) ? 'text-transform: ' . esc_attr( $theme_fgeneralvariant ) : ''; ?>;
 }
 
 #site-title {
-	font-family: <?php cryout_font_select( $theme_fsitetitle, $theme_fsitetitlegoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fsitetitle, $theme_fsitetitlegoogle, true ) ?>;
 	font-size: <?php echo esc_html( $theme_fsitetitlesize ) ?>em; font-weight: <?php echo esc_html( $theme_fsitetitleweight ) ?>;
 }
 
@@ -186,7 +186,7 @@ html {
 }
 
 nav#mobile-menu #mobile-nav a {
-	font-family: <?php cryout_font_select( $theme_fmenu, $theme_fmenugoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fmenu, $theme_fmenugoogle, true ) ?>;
 	font-size: <?php echo esc_html( $theme_fmenusize ) ?>em; font-weight: <?php echo esc_html( $theme_fmenuweight ) ?>;
 	font-size: clamp(1.3rem, <?php echo ( esc_html( $theme_fmenusize ) * 2 ) ?>vw, <?php echo esc_html( $theme_fmenusize ) ?>em);
 	<?php echo ( ! empty( $theme_fmenuvariant ) ) ? 'text-transform: ' . esc_attr( $theme_fmenuvariant ) : ''; ?>;
@@ -197,7 +197,7 @@ nav#mobile-menu #mobile-nav ul.sub-menu a {
 }
 
 nav#mobile-menu input[type=search] {
-	font-family: <?php cryout_font_select( $theme_fmenu, $theme_fmenugoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fmenu, $theme_fmenugoogle, true ) ?>;
 }
 
 .widget-title,
@@ -205,7 +205,7 @@ nav#mobile-menu input[type=search] {
 #reply-title,
 .related-posts .related-main-title,
 .main .author-info .page-title {
-	font-family: <?php cryout_font_select( $theme_fwtitle, $theme_fwtitlegoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fwtitle, $theme_fwtitlegoogle, true ) ?>;
 	font-size: <?php echo esc_html( $theme_fwtitlesize ) ?>em; font-weight: <?php echo esc_html( $theme_fwtitleweight ) ?>;
 	line-height: <?php echo esc_html( (float) $theme_fwtitlelineheight ) ?>; margin-bottom: <?php echo esc_html( (float) $theme_fwtitlespace ) ?>em;
 	<?php echo ( ! empty( $theme_fwtitlevariant ) ) ? 'text-transform: ' . esc_attr( $theme_fwtitlevariant ) : ''; ?>;
@@ -219,7 +219,7 @@ nav#mobile-menu input[type=search] {
 }
 
 .widget-container {
-	font-family: <?php cryout_font_select( $theme_fwcontent, $theme_fwcontentgoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fwcontent, $theme_fwcontentgoogle, true ) ?>;
 	font-size: <?php echo esc_html( $theme_fwcontentsize ) ?>em; font-weight: <?php echo esc_html( $theme_fwcontentweight ) ?>;
 }
 
@@ -230,13 +230,13 @@ nav#mobile-menu input[type=search] {
 
 .entry-title,
 .main .page-title {
-	font-family: <?php cryout_font_select( $theme_ftitles, $theme_ftitlesgoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_ftitles, $theme_ftitlesgoogle, true ) ?>;
 	font-size: <?php echo esc_html( $theme_ftitlessize ) ?>em; font-weight: <?php echo esc_html( $theme_ftitlesweight ) ?>;
 	<?php echo ( ! empty( $theme_ftitlesvariant ) ) ? 'text-transform: ' . esc_attr( $theme_ftitlesvariant ) : ''; ?>;
 }
 
 body:not(.single) .entry-meta > span {
-	font-family: <?php cryout_font_select( $theme_metatitles, $theme_metatitlesgoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_metatitles, $theme_metatitlesgoogle, true ) ?>;
 	font-size: <?php echo esc_html( $theme_metatitlessize ) ?>em;
 	font-weight: <?php echo esc_html( $theme_metatitlesweight ) ?>;
 	<?php echo ( ! empty( $theme_metatitlesvariant ) ) ? 'text-transform: ' . esc_attr( $theme_metatitlesvariant ) : ''; ?>;
@@ -247,7 +247,7 @@ body:not(.single) .entry-meta > span {
 .singular-title,
 .lp-staticslider .staticslider-caption-title,
 .seriousslider-theme .seriousslider-caption-title {
-	font-family: <?php cryout_font_select( $theme_singletitle, $theme_singletitlegoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_singletitle, $theme_singletitlegoogle, true ) ?>;
 	font-size: <?php echo esc_html( $theme_singletitlesize ) ?>em; font-weight: <?php echo esc_html( $theme_singletitleweight ) ?>;
 	font-size: clamp(<?php echo esc_html( $theme_singletitlesize/2 ) ?>em, <?php echo esc_html( $theme_singletitlesize ) ?>vw, <?php echo esc_html( $theme_singletitlesize ) ?>em );
 	line-height: <?php echo esc_html( (float) $theme_singletitlelineheight ) ?>;
@@ -255,7 +255,7 @@ body:not(.single) .entry-meta > span {
 }
 
 .single .entry-meta > span {
-	font-family: <?php cryout_font_select( $theme_singlemeta, $theme_singlemetagoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_singlemeta, $theme_singlemetagoogle, true ) ?>;
 	font-size: <?php echo esc_html( $theme_singlemetasize ) ?>em; font-weight: <?php echo esc_html( $theme_singlemetaweight ) ?>;
 	<?php echo ( ! empty( $theme_singlemetavariant ) ) ? 'text-transform: ' . esc_attr( $theme_singlemetavariant ) : ''; ?>;
 }
@@ -269,7 +269,7 @@ for ( $i = 1; $i <= 6; $i++ ) {
 ?>
 
 h1, h2, h3, h4 {
-	font-family: <?php cryout_font_select( $theme_fheadings, $theme_fheadingsgoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fheadings, $theme_fheadingsgoogle, true ) ?>;
 	font-weight: <?php echo esc_html( $theme_fheadingsweight ) ?>;
 	<?php echo ( ! empty( $theme_fheadingsvariant ) ) ? 'text-transform: ' . esc_attr( $theme_fheadingsvariant ) : ''; ?>;
 }
@@ -290,15 +290,15 @@ h1, h2, h3, h4 {
 #nav-fixed a + a,
 #nav-below span,
 .lp-blocks.lp-blocks1 .lp-block .lp-block-readmore {
-	font-family: <?php cryout_font_select( $theme_fheadings, $theme_fheadingsgoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fheadings, $theme_fheadingsgoogle, true ) ?>;
 }
 
 .lp-section-header .lp-section-title {
-	font-family: <?php cryout_font_select( $theme_fgeneral, $theme_fgeneralgoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fgeneral, $theme_fgeneralgoogle, true ) ?>;
 }
 
 blockquote cite {
-	font-family: <?php cryout_font_select( $theme_fgeneral, $theme_fgeneralgoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fgeneral, $theme_fgeneralgoogle, true ) ?>;
 }
 
 
@@ -416,8 +416,8 @@ nav#mobile-menu	{
 	background-color: <?php echo esc_html( $theme_menubackground ) ?>;
 }
 
-.QHFZBIO-over-menu .header-fixed.site-header-bottom .side-section-element.widget_cryout_socials a:hover::before,
-.side-section-element.widget_cryout_socials a:hover::before {
+.QHFZBIO-over-menu .header-fixed.site-header-bottom .side-section-element.widget_MrGiraffe_socials a:hover::before,
+.side-section-element.widget_MrGiraffe_socials a:hover::before {
 	color: <?php echo esc_html( $theme_menubackground ) ?>;
 }
 
@@ -462,7 +462,7 @@ nav#mobile-menu	{
 }
 
 #access ul li.special1 > a {
-	background-color: <?php echo esc_html( cryout_hexdiff( $theme_menubackground, 15 ) ); ?>;
+	background-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_menubackground, 15 ) ); ?>;
 }
 
 #access ul li.special2 > a {
@@ -551,11 +551,11 @@ endif; ?>
 <?php if ( ! empty( $theme_primarybackground ) ) { ?>
 	#primary .widget-container {
 		background-color: <?php echo esc_html( $theme_primarybackground ) ?>;
-		border-color: <?php echo  esc_html (cryout_hexdiff ($theme_primarybackground, 17 )) ?>;
+		border-color: <?php echo  esc_html (MrGiraffe_hexdiff ($theme_primarybackground, 17 )) ?>;
 		padding: 1.5em 2.5em;
 	}
 	@media (max-width: 1024px) {
-		.cryout #container #primary .widget-container {
+		.MrGiraffe #container #primary .widget-container {
 			padding: 1em;
 		}
 	}
@@ -564,11 +564,11 @@ endif; ?>
 <?php if ( ! empty( $theme_secondarybackground ) ) { ?>
 	#secondary .widget-container {
 		background-color: <?php echo esc_html( $theme_secondarybackground ) ?>;
-		border-color: <?php echo  esc_html (cryout_hexdiff ($theme_secondarybackground, 17 )) ?>;
+		border-color: <?php echo  esc_html (MrGiraffe_hexdiff ($theme_secondarybackground, 17 )) ?>;
 		padding: 1.5em 2.5em;
 	}
 	@media (max-width: 1024px) {
-		.cryout #container #secondary .widget-container {
+		.MrGiraffe #container #secondary .widget-container {
 			padding: 1em;
 		}
 	}
@@ -619,19 +619,19 @@ span.entry-format {
 	color: <?php echo esc_html( $theme_contentbackground ) ?>;
 }
 
-.cryout article.hentry.format-image,
-.cryout article.hentry.format-audio,
-.cryout article.hentry.format-video {
-	background-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 0 ) ) ?>;
+.MrGiraffe article.hentry.format-image,
+.MrGiraffe article.hentry.format-audio,
+.MrGiraffe article.hentry.format-video {
+	background-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 0 ) ) ?>;
 }
 
 .format-aside,
 .format-quote {
-	border-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 17 ) ) ?>;
+	border-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 17 ) ) ?>;
 }
 
 .single .author-info {
-	border-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 17 ) ) ?>;
+	border-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 17 ) ) ?>;
 }
 
 .entry-content h5,
@@ -643,7 +643,7 @@ span.entry-format {
 
 .entry-content blockquote::before,
 .entry-content blockquote::after {
-	color: rgba(<?php echo esc_html( cryout_hex2rgb( $theme_sitetext ) ) ?>,0.2);
+	color: rgba(<?php echo esc_html( MrGiraffe_hex2rgb( $theme_sitetext ) ) ?>,0.2);
 }
 
 .entry-content h1, .entry-content h2,
@@ -694,7 +694,7 @@ a:hover,
 }
 
 #nav-fixed i {
-	background-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 36 ) ) ?>;
+	background-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 36 ) ) ?>;
 }
 
 #nav-fixed .nav-next:hover i,
@@ -704,7 +704,7 @@ a:hover,
 
 #nav-fixed a:hover + a,
 #nav-fixed a + a:hover {
-	background-color: rgba(<?php echo esc_html( cryout_hex2rgb( $theme_accent2 ) ) ?>,1);
+	background-color: rgba(<?php echo esc_html( MrGiraffe_hex2rgb( $theme_accent2 ) ) ?>,1);
 }
 
 #nav-fixed i,
@@ -722,17 +722,17 @@ button#toTop i::after {
 
 <?php if( $theme_totop != 'QHFZBIO-totop-disabled' ) { ?>
 	@media (max-width: 800px) {
-		.cryout #footer-bottom .footer-inside { padding-top: 2.5em; }
-		.cryout .footer-inside a#toTop {
+		.MrGiraffe #footer-bottom .footer-inside { padding-top: 2.5em; }
+		.MrGiraffe .footer-inside a#toTop {
 			background-color: <?php echo esc_html( $theme_accent1 ) ?>;
 			color: <?php echo esc_html( $theme_sitebackground ) ?>;
 		}
-		.cryout .footer-inside a#toTop:hover { opacity: 0.8;}
+		.MrGiraffe .footer-inside a#toTop:hover { opacity: 0.8;}
 	}
 <?php } ?>
 
 .entry-meta .icon-metas:before {
-	color: <?php echo esc_html( cryout_hexdiff( $theme_sitetext, -69) ) ?>;
+	color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_sitetext, -69) ) ?>;
 }
 
 #site-title span a::before {
@@ -740,18 +740,18 @@ button#toTop i::after {
 }
 
 .QHFZBIO-caption-one .main .wp-caption .wp-caption-text {
-	border-bottom-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 17 ) ) ?>;
+	border-bottom-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 17 ) ) ?>;
 }
 
 .QHFZBIO-caption-two .main .wp-caption .wp-caption-text {
-	background-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 10 ) ) ?>;
+	background-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 10 ) ) ?>;
 }
 
 .QHFZBIO-image-one .entry-content img[class*="align"],
 .QHFZBIO-image-one .entry-summary img[class*="align"],
 .QHFZBIO-image-two .entry-content img[class*='align'],
 .QHFZBIO-image-two .entry-summary img[class*='align'] {
-	border-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 17 ) ) ?>;
+	border-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 17 ) ) ?>;
 }
 
 .QHFZBIO-image-five .entry-content img[class*='align'],
@@ -771,7 +771,7 @@ span.edit-link .icon-edit:before {
 }
 
 .searchform {
-	border-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 20 ) ) ?>;
+	border-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 20 ) ) ?>;
 }
 
 .entry-meta span,
@@ -780,7 +780,7 @@ span.edit-link .icon-edit:before {
 .entry-utility a,
 .entry-meta time,
 #breadcrumbs-nav {
-	color: <?php echo esc_html( cryout_hexdiff( $theme_sitetext, -55) ) ?>;
+	color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_sitetext, -55) ) ?>;
 }
 
 .main #content-masonry .post-thumbnail-container span.bl_categ,
@@ -821,7 +821,7 @@ span.entry-sticky {
 code,
 #nav-below .nav-previous a::before,
 #nav-below .nav-next a::before {
-	background-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 17 ) ) ?>;
+	background-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 17 ) ) ?>;
 }
 
 #nav-below .nav-previous::after,
@@ -831,12 +831,12 @@ code,
 
 pre,
 .comment-author {
-	border-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 17 ) ) ?>;
+	border-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 17 ) ) ?>;
 }
 
 .commentlist .comment-area,
 .commentlist .pingback {
-	border-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 12) ) ?>;
+	border-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 12) ) ?>;
 }
 
 .commentlist img.avatar {
@@ -844,7 +844,7 @@ pre,
 }
 
 .comment-meta a {
-	color: <?php echo esc_html( cryout_hexdiff( $theme_sitetext, -79) ) ?>;
+	color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_sitetext, -79) ) ?>;
 }
 
 .commentlist .reply a,
@@ -862,7 +862,7 @@ select,
 input[type],
 textarea {
 	color: <?php echo esc_html( $theme_sitetext ) ?>;
-	background-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 10 ) ) ?>;
+	background-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 10 ) ) ?>;
 }
 
 .sidey select {
@@ -885,7 +885,7 @@ textarea {
 
 input[type]:hover, textarea:hover, select:hover,
 input[type]:focus, textarea:focus, select:focus {
-	border-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 35 ) ) ?>;
+	border-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 35 ) ) ?>;
 }
 
 button,
@@ -907,7 +907,7 @@ input[type="reset"]:hover {
 .comment-form-email input,
 .comment-form-url input,
 .comment-form-comment textarea {
-	background-color: <?php echo esc_html(cryout_hexdiff( $theme_contentbackground, 15 ) ) ?>;
+	background-color: <?php echo esc_html(MrGiraffe_hexdiff( $theme_contentbackground, 15 ) ) ?>;
 }
 
 .comment-form-author input:hover,
@@ -928,14 +928,14 @@ input[type="reset"]:hover {
 }
 
 hr {
-	background-color: <?php echo esc_html(cryout_hexdiff($theme_contentbackground, 15 ) ) ?>;
+	background-color: <?php echo esc_html(MrGiraffe_hexdiff($theme_contentbackground, 15 ) ) ?>;
 }
 
-.cryout-preloader-inside .bounce1 {
+.MrGiraffe-preloader-inside .bounce1 {
 	background-color: <?php echo esc_html( $theme_accent1 ) ?>;
 }
 
-.cryout-preloader-inside .bounce2 {
+.MrGiraffe-preloader-inside .bounce2 {
 	background-color: <?php echo esc_html( $theme_accent2 ) ?>;
 }
 
@@ -1006,7 +1006,7 @@ hr {
 .woocommerce-page button.button.alt, .woocommerce input.button.alt,
 .woocommerce #respond input#submit, .woocommerce a.button,
 .woocommerce button.button, .woocommerce input.button {
-	<?php /* font-family: <?php cryout_font_select( $theme_fheadings, $theme_fheadingsgoogle, true ) ?>; */ ?>
+	<?php /* font-family: <?php MrGiraffe_font_select( $theme_fheadings, $theme_fheadingsgoogle, true ) ?>; */ ?>
 }
 
 .woocommerce ul.products li.product .woocommerce-loop-category__title,
@@ -1014,7 +1014,7 @@ hr {
 .woocommerce ul.products li.product h3,
 .woocommerce div.product .product_title,
 .woocommerce .woocommerce-tabs h2 {
-	font-family: <?php cryout_font_select( $theme_fgeneral, $theme_fgeneralgoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fgeneral, $theme_fgeneralgoogle, true ) ?>;
 }
 
 .woocommerce ul.products li.product .woocommerce-loop-category__title,
@@ -1033,7 +1033,7 @@ hr {
 
 .woocommerce #respond input#submit:hover, .woocommerce a.button:hover,
 .woocommerce button.button:hover, .woocommerce input.button:hover {
-	background-color: <?php echo esc_html( cryout_hexdiff( $theme_accent2, 0 ) ) ?>;
+	background-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_accent2, 0 ) ) ?>;
 	color: <?php echo esc_html( $theme_contentbackground ) ?>;
 }
 
@@ -1102,24 +1102,24 @@ hr {
 .woocommerce ul.products li.product .price,
 .woocommerce div.product p.price,
 .woocommerce div.product span.price {
-	color: <?php echo esc_html( cryout_hexdiff( $theme_accent2, 0 ) ); ?>
+	color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_accent2, 0 ) ); ?>
 }
 
 .woocommerce .quantity .qty {
-	background-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 17 ) ) ?>;
+	background-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 17 ) ) ?>;
 }
 
 .woocommerce-checkout #payment {
-	background: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 10 ) ) ?>;
+	background: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 10 ) ) ?>;
 }
 
 .woocommerce .widget_price_filter .ui-slider .ui-slider-handle {
-	background: <?php echo esc_html( cryout_hexdiff( $theme_accent2, 0 ) ) ?>;
+	background: <?php echo esc_html( MrGiraffe_hexdiff( $theme_accent2, 0 ) ) ?>;
 }
 
 .woocommerce div.product .products > h2,
 .woocommerce .cart-collaterals h2 {
-	font-family: <?php cryout_font_select( $theme_fwtitle, $theme_fwtitlegoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fwtitle, $theme_fwtitlegoogle, true ) ?>;
 	font-size: <?php echo esc_html( $theme_fwtitlesize ) ?>em; font-weight: <?php echo esc_html( $theme_fwtitleweight ) ?>;
 	line-height: <?php echo esc_html( (float) $theme_fwtitlelineheight ) ?>;
 	<?php echo ( ! empty( $theme_fwtitlevariant ) ) ? 'text-transform: ' . esc_attr( $theme_fwtitlevariant ) : ''; ?>;
@@ -1169,13 +1169,13 @@ hr {
 .QHFZBIO-bordered-table .main thead th,
 .QHFZBIO-striped-table .main td, .QHFZBIO-striped-table .main th,
 .QHFZBIO-bordered-table .main th, .QHFZBIO-bordered-table .main td {
-	border-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 22 ) ) ?>;
+	border-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 22 ) ) ?>;
 }
 
 .QHFZBIO-clean-table .main th,
 .QHFZBIO-striped-table .main tr:nth-child(even) td,
 .QHFZBIO-striped-table .main tr:nth-child(even) th {
-	background-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 7 ) ) ?>;
+	background-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 7 ) ) ?>;
 }
 
 <?php if ( $theme_fpost && ( $theme_fheight > 0 ) ) { ?>
@@ -1301,7 +1301,7 @@ $header_image = QHFZBIO_header_image_url();
 		}
 	<?php } ?>
 	body:not(.QHFZBIO-landing-page) #masthead {
-		border-bottom: 1px solid <?php echo esc_html( cryout_hexdiff( $theme_menubackground, 17 ) ) ?>;
+		border-bottom: 1px solid <?php echo esc_html( MrGiraffe_hexdiff( $theme_menubackground, 17 ) ) ?>;
 	}
 }
 <?php }; */
@@ -1370,11 +1370,11 @@ a.staticslider-button:hover,
 .lp-text .lp-text-title,
 .lp-boxes-animated .lp-box-title,
 .entry-content h2, .entry-content h4 {
-	background-image: linear-gradient(to bottom, rgba(<?php echo  esc_html( cryout_hex2rgb( $theme_accent1 ) ) ?>,0.4) 0%, rgba(<?php echo esc_html( cryout_hex2rgb( $theme_accent1 ) ) ?>,0.4) 100%);
+	background-image: linear-gradient(to bottom, rgba(<?php echo  esc_html( MrGiraffe_hex2rgb( $theme_accent1 ) ) ?>,0.4) 0%, rgba(<?php echo esc_html( MrGiraffe_hex2rgb( $theme_accent1 ) ) ?>,0.4) 100%);
 }
 
 .entry-content h3 {
-	background-image: linear-gradient(to bottom, rgba(<?php echo  esc_html( cryout_hex2rgb( $theme_accent2 ) ) ?>,0.4) 0%, rgba(<?php echo esc_html( cryout_hex2rgb( $theme_accent2 ) ) ?>,0.4) 100%);
+	background-image: linear-gradient(to bottom, rgba(<?php echo  esc_html( MrGiraffe_hex2rgb( $theme_accent2 ) ) ?>,0.4) 0%, rgba(<?php echo esc_html( MrGiraffe_hex2rgb( $theme_accent2 ) ) ?>,0.4) 100%);
 }
 
 .entry-content h2, .entry-content h3, .entry-content h4 {
@@ -1435,7 +1435,7 @@ a.staticslider-button:hover,
 }
 
 .lp-block-readmore {
-	color: <?php echo esc_html( cryout_hexdiff( $theme_sitetext, -80 ) ) ?>;
+	color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_sitetext, -80 ) ) ?>;
 }
 
 .lp-block-readmore:hover {
@@ -1478,14 +1478,14 @@ a.staticslider-button:hover,
 	height: <?php echo intval ( (int) $theme_lpboxheight1 ) ?>px;
 }
 
-#cryout_ajax_more_trigger,
+#MrGiraffe_ajax_more_trigger,
 .lp-port-readmore {
 	color: <?php echo esc_html( $theme_accent2 ) ?>;
 }
 
 <?php
 for ($i=1; $i<=8; $i++) { ?>
-	.lpbox-rnd<?php echo absint( $i ) ?> { background-color:  <?php echo esc_html( cryout_hexdiff( $theme_lpboxesbg, 50+5*absint( $i ) ) ) ?>; }
+	.lpbox-rnd<?php echo absint( $i ) ?> { background-color:  <?php echo esc_html( MrGiraffe_hexdiff( $theme_lpboxesbg, 50+5*absint( $i ) ) ) ?>; }
 <?php }
 
 	return apply_filters( 'QHFZBIO_custom_styles', preg_replace('/(([\w-]+):\s*?;?\s*?([;}]))/i', '', ob_get_clean() ) );
@@ -1496,7 +1496,7 @@ for ($i=1; $i<=8; $i++) { ?>
  * Dynamic styles for the admin MCE Editor
  */
 function QHFZBIO_editor_styles() {
-	$options = cryout_get_option();
+	$options = MrGiraffe_get_option();
 	extract($options);
 
 	switch ( $theme_sitelayout ) {
@@ -1538,7 +1538,7 @@ body.mce-content-body, .block-editor .edit-post-visual-editor {
 body.mce-content-body,
 .wp-block {
 	max-width: <?php echo esc_html( $content_body ) ?>px;
-	font-family: <?php cryout_font_select( $theme_fgeneral, $theme_fgeneralgoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fgeneral, $theme_fgeneralgoogle, true ) ?>;
 	font-size: <?php echo esc_html( $theme_fgeneralsize ) ?>px;
 	line-height: <?php echo esc_html( floatval($theme_lineheight) ) ?>;
 	color: <?php echo esc_html( $theme_sitetext ) ?>;
@@ -1556,27 +1556,27 @@ for ( $i = 1; $i <= 6; $i++ ) {
 <?php } //for ?>
 
 %%scope%% h1, %%scope%% h2, %%scope%% h3, %%scope%% h4, %%scope%% h5, %%scope%% h6 {
-	font-family: <?php cryout_font_select( $theme_fheadings, $theme_fheadingsgoogle, true ) ?>;
+	font-family: <?php MrGiraffe_font_select( $theme_fheadings, $theme_fheadingsgoogle, true ) ?>;
 	font-weight: <?php echo esc_html( $theme_fheadingsweight ) ?>;
 	color: <?php echo esc_html( $theme_headingstext ) ?>;
 }
 
 %%scope%% blockquote::before, %%scope%% blockquote::after {
-	color: rgba(<?php echo esc_html( cryout_hex2rgb( $theme_sitetext ) ) ?>,0.1);
+	color: rgba(<?php echo esc_html( MrGiraffe_hex2rgb( $theme_sitetext ) ) ?>,0.1);
 }
 
 %%scope%% a 		{ color: <?php echo esc_html( $theme_accent1 ); ?>; }
 %%scope%% a:hover	{ color: <?php echo esc_html( $theme_accent2 ); ?>; }
 
-%%scope%% code		{ background-color: <?php echo esc_html(cryout_hexdiff( $theme_contentbackground, 17 ) ) ?>; }
-%%scope%% pre		{ border-color: <?php echo esc_html(cryout_hexdiff( $theme_contentbackground, 17 ) ) ?>; }
+%%scope%% code		{ background-color: <?php echo esc_html(MrGiraffe_hexdiff( $theme_contentbackground, 17 ) ) ?>; }
+%%scope%% pre		{ border-color: <?php echo esc_html(MrGiraffe_hexdiff( $theme_contentbackground, 17 ) ) ?>; }
 
 %%scope%% select,
 %%scope%% input[type],
 %%scope%% textarea {
 	color: <?php echo esc_html( $theme_sitetext ); ?>;
-	background-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 10 ) ) ?>;
-	border-color: <?php echo esc_html( cryout_hexdiff( $theme_contentbackground, 17 ) ) ?>
+	background-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 10 ) ) ?>;
+	border-color: <?php echo esc_html( MrGiraffe_hexdiff( $theme_contentbackground, 17 ) ) ?>
 }
 
 %%scope%% p, %%scope%% ul, %%scope%% ol, %%scope%% dd, %%scope%% pre, %%scope%% hr {
@@ -1597,11 +1597,11 @@ function QHFZBIO_editor_styles_output() {
 
 
 /* theme identification for the customizer */
-function cryout_customize_theme_identification() {
+function MrGiraffe_customize_theme_identification() {
 	ob_start();
-	?> #customize-theme-controls [id*="cryout-"] h3.accordion-section-title::before { content: "BR"; border: 1px solid #E9B44C; color: #E9B44C; } <?php
+	?> #customize-theme-controls [id*="MrGiraffe-"] h3.accordion-section-title::before { content: "BR"; border: 1px solid #E9B44C; color: #E9B44C; } <?php
 	return ob_get_clean();
-} // cryout_customize_theme_identification()
+} // MrGiraffe_customize_theme_identification()
 
 
 /* FIN */

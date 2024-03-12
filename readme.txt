@@ -1,6 +1,6 @@
 === QHFZBIO ===
 
-Contributors: Cryout Creations
+Contributors: MrGiraffe Creations
 Requires at least: 4.5
 Tested up to: 6.4
 Stable tag: 1.1.1
@@ -8,12 +8,9 @@ Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
-Copyright 2020-22 Cryout Creations
-https://www.cryoutcreations.eu/
+Copyright 2020-22 MrGiraffe Creations
+https://www.MrGiraffecreations.eu/
 
-== Description ==
-
-QHFZBIO - the name says it all. It's a theme that's not afraid of anything. It will look amazing, behave flawlessly and scale to any screen. It goes anywhere, it's for everyone and everything. It's clear, clean and simply gorgeous. It has CSS powered animations that will bring users to their knees. Being designed as mobile-first, it's as responsive as you'll ever get. Being highly customizable, it comes with a plethora of options that will truly make it your own while still being extremely easy to use. Google fonts are supported, but you can also use your own fonts if GDPR is giving you trouble. You can dynamically change every aspect of your fonts for many site elements (size, line height, font styles, etc.) Colors are also editable and, if you want, you'll have a great time making your own color schemes. You have multiple layouts to choose from, the site, content and sidebar widths are also customizable, magazine layouts with masonry are enabled by default, but you can also edit those. Metas like author, date, tags, categories and comments are toggleable, you can decide which ones to show on blog pages and which ones to show on single pages. Widget areas galore, place your widgets almost anywhere you want, the theme doesn't discriminate. And then there's a fully customizable landing page with icon blocks, featured boxes, text areas and a slider (you can use our own or paste in a shortcut from any other slider). We also thought about socials and you can choose from a seemingly countless number of socials to populate your site with. Gutenberg blocks? They feel right at home in our theme! Of course it's also translation ready and Right To Left (RTL) languages are fully supported out of the box. WooCommerce feels right at home with our theme, we've taken all measures to seamlessly integrate it. Oh, and just like with our other themes, the updates will keep on coming, constantly improving and keeping it relevant for years to come. QHFZBIO is a theme for all types of sites out there: blogs, businesses, presentation or photography sites, news or portfolio sites. There are no limits - there is only QHFZBIO.
 
 == License ==
 
@@ -85,7 +82,7 @@ Header and screenshot image, Copyrigh Simon Migaj
 License: CC0 1.0 Universal (CC0 1.0)
 Source: https://stocksnap.io/photo/landscape-man-NXJPTEG0WP
 
-The rest of the bundled images are created by Cryout Creations and released with the theme under GPLv3.
+The rest of the bundled images are created by MrGiraffe Creations and released with the theme under GPLv3.
 
 
 == Changelog ==
@@ -118,7 +115,7 @@ The rest of the bundled images are created by Cryout Creations and released with
 	* Back to top button
 	* Loading of the built-in icon font
 	* Width and height attributes for portfolio images, featured images and testimonials
-* Updated to Cryout Framework 0.8.6.4:
+* Updated to MrGiraffe Framework 0.8.6.4:
 	* Fixed whitespaces in font control title hint due to spaces in markup
 
 = 1.0.8 =
@@ -130,8 +127,8 @@ The rest of the bundled images are created by Cryout Creations and released with
 * Improved compatibility with ShiftNav plugin by removing focus interception from buttons
 * Fixed Google fonts always getting enqueued from remote URL regardless of configured font options
 * Fixed page/category titles visibility option not working as expected
-* Fixed header overlay appearing on top of the slider caption when slider appearance style is set to 'cryout theme'
-* Fixed caption displayed off-screen when slider appearance style is set to 'cryout theme'
+* Fixed header overlay appearing on top of the slider caption when slider appearance style is set to 'MrGiraffe theme'
+* Fixed caption displayed off-screen when slider appearance style is set to 'MrGiraffe theme'
 * Cleaned up some leftover sidebar layout detection code 
 
 = 1.0.7.1 =
@@ -139,7 +136,7 @@ The rest of the bundled images are created by Cryout Creations and released with
 
 * Improved Safari mobile browser detection for iPhones and iPads (for better handling of rendering quirks in social apps)
 * Improved single posts next/previous navigation by limiting links to same taxonomy
-* Updated to Cryout Framework 0.8.6.3:
+* Updated to MrGiraffe Framework 0.8.6.3:
 	* Fixed fatal error on Customize screen due to inconsistent handling of empty categories since WordPress 6.0
 	* Fixed 'Disable' and 'All Categories' options not available in category selector options on sites with no categories defined
 
@@ -159,7 +156,7 @@ The rest of the bundled images are created by Cryout Creations and released with
 
 * Fixed a notice displayed in some instances related to the header image since 1.0.6
 * Fixed blog homepage sometimes displaying wrong featured image in header since 1.0.6
-* Updated to Cryout Framework 0.8.6.2:
+* Updated to MrGiraffe Framework 0.8.6.2:
 	* Added static blog page detection function (for featured images in header) 
 
 = 1.0.6 =
@@ -172,7 +169,7 @@ The rest of the bundled images are created by Cryout Creations and released with
 * Fixed shortcodes being processed twice on landing page featured boxes read more fields
 * Fixed landing page banner image not horizontally centered on very wide screens when not set to be displayed fullscreen
 * Fixed header title animation glitch on very specific Safari versions
-* Updated to Cryout Framework 0.8.6.1:
+* Updated to MrGiraffe Framework 0.8.6.1:
 	* Added Polylang support for featured boxes category filtering (thanks to espasso)
 	* Improved PHP 8.0 compatibility
 
@@ -254,7 +251,7 @@ The rest of the bundled images are created by Cryout Creations and released with
 * Removed hardcoded filter to reactivate WooCommerce's columns count option availability
 * Cleaned up and optimized frontend scripts
 * Updated theme description
-* Updated to Cryout Framework 0.8.5.6:
+* Updated to MrGiraffe Framework 0.8.5.6:
 	* Fixed issues with font families that contain multiple words
 
 = 1.0.0.1 =
@@ -268,7 +265,7 @@ The rest of the bundled images are created by Cryout Creations and released with
 * Fixed interactive widgets not being accessible when used in the header widget area
 * Fixed left menu not visible when no widget is present in the left sidebar
 * Cleaned up some JS deprecation notices since WordPress 5.6
-* Updated to Cryout Framework 0.8.5.5:
+* Updated to MrGiraffe Framework 0.8.5.5:
 	* Fixed Select2 selectors no longer working with WordPress 5.6 on Firefox
 
 = 0.9.3 =
@@ -282,10 +279,10 @@ The rest of the bundled images are created by Cryout Creations and released with
 * Added conditional check and escaping to pingback_url() in header.php
 * Improved links accessibility by adding underlining in main content, comments, text widget and landing page text blocks.
 * Improved JS code to remove jQuery deprecation notices since WordPress 5.6
-* Updated to Cryout Framework 0.8.5.4:
+* Updated to MrGiraffe Framework 0.8.5.4:
 	* Improved JS code to remove jQuery deprecation notices since WordPress 5.6
 	* Changed custom post type label in breadcrumbs from singular_name to name
-	* Added echo parameters to cryout_schema_microdata() and cryout_font_select() functions
+	* Added echo parameters to MrGiraffe_schema_microdata() and MrGiraffe_font_select() functions
 
 = 0.9.2 =
 *Release date: 2020.12.07*

@@ -13,11 +13,11 @@ get_header();
 ?>
 <div id="container" class="<?php QHFZBIO_get_layout_class(); ?>">
 	<main id="main" class="main">
-		<?php cryout_before_content_hook(); ?>
+		<?php MrGiraffe_before_content_hook(); ?>
 
 		<?php if ( have_posts() ) : ?>
 
-			<div id="content-masonry" class="content-masonry" <?php cryout_schema_microdata( 'blog' ); ?>>
+			<div id="content-masonry" class="content-masonry" <?php MrGiraffe_schema_microdata( 'blog' ); ?>>
 				<?php /* Start the Loop */
 				while ( have_posts() ) : the_post();
 					get_template_part( 'content/content', get_post_format() );
@@ -30,7 +30,7 @@ get_header();
 			get_template_part( 'content/content', 'notfound' );
 		endif; ?>
 
-		<?php cryout_after_content_hook(); ?>
+		<?php MrGiraffe_after_content_hook(); ?>
 	</main><!-- #main -->
 
 	<?php QHFZBIO_get_sidebar(); ?>

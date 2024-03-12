@@ -22,7 +22,7 @@ function QHFZBIO_setup() {
 
 	add_filter( 'QHFZBIO_theme_options_array', 'QHFZBIO_lpbox_width' );
 
-	$options = cryout_get_option();
+	$options = MrGiraffe_get_option();
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	if ($options['theme_editorstyles']) add_editor_style( 'resources/styles/editor-style.css' );
@@ -40,16 +40,16 @@ function QHFZBIO_setup() {
 	add_theme_support( 'post-formats', array( 'aside', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'audio', 'video' ) );
 
 	// Make theme available for translation
-	load_theme_textdomain( 'QHFZBIO', get_template_directory() . '/cryout/languages' );
+	load_theme_textdomain( 'QHFZBIO', get_template_directory() . '/MrGiraffe/languages' );
 	load_theme_textdomain( 'QHFZBIO', get_template_directory() . '/languages' );
-	load_textdomain( 'cryout', '' );
+	load_textdomain( 'MrGiraffe', '' );
 
 	// This theme allows users to set a custom backgrounds
 	add_theme_support( 'custom-background' );
 
 	// This theme supports WordPress 4.5 logos
 	add_theme_support( 'custom-logo', array( 'height' => (int) $options['theme_headerheight'], 'width' => 240, 'flex-height' => true, 'flex-width'  => true ) );
-	add_filter( 'get_custom_logo', 'cryout_filter_wp_logo_img' );
+	add_filter( 'get_custom_logo', 'MrGiraffe_filter_wp_logo_img' );
 
 	// This theme uses wp_nav_menu() in 3 locations.
 	register_nav_menus( array(
@@ -158,26 +158,26 @@ function QHFZBIO_setup() {
  	) );
 	add_theme_support( 'editor-font-sizes', array(
 		array(
-			'name' => __( 'small', 'cryout' ),
-			'shortName' => __( 'S', 'cryout' ),
+			'name' => __( 'small', 'MrGiraffe' ),
+			'shortName' => __( 'S', 'MrGiraffe' ),
 			'size' => intval( intval( $options['theme_fgeneralsize'] ) / 1.6 ),
 			'slug' => 'small'
 		),
 		array(
-			'name' => __( 'normal', 'cryout' ),
-			'shortName' => __( 'M', 'cryout' ),
+			'name' => __( 'normal', 'MrGiraffe' ),
+			'shortName' => __( 'M', 'MrGiraffe' ),
 			'size' => intval( intval( $options['theme_fgeneralsize'] ) * 1.0 ),
 			'slug' => 'normal'
 		),
 		array(
-			'name' => __( 'large', 'cryout' ),
-			'shortName' => __( 'L', 'cryout' ),
+			'name' => __( 'large', 'MrGiraffe' ),
+			'shortName' => __( 'L', 'MrGiraffe' ),
 			'size' => intval( intval( $options['theme_fgeneralsize'] ) * 1.6 ),
 			'slug' => 'large'
 		),
 		array(
-			'name' => __( 'larger', 'cryout' ),
-			'shortName' => __( 'XL', 'cryout' ),
+			'name' => __( 'larger', 'MrGiraffe' ),
+			'shortName' => __( 'XL', 'MrGiraffe' ),
 			'size' => intval( intval( $options['theme_fgeneralsize'] ) * 2.56 ),
 			'slug' => 'larger'
 		)
@@ -192,9 +192,9 @@ function QHFZBIO_setup() {
 } // QHFZBIO_setup()
 
 function QHFZBIO_gutenberg_editor_styles() {
-	$editorstyles = cryout_get_option('theme_editorstyles');
+	$editorstyles = MrGiraffe_get_option('theme_editorstyles');
 	if ( ! $editorstyles ) return;
-	wp_enqueue_style( 'QHFZBIO-gutenberg-editor-styles', get_theme_file_uri( '/resources/styles/gutenberg-editor.css' ), false, _CRYOUT_THEME_VERSION, 'all' );
+	wp_enqueue_style( 'QHFZBIO-gutenberg-editor-styles', get_theme_file_uri( '/resources/styles/gutenberg-editor.css' ), false, _MrGiraffe_THEME_VERSION, 'all' );
 	wp_add_inline_style( 'QHFZBIO-gutenberg-editor-styles', preg_replace( "/[\n\r\t\s]+/", " ", QHFZBIO_editor_styles() ) );
 }
 add_action( 'enqueue_block_editor_assets', 'QHFZBIO_gutenberg_editor_styles' );
@@ -205,7 +205,7 @@ add_action( 'enqueue_block_editor_assets', 'QHFZBIO_gutenberg_editor_styles' );
  */
 function QHFZBIO_override_load_textdomain( $override, $domain ) {
 	// Check if the domain is our framework domain.
-	if ( 'cryout' === $domain ) {
+	if ( 'MrGiraffe' === $domain ) {
 		global $l10n;
 		// If the theme's textdomain is loaded, assign the theme's translations
 		// to the framework's textdomain.
@@ -268,7 +268,7 @@ function QHFZBIO_main_menu() {
 		'fallback_cb' 	=> 'QHFZBIO_default_main_menu'
 	) );
 } // QHFZBIO_main_menu()
-add_action( 'cryout_mobilemenu_hook', 'QHFZBIO_main_menu' );
+add_action( 'MrGiraffe_mobilemenu_hook', 'QHFZBIO_main_menu' );
 
 /** Header menu */
 function QHFZBIO_header_menu() {
@@ -284,7 +284,7 @@ function QHFZBIO_header_menu() {
 
 	) );
 } // QHFZBIO_header_menu()
-add_action ( 'cryout_access_hook', 'QHFZBIO_header_menu' );
+add_action ( 'MrGiraffe_access_hook', 'QHFZBIO_header_menu' );
 
 /** Left sidebar menu */
 function QHFZBIO_sidebar_menu() {
@@ -296,7 +296,7 @@ function QHFZBIO_sidebar_menu() {
 			'depth'				=> 1
 		) );
 } // QHFZBIO_sidebar_menu()
-add_action ( 'cryout_before_primary_widgets_hook', 'QHFZBIO_sidebar_menu' , 10 );
+add_action ( 'MrGiraffe_before_primary_widgets_hook', 'QHFZBIO_sidebar_menu' , 10 );
 
 /** Footer menu */
 function QHFZBIO_footer_menu() {
@@ -309,7 +309,7 @@ function QHFZBIO_footer_menu() {
 			'depth'				=> 1
 		) );
 } // QHFZBIO_footer_menu()
-add_action ( 'cryout_master_footerbottom_hook', 'QHFZBIO_footer_menu' , 10 );
+add_action ( 'MrGiraffe_master_footerbottom_hook', 'QHFZBIO_footer_menu' , 10 );
 
 /** SOCIALS MENU */
 function QHFZBIO_socials_menu( $location ) {
@@ -324,7 +324,7 @@ function QHFZBIO_socials_menu( $location ) {
 				'link_after' => '</span>',
 				'depth' => 0,
 				'items_wrap' => '%3$s',
-				'walker' => new Cryout_Social_Menu_Walker(),
+				'walker' => new MrGiraffe_Social_Menu_Walker(),
 				'echo' => false,
 			) ),
 		'<a><div><span><nav>'
@@ -333,7 +333,7 @@ function QHFZBIO_socials_menu( $location ) {
 function QHFZBIO_socials_menu_header() { ?>
 	<div class="side-socials side-section">
 		<div class="widget-side-section-inner">
-			<section class="side-section-element widget_cryout_socials">
+			<section class="side-section-element widget_MrGiraffe_socials">
 				<div class="widget-socials">
 					<?php QHFZBIO_socials_menu( 'sheader' ) ?>
 				</div>
@@ -350,8 +350,8 @@ function QHFZBIO_socials_menu_right()  { QHFZBIO_socials_menu( 'sright' );  }
 /**
  * Register widgetized areas defined by theme options.
  */
-function cryout_widgets_init() {
-	$areas = cryout_get_theme_structure( 'widget-areas' );
+function MrGiraffe_widgets_init() {
+	$areas = MrGiraffe_get_theme_structure( 'widget-areas' );
 	if ( ! empty( $areas ) ):
 		foreach ( $areas as $aid => $area ):
 			register_sidebar( array(
@@ -365,15 +365,15 @@ function cryout_widgets_init() {
 			) );
 		endforeach;
 	endif;
-} // cryout_widgets_init()
-add_action( 'widgets_init', 'cryout_widgets_init' );
+} // MrGiraffe_widgets_init()
+add_action( 'widgets_init', 'MrGiraffe_widgets_init' );
 
 /**
  * Creates different class names for footer widgets depending on their number.
  * This way they can fit the footer area.
  */
 function QHFZBIO_footer_colophon_class() {
-	$opts = cryout_get_option( array( 'theme_footercols', 'theme_footeralign' ) );
+	$opts = MrGiraffe_get_option( array( 'theme_footercols', 'theme_footeralign' ) );
 	$class = '';
 	switch ( $opts['theme_footercols'] ) {
 		case '0': 	$class = 'all';		break;
@@ -389,9 +389,9 @@ function QHFZBIO_footer_colophon_class() {
  * Set up widget areas
  */
 function QHFZBIO_widget_header() {
-	$headerimage_on_lp = cryout_get_option( 'theme_lpslider' );
-	if ( is_active_sidebar( 'widget-area-header' ) && ( !cryout_on_landingpage() || ( cryout_on_landingpage() && ($headerimage_on_lp == 3) ) ) ) { ?>
-		<aside id="header-widget-area" <?php cryout_schema_microdata( 'sidebar' ); ?>>
+	$headerimage_on_lp = MrGiraffe_get_option( 'theme_lpslider' );
+	if ( is_active_sidebar( 'widget-area-header' ) && ( !MrGiraffe_on_landingpage() || ( MrGiraffe_on_landingpage() && ($headerimage_on_lp == 3) ) ) ) { ?>
+		<aside id="header-widget-area" <?php MrGiraffe_schema_microdata( 'sidebar' ); ?>>
 			<?php dynamic_sidebar( 'widget-area-header' ); ?>
 		</aside><?php
 	}
@@ -399,7 +399,7 @@ function QHFZBIO_widget_header() {
 
 function QHFZBIO_widget_before() {
 	if ( is_active_sidebar( 'content-widget-area-before' ) ) { ?>
-		<aside class="content-widget content-widget-before" <?php cryout_schema_microdata( 'sidebar' ); ?>>
+		<aside class="content-widget content-widget-before" <?php MrGiraffe_schema_microdata( 'sidebar' ); ?>>
 			<?php dynamic_sidebar( 'content-widget-area-before' ); ?>
 		</aside><!--content-widget--><?php
 	}
@@ -407,14 +407,14 @@ function QHFZBIO_widget_before() {
 
 function QHFZBIO_widget_after() {
 	if ( is_active_sidebar( 'content-widget-area-after' ) ) { ?>
-		<aside class="content-widget content-widget-after" <?php cryout_schema_microdata( 'sidebar' ); ?>>
+		<aside class="content-widget content-widget-after" <?php MrGiraffe_schema_microdata( 'sidebar' ); ?>>
 			<?php dynamic_sidebar( 'content-widget-area-after' ); ?>
 		</aside><!--content-widget--><?php
 	}
 } //QHFZBIO_widget_after()
 
 function QHFZBIO_widget_side_section() {
-	do_action('cryout_header_socials_hook');
+	do_action('MrGiraffe_header_socials_hook');
 
 	if ( is_active_sidebar( 'widget-area-side-section' ) ) { ?>
 		<div class="side-section-widget side-section">
@@ -425,9 +425,9 @@ function QHFZBIO_widget_side_section() {
 	};
 } //QHFZBIO_widget_side_section()
 
-add_action( 'cryout_header_widget_hook',  'QHFZBIO_widget_header' );
-add_action( 'cryout_before_content_hook', 'QHFZBIO_widget_before' );
-add_action( 'cryout_after_content_hook',  'QHFZBIO_widget_after' );
-add_action( 'cryout_side_section_hook',    'QHFZBIO_widget_side_section' );
+add_action( 'MrGiraffe_header_widget_hook',  'QHFZBIO_widget_header' );
+add_action( 'MrGiraffe_before_content_hook', 'QHFZBIO_widget_before' );
+add_action( 'MrGiraffe_after_content_hook',  'QHFZBIO_widget_after' );
+add_action( 'MrGiraffe_side_section_hook',    'QHFZBIO_widget_side_section' );
 
 /* FIN */

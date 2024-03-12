@@ -107,13 +107,13 @@
 	transition: .3s all ease-in-out;
 }
 
-#cryout-donate .button {
+#MrGiraffe-donate .button {
 	border-color: #e9b44c;
 	color: #e9b44c;
 	background: #FFF;
 }
 
-#cryout-donate .button:hover {
+#MrGiraffe-donate .button:hover {
 	color: #FFF;
 	background: #e9b44c;
 }

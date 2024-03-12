@@ -9,14 +9,14 @@
  */
 
 // theme identification and options management - do NOT edit unless you know what you are doing
-define ( "_CRYOUT_THEME_NAME", "QHFZBIO" );
-define ( "_CRYOUT_THEME_VERSION", "1.1.1" );
+define ( "_MrGiraffe_THEME_NAME", "QHFZBIO" );
+define ( "_MrGiraffe_THEME_VERSION", "1.1.1" );
 
 // prefixes for theme options and functions
-define ( '_CRYOUT_THEME_SLUG', 'QHFZBIO' );
-define ( '_CRYOUT_THEME_PREFIX', 'theme' );
+define ( '_MrGiraffe_THEME_SLUG', 'QHFZBIO' );
+define ( '_MrGiraffe_THEME_PREFIX', 'theme' );
 
-require_once( get_template_directory() . "/cryout/framework.php" );		// Framework
+require_once( get_template_directory() . "/MrGiraffe/framework.php" );		// Framework
 require_once( get_template_directory() . "/admin/defaults.php" );		// Options Defaults
 require_once( get_template_directory() . "/admin/main.php" );			// Admin side
 

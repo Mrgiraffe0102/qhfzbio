@@ -9,9 +9,9 @@
  */
 
 ?>
-		<?php cryout_absolute_bottom_hook(); ?>
+		<?php MrGiraffe_absolute_bottom_hook(); ?>
 
-		<aside id="colophon" <?php cryout_schema_microdata( 'sidebar' );?>>
+		<aside id="colophon" <?php MrGiraffe_schema_microdata( 'sidebar' );?>>
 			<div id="colophon-inside" <?php QHFZBIO_footer_colophon_class();?>>
 				<?php get_sidebar( 'footer' );?>
 			</div>
@@ -19,16 +19,16 @@
 
 	</div><!-- #main -->
 
-	<footer id="footer" class="cryout" <?php cryout_schema_microdata( 'footer' );?>>
-		<?php cryout_master_topfooter_hook(); ?>
+	<footer id="footer" class="MrGiraffe" <?php MrGiraffe_schema_microdata( 'footer' );?>>
+		<?php MrGiraffe_master_topfooter_hook(); ?>
 		<div id="footer-top">
 			<div class="footer-inside">
-				<?php cryout_master_footer_hook(); ?>
+				<?php MrGiraffe_master_footer_hook(); ?>
 			</div><!-- #footer-inside -->
 		</div><!-- #footer-top -->
 		<div id="footer-bottom">
 			<div class="footer-inside">
-				<?php cryout_master_footerbottom_hook(); ?>
+				<?php MrGiraffe_master_footerbottom_hook(); ?>
 			</div> <!-- #footer-inside -->
 		</div><!-- #footer-bottom -->
 	</footer>

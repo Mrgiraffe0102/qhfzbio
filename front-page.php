@@ -6,7 +6,7 @@
  * @package QHFZBIO
  */
 
-$QHFZBIO_landingpage = cryout_get_option( 'theme_landingpage' );
+$QHFZBIO_landingpage = MrGiraffe_get_option( 'theme_landingpage' );
 
 if ( is_page() && ! $QHFZBIO_landingpage ) {
 	load_template( get_page_template() );
@@ -23,7 +23,7 @@ if ( 'posts' == get_option( 'show_on_front' ) ) {
 	<div id="container" class="QHFZBIO-landing-page one-column">
 		<main id="main" class="main">
 		<?php
-		//cryout_before_content_hook();
+		//MrGiraffe_before_content_hook();
 
 		if ( $QHFZBIO_landingpage ) {
 			get_template_part( apply_filters('QHFZBIO_landingpage_main_template', 'content/landing-page' ) );
@@ -31,7 +31,7 @@ if ( 'posts' == get_option( 'show_on_front' ) ) {
 			QHFZBIO_lpindex();
 		}
 
-		//cryout_after_content_hook();
+		//MrGiraffe_after_content_hook();
 		?>
 		</main><!-- #main -->
 		<?php if ( ! $QHFZBIO_landingpage ) { QHFZBIO_get_sidebar(); } ?>

@@ -14,9 +14,9 @@ require_once( get_template_directory() . "/includes/tgmpa.php" );
 require_once( get_template_directory() . "/includes/custom-styles.php" );
 
 // load up theme options
-$cryout_theme_settings = apply_filters( 'QHFZBIO_theme_structure_array', $QHFZBIO_big );
-$cryout_theme_options = QHFZBIO_get_theme_options();
-$cryout_theme_defaults = QHFZBIO_get_option_defaults();
+$MrGiraffe_theme_settings = apply_filters( 'QHFZBIO_theme_structure_array', $QHFZBIO_big );
+$MrGiraffe_theme_options = QHFZBIO_get_theme_options();
+$MrGiraffe_theme_defaults = QHFZBIO_get_option_defaults();
 
 // Get the theme options and make sure defaults are used if no values are set
 //if ( ! function_exists( 'QHFZBIO_get_theme_options' ) ):
@@ -25,7 +25,7 @@ function QHFZBIO_get_theme_options() {
 		get_option( 'QHFZBIO_settings', array() ),
 		QHFZBIO_get_option_defaults()
 	);
-	$options = cryout_maybe_migrate_options( $options );
+	$options = MrGiraffe_maybe_migrate_options( $options );
 	return apply_filters( 'QHFZBIO_theme_options_array', $options );
 } // QHFZBIO_get_theme_options()
 //endif;
@@ -55,12 +55,12 @@ function QHFZBIO_admin_scripts( $hook ) {
 	}
 
 	wp_enqueue_style( 'wp-jquery-ui-dialog' );
-	wp_enqueue_style( 'QHFZBIO-admin-style', esc_url( get_template_directory_uri() . '/admin/css/admin.css' ), NULL, _CRYOUT_THEME_VERSION );
-	wp_enqueue_script( 'QHFZBIO-admin-js', esc_url( get_template_directory_uri() . '/admin/js/admin.js' ), array('jquery-ui-dialog'), _CRYOUT_THEME_VERSION );
+	wp_enqueue_style( 'QHFZBIO-admin-style', esc_url( get_template_directory_uri() . '/admin/css/admin.css' ), NULL, _MrGiraffe_THEME_VERSION );
+	wp_enqueue_script( 'QHFZBIO-admin-js', esc_url( get_template_directory_uri() . '/admin/js/admin.js' ), array('jquery-ui-dialog'), _MrGiraffe_THEME_VERSION );
 	$js_admin_options = array(
 		'reset_confirmation' => esc_html( __( 'Reset QHFZBIO Settings to Defaults?', 'QHFZBIO' ) ),
 	);
-	wp_localize_script( 'QHFZBIO-admin-js', 'cryout_admin_settings', $js_admin_options );
+	wp_localize_script( 'QHFZBIO-admin-js', 'MrGiraffe_admin_settings', $js_admin_options );
 }
 
 // Create admin subpages
@@ -84,7 +84,7 @@ function QHFZBIO_page_fn() {
 	<div id="lefty">
 	<?php
 	// Reset settings to defaults if the reset button has been pressed
-	if ( isset( $_POST['cryout_reset_defaults'] ) ) {
+	if ( isset( $_POST['MrGiraffe_reset_defaults'] ) ) {
 		delete_option( 'QHFZBIO_settings' ); ?>
 		<div class="updated fade">
 			<p><?php _e('QHFZBIO settings have been reset successfully.', 'QHFZBIO') ?></p>
@@ -94,25 +94,25 @@ function QHFZBIO_page_fn() {
 		<div id="admin_header">
 			<img src="<?php echo esc_url( get_template_directory_uri() . '/admin/images/logo-about-top.png' ) ?>" />
 			<span class="version">
-				<?php echo wp_kses_post( apply_filters( 'cryout_admin_version', sprintf( __( 'QHFZBIO Theme v%1$s by %2$s', 'QHFZBIO' ),
-					_CRYOUT_THEME_VERSION,
-					'<a href="https://www.cryoutcreations.eu" target="_blank">Cryout Creations</a>'
+				<?php echo wp_kses_post( apply_filters( 'MrGiraffe_admin_version', sprintf( __( 'QHFZBIO Theme v%1$s by %2$s', 'QHFZBIO' ),
+					_MrGiraffe_THEME_VERSION,
+					'<a href="https://www.MrGiraffecreations.eu" target="_blank">MrGiraffe Creations</a>'
 				) ) ); ?><br>
-				<?php do_action( 'cryout_admin_version' ); ?>
+				<?php do_action( 'MrGiraffe_admin_version' ); ?>
 			</span>
 		</div>
 
 		<div id="admin_links">
-			<a href="https://www.cryoutcreations.eu/wordpress-themes/QHFZBIO" target="_blank"><?php _e( 'QHFZBIO Homepage', 'QHFZBIO' ) ?></a>
-			<a href="https://www.cryoutcreations.eu/forums/f/wordpress/QHFZBIO" target="_blank"><?php _e( 'Theme Support', 'QHFZBIO' ) ?></a>
-			<a class="blue-button" href="https://www.cryoutcreations.eu/wordpress-themes/QHFZBIO#cryout-comparison-section" target="_blank"><?php _e( 'Upgrade to Plus', 'QHFZBIO' ) ?></a>
+			<a href="https://www.MrGiraffecreations.eu/wordpress-themes/QHFZBIO" target="_blank"><?php _e( 'QHFZBIO Homepage', 'QHFZBIO' ) ?></a>
+			<a href="https://www.MrGiraffecreations.eu/forums/f/wordpress/QHFZBIO" target="_blank"><?php _e( 'Theme Support', 'QHFZBIO' ) ?></a>
+			<a class="blue-button" href="https://www.MrGiraffecreations.eu/wordpress-themes/QHFZBIO#MrGiraffe-comparison-section" target="_blank"><?php _e( 'Upgrade to Plus', 'QHFZBIO' ) ?></a>
 		</div>
 
 		<div id="description">
 			<div id="description-inside">
 			<?php
 				$theme = wp_get_theme();
-				echo wp_kses_post( apply_filters( 'cryout_theme_description', esc_html( $theme->get( 'Description' ) ) ) );
+				echo wp_kses_post( apply_filters( 'MrGiraffe_theme_description', esc_html( $theme->get( 'Description' ) ) ) );
 			?>
 			</div>
 		</div>
@@ -120,8 +120,8 @@ function QHFZBIO_page_fn() {
 		<div id="customizer-container">
 			<a class="button" href="customize.php" id="customizer"> <?php _e( 'Customize', 'QHFZBIO' ); ?> </a>
 			<form action="" method="post" id="defaults" id="defaults">
-				<input type="hidden" name="cryout_reset_defaults" value="true" />
-				<input type="submit" class="button" id="cryout_reset_defaults" value="<?php _e( 'Reset to Defaults', 'QHFZBIO' ); ?>" />
+				<input type="hidden" name="MrGiraffe_reset_defaults" value="true" />
+				<input type="submit" class="button" id="MrGiraffe_reset_defaults" value="<?php _e( 'Reset to Defaults', 'QHFZBIO' ); ?>" />
 			</form>
 		</div>
 
@@ -129,13 +129,13 @@ function QHFZBIO_page_fn() {
 
 
 	<div id="righty">
-		<div id="cryout-donate" class="postbox donate">
+		<div id="MrGiraffe-donate" class="postbox donate">
 
 			<h3 class="hndle"><?php _e( 'Upgrade to Plus', 'QHFZBIO' ); ?></h3>
 			<div class="inside">
-				<p><?php printf( __('Find out what features you\'re missing out on and how the Plus version of %1$s can improve your site.', 'QHFZBIO'), cryout_sanitize_tnl( _CRYOUT_THEME_NAME ) )  ?></p>
+				<p><?php printf( __('Find out what features you\'re missing out on and how the Plus version of %1$s can improve your site.', 'QHFZBIO'), MrGiraffe_sanitize_tnl( _MrGiraffe_THEME_NAME ) )  ?></p>
 				<img src="<?php echo esc_url( get_template_directory_uri() . '/admin/images/features.png' ) ?>" />
-				<a class="button" href="https://www.cryoutcreations.eu/wordpress-themes/QHFZBIO" target="_blank" style="display: block;"><?php _e( 'Upgrade to Plus', 'QHFZBIO' ); ?></a>
+				<a class="button" href="https://www.MrGiraffecreations.eu/wordpress-themes/QHFZBIO" target="_blank" style="display: block;"><?php _e( 'Upgrade to Plus', 'QHFZBIO' ); ?></a>
 
 			</div><!-- inside -->
 

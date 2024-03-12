@@ -18,11 +18,11 @@ get_header(); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'hentry' ); ?>>
 			<div class="article-inner">
-				<?php cryout_before_content_hook(); ?>
+				<?php MrGiraffe_before_content_hook(); ?>
 
 				<?php woocommerce_content(); ?>
 
-				<?php cryout_after_content_hook(); ?>
+				<?php MrGiraffe_after_content_hook(); ?>
 			</div><!-- .article-inner -->
 		</article><!-- #post-## -->
 		</main><!-- #main -->

@@ -1,7 +1,7 @@
 /**
  * JS for Custom Customizer Controls
  *
- * @package Cryout Framework
+ * @package MrGiraffe Framework
  */
 
 jQuery(document).ready(function(){
@@ -104,7 +104,7 @@ jQuery(document).ready(function(){
 		jQuery( '.customize-control-radio-image .buttonset' ).buttonset();
 		
 		// Icon Select2 Control
-		var cryoutSelect2Texts = {
+		var MrGiraffeSelect2Texts = {
 			errorLoading: function(){ return "The results could not be loaded" },
 			inputTooLong: function(){ return "Please delete some characters" },
 			inputTooShort:function(){ return "Please enter more characters" },
@@ -117,15 +117,15 @@ jQuery(document).ready(function(){
 		// init select2 control on font selectors
 		if ( jQuery && jQuery.fn && jQuery.fn.select2 && jQuery.fn.select2.amd ) jQuery('select.fontselect.select2').select2({
 			width: "element",
-			theme: 'default cryout-select2',
-			language: cryoutSelect2Texts
-		}).addClass( 'cryout-select2' );
+			theme: 'default MrGiraffe-select2',
+			language: MrGiraffeSelect2Texts
+		}).addClass( 'MrGiraffe-select2' );
 		// init select2 control for icon selectors (needs extra class for custom font)
  		if ( jQuery && jQuery.fn && jQuery.fn.select2 && jQuery.fn.select2.amd ) jQuery('select.iconselect.select2').select2({
 			width: "element",
-			theme: 'default cryout-select2 cryout-iconselect',
-			language: cryoutSelect2Texts
-		}).addClass( 'cryout-select2 cryout-iconselect' );
+			theme: 'default MrGiraffe-select2 MrGiraffe-iconselect',
+			language: MrGiraffeSelect2Texts
+		}).addClass( 'MrGiraffe-select2 MrGiraffe-iconselect' );
 
 	}); // setTimeout		
 

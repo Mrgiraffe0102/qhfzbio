@@ -2,51 +2,51 @@
 /**
  * Custom WP Customizer functionality
  *
- * @package Cryout Framework
+ * @package MrGiraffe Framework
  */
 
 ///////// SANITIZERS /////////
-function cryout_customizer_sanitize_blank(){
+function MrGiraffe_customizer_sanitize_blank(){
 	// dummy function that does nothing, since the sanitized add_section
 	// calling it does not add any user-editable field
-} // cryout_customizer_sanitize_blank()
+} // MrGiraffe_customizer_sanitize_blank()
 
-function cryout_customizer_sanitize_number($input){
+function MrGiraffe_customizer_sanitize_number($input){
 	return ( is_numeric( $input ) ) ? $input : intval( $input );
-} // cryout_customizer_sanitize_number()
+} // MrGiraffe_customizer_sanitize_number()
 
-function cryout_customizer_sanitize_checkbox($input){
+function MrGiraffe_customizer_sanitize_checkbox($input){
     if ( intval( $input ) == 1 ) return 1;
     return 0;
-} // cryout_customizer_sanitize_checkbox()
+} // MrGiraffe_customizer_sanitize_checkbox()
 
-function cryout_customizer_sanitize_url($input){
+function MrGiraffe_customizer_sanitize_url($input){
 	return esc_url_raw( $input );
-} // cryout_customizer_sanitize_url()
+} // MrGiraffe_customizer_sanitize_url()
 
-function cryout_customizer_sanitize_googlefont($input){
+function MrGiraffe_customizer_sanitize_googlefont($input){
 	return preg_replace( '/\+/', ' ', wp_kses_post($input) );
-} // cryout_customizer_sanitize_url()
+} // MrGiraffe_customizer_sanitize_url()
 
-function cryout_customizer_sanitize_color($input){
+function MrGiraffe_customizer_sanitize_color($input){
 	return sanitize_hex_color($input);
-} // cryout_customizer_sanitize_color()
+} // MrGiraffe_customizer_sanitize_color()
 
-function cryout_customizer_sanitize_text($input){
+function MrGiraffe_customizer_sanitize_text($input){
 	// return wp_filter_nohtml_kses( $input );
 	return wp_kses_post( $input );
-} // cryout_customizer_sanitize_text()
+} // MrGiraffe_customizer_sanitize_text()
 
-function cryout_customizer_sanitize_generic($input){
+function MrGiraffe_customizer_sanitize_generic($input){
 	return wp_kses_post( $input );
-} // cryout_customizer_sanitize_generic()
+} // MrGiraffe_customizer_sanitize_generic()
 
 
-// custom controls moved to cryout/controls.php in 0.8
+// custom controls moved to MrGiraffe/controls.php in 0.8
 
 
 ////////// THE CUSTOMIZER CLASS /////////
-class Cryout_Customizer {
+class MrGiraffe_Customizer {
 
 	public function __construct () {
 
@@ -54,18 +54,18 @@ class Cryout_Customizer {
 	} // __construct()
 
 	public static function register( $wp_customize ) {
-		global $cryout_theme_settings;
-		global $cryout_theme_defaults;
+		global $MrGiraffe_theme_settings;
+		global $MrGiraffe_theme_defaults;
 
-		$wp_customize->register_section_type( 'Cryout_Customize_About_Section' );
+		$wp_customize->register_section_type( 'MrGiraffe_Customize_About_Section' );
 
 		////////// add about theme panel and sections //////////
-		if (!empty($cryout_theme_settings['info_sections'])):
+		if (!empty($MrGiraffe_theme_settings['info_sections'])):
 			$section_priority = 10;
 
-			foreach ($cryout_theme_settings['info_sections'] as $iid=>$info):
+			foreach ($MrGiraffe_theme_settings['info_sections'] as $iid=>$info):
 				if (empty($info)) continue;
-				$wp_customize->add_section( new Cryout_Customize_About_Section( $wp_customize, $iid, array(
+				$wp_customize->add_section( new MrGiraffe_Customize_About_Section( $wp_customize, $iid, array(
 					'title'          => $info['title'],
 					'description'    => $info['desc'],
 					'priority'       => $section_priority++,
@@ -75,14 +75,14 @@ class Cryout_Customizer {
 			endforeach;
 		endif; //!empty
 
-		foreach ($cryout_theme_settings['info_settings'] as $iid => $info):
+		foreach ($MrGiraffe_theme_settings['info_settings'] as $iid => $info):
 			if (empty($info)) continue;
 			$wp_customize->add_setting( $iid, array(
 				'default'        => $info['default'],
 				'capability'     => 'edit_theme_options',
-				'sanitize_callback' => 'cryout_customizer_sanitize_blank'
+				'sanitize_callback' => 'MrGiraffe_customizer_sanitize_blank'
 			) );
-			$wp_customize->add_control( new Cryout_Customize_About_Control( $wp_customize, $iid, array(
+			$wp_customize->add_control( new MrGiraffe_Customize_About_Control( $wp_customize, $iid, array(
 				'label'   	 => $info['label'],
 				'description' => $info['desc'],
 				'section' 	 => $info['section'],
@@ -95,9 +95,9 @@ class Cryout_Customizer {
 
 		////////// add custom theme options panels //////////
 		$priority = 45;
-		foreach ($cryout_theme_settings['panels'] as $panel):
+		foreach ($MrGiraffe_theme_settings['panels'] as $panel):
 
-			$identifier = ( !empty($panel['identifier'])? $panel['identifier'] : 'cryout-' );
+			$identifier = ( !empty($panel['identifier'])? $panel['identifier'] : 'MrGiraffe-' );
 			$wp_customize->add_panel( $identifier . $panel['id'], array(
 			  'title' => $panel['title'],
 			  'description' => '',
@@ -108,27 +108,27 @@ class Cryout_Customizer {
 
 		////////// add custom theme options sections, settings and empty placeholder control //////////
 		$section_priority = 60;
-		foreach ($cryout_theme_settings['sections'] as $section):
+		foreach ($MrGiraffe_theme_settings['sections'] as $section):
 
 			// override section id to make it uniquely identifiable
 
-			$wp_customize->add_section( 'cryout-' . $section['id'], array(
+			$wp_customize->add_section( 'MrGiraffe-' . $section['id'], array(
 				'title'          => $section['title'],
 				'description'    => '',
 				'priority'       => ( isset($section['priority']) ? $section['priority'] : $section_priority+=5 ),
-				'panel'  		 => ( !empty($section['sid']) ? 'cryout-' . $section['sid'] : '' ),
+				'panel'  		 => ( !empty($section['sid']) ? 'MrGiraffe-' . $section['sid'] : '' ),
 			) );
 
 			/*$wp_customize->add_setting( 'placeholder_'.$section_priority, array(
 				'default'        => '',
 				'capability'     => 'edit_theme_options',
-				'sanitize_callback' => 'cryout_customizer_sanitize_blank',
-				'section' 		 => 'cryout-' . $section['id'],
+				'sanitize_callback' => 'MrGiraffe_customizer_sanitize_blank',
+				'section' 		 => 'MrGiraffe-' . $section['id'],
 			) );*/
 
 			// override section id to make it uniquely identifiable
-			/*$wp_customize->add_control( new Cryout_Customize_Blank_Control( $wp_customize, 'placeholder_'.$section_priority, array(
-				'section' => 'cryout-' . $section['id'],
+			/*$wp_customize->add_control( new MrGiraffe_Customize_Blank_Control( $wp_customize, 'placeholder_'.$section_priority, array(
+				'section' => 'MrGiraffe-' . $section['id'],
 				'settings'   => 'placeholder_'.$section_priority,
 				'priority'   => 10,
 			) ) );*/
@@ -137,8 +137,8 @@ class Cryout_Customizer {
 		////////// end option panels/sections
 
 		////////// override built-in WordPress customizer panels, if set //////////
-		if (!empty($cryout_theme_settings['panel_overrides']))
-		foreach ($cryout_theme_settings['panel_overrides'] as $poid => $pover):
+		if (!empty($MrGiraffe_theme_settings['panel_overrides']))
+		foreach ($MrGiraffe_theme_settings['panel_overrides'] as $poid => $pover):
 
 			if (empty($pover['priority2'])) $pover['priority2'] = 60; // failsafe
 			switch ($pover['type']):
@@ -162,12 +162,12 @@ class Cryout_Customizer {
 					break;
 				case 'panel':
 				default: // add custom panel to replace built-in panel
-					$wp_customize->add_panel( 'cryout-' . $poid, array(
+					$wp_customize->add_panel( 'MrGiraffe-' . $poid, array(
 						'priority'       => $pover['priority'],
 						'title'          => $pover['title'],
 						'description'    => $pover['desc'],
 					) );
-					$wp_customize->get_section( $pover['replaces'] )->panel = 'cryout-' . $poid;
+					$wp_customize->get_section( $pover['replaces'] )->panel = 'MrGiraffe-' . $poid;
 					$wp_customize->get_section( $pover['replaces'] )->priority = $pover['priority2'];
 					break;
 			endswitch;
@@ -178,7 +178,7 @@ class Cryout_Customizer {
 		$priority = 10;
 
 		////////// add custom theme option controls, based on option type //////////
-		foreach ($cryout_theme_settings['options'] as $opt):
+		foreach ($MrGiraffe_theme_settings['options'] as $opt):
 
 			// check if option should be visible in this case
 			if ( !empty( $opt['disable_if'] ) ) {
@@ -193,31 +193,31 @@ class Cryout_Customizer {
 			if (preg_match('/#/',$opt['id'])) {
 				$clone_section_id = str_replace( '#', '', $opt['section'] );
 
-				if (!empty($cryout_theme_settings['clones'][$clone_section_id]))
-					$clone_count = $cryout_theme_settings['clones'][$clone_section_id];
+				if (!empty($MrGiraffe_theme_settings['clones'][$clone_section_id]))
+					$clone_count = $MrGiraffe_theme_settings['clones'][$clone_section_id];
 
 			}
 
 			////////// sanitizer function callback select
 			switch ($opt['type']):
 				case 'number': case 'slider': case 'numberslider':
-				case 'range':			$sanitize_callback = 'cryout_customizer_sanitize_number'; 		break;
+				case 'range':			$sanitize_callback = 'MrGiraffe_customizer_sanitize_number'; 		break;
 				case 'checkbox':
-				case 'toggle':			$sanitize_callback = 'cryout_customizer_sanitize_checkbox';		break;
-				case 'url': 			$sanitize_callback = 'cryout_customizer_sanitize_url';			break;
-				case 'color':			$sanitize_callback = 'cryout_customizer_sanitize_color';		break;
-				case 'googlefont':      $sanitize_callback = 'cryout_customizer_sanitize_googlefont';   break;
+				case 'toggle':			$sanitize_callback = 'MrGiraffe_customizer_sanitize_checkbox';		break;
+				case 'url': 			$sanitize_callback = 'MrGiraffe_customizer_sanitize_url';			break;
+				case 'color':			$sanitize_callback = 'MrGiraffe_customizer_sanitize_color';		break;
+				case 'googlefont':      $sanitize_callback = 'MrGiraffe_customizer_sanitize_googlefont';   break;
 				case 'media': case 'media-image':
-										$sanitize_callback = 'cryout_customizer_sanitize_number';		break;
+										$sanitize_callback = 'MrGiraffe_customizer_sanitize_number';		break;
 				case 'hint': case 'blank':
-										$sanitize_callback = 'cryout_customizer_sanitize_blank';		break;
+										$sanitize_callback = 'MrGiraffe_customizer_sanitize_blank';		break;
 				case 'text': case 'tel': case 'email': case 'search':  case 'radio':
 				case 'time': case 'date': case 'datetime': case 'week':
-				case 'textarea':		$sanitize_callback = 'cryout_customizer_sanitize_text';			break;
-				default: 				$sanitize_callback = 'cryout_customizer_sanitize_generic';		break;
+				case 'textarea':		$sanitize_callback = 'MrGiraffe_customizer_sanitize_text';			break;
+				default: 				$sanitize_callback = 'MrGiraffe_customizer_sanitize_generic';		break;
 			endswitch;
 
-			$sanitize_callback = apply_filters( 'cryout_customizer_custom_control_sanitize_callback', $sanitize_callback, $opt['id'] );
+			$sanitize_callback = apply_filters( 'MrGiraffe_customizer_custom_control_sanitize_callback', $sanitize_callback, $opt['id'] );
 
 			// remember placeholder id and section for the cloning cycle below
 			$_opt_id = $opt['id'];
@@ -231,21 +231,21 @@ class Cryout_Customizer {
 				$opt['section'] = str_replace( '#', $i, $_opt_section );
 
 				////////// guess theme options variable name
-				if (function_exists('cryout_get_theme_options_name')) {
-					$theme_options_array = cryout_get_theme_options_name();
+				if (function_exists('MrGiraffe_get_theme_options_name')) {
+					$theme_options_array = MrGiraffe_get_theme_options_name();
 				} else {
-					$theme_options_array = _CRYOUT_THEME_NAME . '_settings';
+					$theme_options_array = _MrGiraffe_THEME_NAME . '_settings';
 				};
 				$opid = $theme_options_array . '[' . $opt['id'] . ']';
 
 				// make section id uniquely identifiable, unless it's a special addon option
 				if ( empty($opt['addon']) || $opt['addon'] != TRUE )
-					$opt['section'] = 'cryout-' . $opt['section'];
+					$opt['section'] = 'MrGiraffe-' . $opt['section'];
 
 				////////// add settings
 				$wp_customize->add_setting( $opid, array(
 					'type'			=> 'option',
-					'default'       => ( isset( $cryout_theme_defaults[$opt['id']] ) ? $cryout_theme_defaults[$opt['id']] : '' ),
+					'default'       => ( isset( $MrGiraffe_theme_defaults[$opt['id']] ) ? $MrGiraffe_theme_defaults[$opt['id']] : '' ),
 					'capability'    => 'edit_theme_options',
 					'sanitize_callback' => $sanitize_callback,
 					'transport' 	=> (isset($opt['transport'])?$opt['transport']:'refresh'),
@@ -270,7 +270,7 @@ class Cryout_Customizer {
 						) );
 						break;
 					case 'toggle':
-						$wp_customize->add_control( new Cryout_Customize_Toggle_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control( new MrGiraffe_Customize_Toggle_Control( $wp_customize, $opid, array(
 							'label' 	=> $opt['label'],
 							'description'	=> (isset($opt['desc'])?$opt['desc']:''),
 							'section'	=> $opt['section'],
@@ -312,7 +312,7 @@ class Cryout_Customizer {
 					case 'selecthalf':
 					case 'selectthird':
 						if (empty($opt['choices']) && empty($opt['labels'])) $opt['labels'] = $opt['values'];
-						$wp_customize->add_control(  new Cryout_Customize_SelectShort_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control(  new MrGiraffe_Customize_SelectShort_Control( $wp_customize, $opid, array(
 							'label'		=> $opt['label'],
 							'description'	=> (isset($opt['desc'])?$opt['desc']:''),
 							'section'	=> $opt['section'],
@@ -324,7 +324,7 @@ class Cryout_Customizer {
 						) ) );
 						break;
 					case 'select2':
-						$wp_customize->add_control( new Cryout_Customize_Select2_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control( new MrGiraffe_Customize_Select2_Control( $wp_customize, $opid, array(
 							'label' 	=> $opt['label'],
 							'description'	=> (isset($opt['desc'])?$opt['desc']:''),
 							'section'	=> $opt['section'],
@@ -337,7 +337,7 @@ class Cryout_Customizer {
 						) ) );
 						break;
 					case 'optselect':
-						$wp_customize->add_control( new Cryout_Customize_OptSelect_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control( new MrGiraffe_Customize_OptSelect_Control( $wp_customize, $opid, array(
 							'label' 	=> $opt['label'],
 							'description'	=> (isset($opt['desc'])?$opt['desc']:''),
 							'section'	=> $opt['section'],
@@ -362,7 +362,7 @@ class Cryout_Customizer {
 						) );
 						break;
 					case 'slider':
-						$wp_customize->add_control(  new Cryout_Customize_Slider_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control(  new MrGiraffe_Customize_Slider_Control( $wp_customize, $opid, array(
 							'label'		=> $opt['label'],
 							'description'	=> (isset($opt['desc'])?$opt['desc']:''),
 							'section'	=> $opt['section'],
@@ -379,7 +379,7 @@ class Cryout_Customizer {
 						) ) );
 						break;
 					case 'slidertwo':
-						$wp_customize->add_control(  new Cryout_Customize_SliderTwo_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control(  new MrGiraffe_Customize_SliderTwo_Control( $wp_customize, $opid, array(
 							'label'		=> $opt['label'],
 							'description'	=> (isset($opt['desc'])?$opt['desc']:''),
 							'section'	=> $opt['section'],
@@ -398,7 +398,7 @@ class Cryout_Customizer {
 						break;
 					case 'numberslider':
 					case 'slidernumber':
-						$wp_customize->add_control(  new Cryout_Customize_NumberSlider_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control(  new MrGiraffe_Customize_NumberSlider_Control( $wp_customize, $opid, array(
 							'label'		=> $opt['label'],
 							'description'	=> (isset($opt['desc'])?$opt['desc']:''),
 							'section'	=> $opt['section'],
@@ -416,7 +416,7 @@ class Cryout_Customizer {
 						) ) );
 						break;
 					case 'radioimage':
-						$wp_customize->add_control( new Cryout_Customize_RadioImage_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control( new MrGiraffe_Customize_RadioImage_Control( $wp_customize, $opid, array(
 							'label'		=> $opt['label'],
 							'description'	=> (isset($opt['desc'])?$opt['desc']:''),
 							'section'	=> $opt['section'],
@@ -428,8 +428,8 @@ class Cryout_Customizer {
 						) ) );
 						break;
 					case 'sortable':
-						if (class_exists('Cryout_Customize_Sortable_Control')) {
-							$wp_customize->add_control( new Cryout_Customize_Sortable_Control( $wp_customize, $opid, array(
+						if (class_exists('MrGiraffe_Customize_Sortable_Control')) {
+							$wp_customize->add_control( new MrGiraffe_Customize_Sortable_Control( $wp_customize, $opid, array(
 								'label'		=> $opt['label'],
 								'description'	=> (isset($opt['desc'])?$opt['desc']:''),
 								'section'	=> $opt['section'],
@@ -452,7 +452,7 @@ class Cryout_Customizer {
 						) ) );
 						break;
 					case 'font':
-						$wp_customize->add_control( new Cryout_Customize_Font_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control( new MrGiraffe_Customize_Font_Control( $wp_customize, $opid, array(
 							'label' 	=> $opt['label'],
 							'description'	=> (isset($opt['desc'])?$opt['desc']:''),
 							'section'	=> $opt['section'],
@@ -464,7 +464,7 @@ class Cryout_Customizer {
 						) ) );
 						break;
 					case 'iconselect':
-						$wp_customize->add_control( new Cryout_Customize_IconSelect_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control( new MrGiraffe_Customize_IconSelect_Control( $wp_customize, $opid, array(
 							'label' 	=> $opt['label'],
 							'description'	=> (isset($opt['desc'])?$opt['desc']:''),
 							'section'	=> $opt['section'],
@@ -492,7 +492,7 @@ class Cryout_Customizer {
 						) ) );
 						break;
 					case 'description':
-						$wp_customize->add_control( new Cryout_Customize_Description_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control( new MrGiraffe_Customize_Description_Control( $wp_customize, $opid, array(
 							'label' 	=> $opt['label'],
 							'description'	=> $opt['desc'],
 							'section'	=> $opt['section'],
@@ -503,7 +503,7 @@ class Cryout_Customizer {
 						) ) );
 						break;
 					case 'hint':
-						$wp_customize->add_control( new Cryout_Customize_Hint_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control( new MrGiraffe_Customize_Hint_Control( $wp_customize, $opid, array(
 							'label' 	=> $opt['label'],
 							'description'	=> $opt['desc'],
 							'section'	=> $opt['section'],
@@ -514,7 +514,7 @@ class Cryout_Customizer {
 						) ) );
 						break;
 					case 'notice':
-						$wp_customize->add_control( new Cryout_Customize_Notice_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control( new MrGiraffe_Customize_Notice_Control( $wp_customize, $opid, array(
 							'label' 	=> $opt['label'],
 							'description'	=> $opt['desc'],
 							'section'	=> $opt['section'],
@@ -525,18 +525,18 @@ class Cryout_Customizer {
 						) ) );
 						break;
 					case 'spacer':
-						$wp_customize->add_control( new Cryout_Customize_Spacer_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control( new MrGiraffe_Customize_Spacer_Control( $wp_customize, $opid, array(
 							'section'	=> $opt['section'],
 							'settings'	=> $opid,
 							'priority'	=> (isset($opt['priority'])?$opt['priority']:$priority),
 						) ) );
 						break;
 					case NULL:
-						$wp_customize->add_control( new Cryout_Customize_Null_Control( $wp_customize, $opid ) );
+						$wp_customize->add_control( new MrGiraffe_Customize_Null_Control( $wp_customize, $opid ) );
 						break;
 					case 'blank':
 					default:
-						$wp_customize->add_control( new Cryout_Customize_Blank_Control( $wp_customize, $opid, array(
+						$wp_customize->add_control( new MrGiraffe_Customize_Blank_Control( $wp_customize, $opid, array(
 							'label' 	=> $opt['label'],
 							'description'	=> (isset($opt['desc'])?$opt['desc']:''),
 							'section'	=> $opt['section'],
@@ -558,16 +558,16 @@ class Cryout_Customizer {
 
 	} // register()
 
-} // class Cryout_Customizer
+} // class MrGiraffe_Customizer
 
 
 ////////// external resources //////////
-function cryout_customizer_enqueue_scripts() {
-	wp_enqueue_style( 'cryout-customizer-css', get_template_directory_uri() . '/cryout/css/customizer.css', array(), _CRYOUT_FRAMEWORK_VERSION );
-	wp_add_inline_style( 'cryout-customizer-css', cryout_customize_theme_identification() ); // function located in includes/custom-styles.php
-	wp_enqueue_script( 'cryout-customizer-js', get_template_directory_uri() . '/cryout/js/customizer.js', array( 'jquery' ), _CRYOUT_FRAMEWORK_VERSION, true );
+function MrGiraffe_customizer_enqueue_scripts() {
+	wp_enqueue_style( 'MrGiraffe-customizer-css', get_template_directory_uri() . '/MrGiraffe/css/customizer.css', array(), _MrGiraffe_FRAMEWORK_VERSION );
+	wp_add_inline_style( 'MrGiraffe-customizer-css', MrGiraffe_customize_theme_identification() ); // function located in includes/custom-styles.php
+	wp_enqueue_script( 'MrGiraffe-customizer-js', get_template_directory_uri() . '/MrGiraffe/js/customizer.js', array( 'jquery' ), _MrGiraffe_FRAMEWORK_VERSION, true );
 }
 
-add_action('customize_controls_enqueue_scripts', 'cryout_customizer_enqueue_scripts');
+add_action('customize_controls_enqueue_scripts', 'MrGiraffe_customizer_enqueue_scripts');
 
 ////////// FIN! //////////

@@ -7,7 +7,7 @@
 
 function QHFZBIO_get_option_defaults() {
 
-	$sample_pages = cryout_get_default_pages();
+	$sample_pages = MrGiraffe_get_default_pages();
 
 	// DEFAULT OPTIONS ARRAY
 	$QHFZBIO_defaults = array(
@@ -291,7 +291,7 @@ function QHFZBIO_get_option_defaults() {
 } // QHFZBIO_get_option_defaults()
 
 /* Get sample pages for options defaults */
-function cryout_get_default_pages( $number = 4 ) {
+function MrGiraffe_get_default_pages( $number = 4 ) {
 	$block_ids = array( 0, 0, 0, 0, 0 );
 	$default_pages = get_pages(
 		array(
@@ -310,6 +310,6 @@ function cryout_get_default_pages( $number = 4 ) {
 		}
 	}
 	return $block_ids;
-} //cryout_get_default_pages()
+} //MrGiraffe_get_default_pages()
 
 // FIN

@@ -15,11 +15,11 @@ get_header(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class( 'post' ); ?>>
 				<div class="article-inner">
 					<header>
-						<?php cryout_post_title_hook(); ?>
-						<?php the_title( '<h1 class="entry-title" ' . cryout_schema_microdata( 'entry-title', 0 ) . '>', '</h1>' ); ?>
+						<?php MrGiraffe_post_title_hook(); ?>
+						<?php the_title( '<h1 class="entry-title" ' . MrGiraffe_schema_microdata( 'entry-title', 0 ) . '>', '</h1>' ); ?>
 
 						<div class="entry-meta">
-							<?php cryout_post_meta_hook();
+							<?php MrGiraffe_post_meta_hook();
 								// Retrieve attachment metadata.
 								$metadata = wp_get_attachment_metadata();
 								if ( $metadata ) {
@@ -45,7 +45,7 @@ get_header(); ?>
 						</div><!-- .entry-meta -->
 					</header>
 
-					<div class="entry-content" <?php cryout_schema_microdata( 'entry-content' ); ?>>
+					<div class="entry-content" <?php MrGiraffe_schema_microdata( 'entry-content' ); ?>>
 
 						<div class="entry-attachment">
 							<?php
@@ -67,7 +67,7 @@ get_header(); ?>
 					</div><!-- #nav-below -->
 
 					<footer class="entry-meta entry-utility">
-						<?php cryout_post_utility_hook(); ?>
+						<?php MrGiraffe_post_utility_hook(); ?>
 					</footer><!-- .entry-meta -->
 
 					<?php  comments_template( '', true ); ?>

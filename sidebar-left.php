@@ -7,8 +7,8 @@
 ?>
 
 <?php if ( is_active_sidebar( 'sidebar-2' ) || has_nav_menu( 'sidebar' ) || current_user_can( 'edit_theme_options' ) ): ?>
-<aside id="primary" class="widget-area sidey" <?php cryout_schema_microdata( 'sidebar' );?>>
-	<?php cryout_before_primary_widgets_hook(); ?>
+<aside id="primary" class="widget-area sidey" <?php MrGiraffe_schema_microdata( 'sidebar' );?>>
+	<?php MrGiraffe_before_primary_widgets_hook(); ?>
 
 	<?php if ( is_active_sidebar( 'sidebar-2' ) ):
 				dynamic_sidebar( 'sidebar-2' );
@@ -27,6 +27,6 @@
 
   		endif; ?>
 
-	<?php cryout_after_primary_widgets_hook(); ?>
+	<?php MrGiraffe_after_primary_widgets_hook(); ?>
 </aside>
 <?php endif;

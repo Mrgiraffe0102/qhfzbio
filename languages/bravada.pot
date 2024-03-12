@@ -517,7 +517,7 @@ msgid "Cropped"
 msgstr ""
 
 #. Author of the theme
-msgid "Cryout Creations"
+msgid "MrGiraffe Creations"
 msgstr ""
 
 #: admin/options.php:672 admin/options.php:688
@@ -916,11 +916,11 @@ msgid "Homepage Settings"
 msgstr ""
 
 #. Author URI of the theme
-msgid "http://www.cryoutcreations.eu"
+msgid "http://www.MrGiraffecreations.eu"
 msgstr ""
 
 #. URI of the theme
-msgid "http://www.cryoutcreations.eu/wordpress-themes/QHFZBIO"
+msgid "http://www.MrGiraffecreations.eu/wordpress-themes/QHFZBIO"
 msgstr ""
 
 #: admin/options.php:1713

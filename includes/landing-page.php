@@ -11,7 +11,7 @@
 */
 if ( ! function_exists('QHFZBIO_lpslider' ) ):
 function QHFZBIO_lpslider() {
-	$options = cryout_get_option( array( 'theme_lpslider', 'theme_lpsliderimage', 'theme_lpslidertitle', 'theme_lpslidertext', 'theme_lpslidershortcode', 'theme_lpsliderserious', 'theme_lpslidercta1text', 'theme_lpslidercta1link', 'theme_lpslidercta2text', 'theme_lpslidercta2link'  ) );
+	$options = MrGiraffe_get_option( array( 'theme_lpslider', 'theme_lpsliderimage', 'theme_lpslidertitle', 'theme_lpslidertext', 'theme_lpslidershortcode', 'theme_lpsliderserious', 'theme_lpslidercta1text', 'theme_lpslidercta1link', 'theme_lpslidercta2text', 'theme_lpslidercta2link'  ) );
 ?>
 <section class="lp-slider">
 <?php
@@ -94,13 +94,13 @@ endif;
  */
 if ( ! function_exists( 'QHFZBIO_lpblocks' ) ):
 function QHFZBIO_lpblocks( $sid = 1 ) {
-	$maintitle = cryout_get_option( 'theme_lpblockmaintitle'.$sid );
-	$maindesc = cryout_get_option( 'theme_lpblockmaindesc'.$sid );
-	$pageids = cryout_get_option( apply_filters('QHFZBIO_blocks_ids', array( 'theme_lpblockone'.$sid, 'theme_lpblocktwo'.$sid, 'theme_lpblockthree'.$sid, 'theme_lpblockfour'.$sid), $sid ) );
-	$icon = cryout_get_option( apply_filters('QHFZBIO_blocks_icons', array( 'theme_lpblockoneicon'.$sid, 'theme_lpblocktwoicon'.$sid, 'theme_lpblockthreeicon'.$sid, 'theme_lpblockfouricon'.$sid ), $sid ) );
-	$blockscontent = cryout_get_option( 'theme_lpblockscontent'.$sid );
-	$blocksclick = cryout_get_option( 'theme_lpblocksclick'.$sid );
-	$blocksreadmore = cryout_get_option( 'theme_lpblocksreadmore'.$sid );
+	$maintitle = MrGiraffe_get_option( 'theme_lpblockmaintitle'.$sid );
+	$maindesc = MrGiraffe_get_option( 'theme_lpblockmaindesc'.$sid );
+	$pageids = MrGiraffe_get_option( apply_filters('QHFZBIO_blocks_ids', array( 'theme_lpblockone'.$sid, 'theme_lpblocktwo'.$sid, 'theme_lpblockthree'.$sid, 'theme_lpblockfour'.$sid), $sid ) );
+	$icon = MrGiraffe_get_option( apply_filters('QHFZBIO_blocks_icons', array( 'theme_lpblockoneicon'.$sid, 'theme_lpblocktwoicon'.$sid, 'theme_lpblockthreeicon'.$sid, 'theme_lpblockfouricon'.$sid ), $sid ) );
+	$blockscontent = MrGiraffe_get_option( 'theme_lpblockscontent'.$sid );
+	$blocksclick = MrGiraffe_get_option( 'theme_lpblocksclick'.$sid );
+	$blocksreadmore = MrGiraffe_get_option( 'theme_lpblocksreadmore'.$sid );
 	$count = 1;
 	$pagecount = count( array_filter( $pageids, function ($v) { return $v > 0; } ) );
 	if ( empty( $pagecount ) ) return;
@@ -115,7 +115,7 @@ function QHFZBIO_lpblocks( $sid = 1 ) {
 		<?php } ?>
 		<div class="lp-blocks-inside">
 			<?php foreach ( $pageids as $key => $pageid ) {
-				$pageid = cryout_localize_id( $pageid );
+				$pageid = MrGiraffe_localize_id( $pageid );
 				if ( intval( $pageid ) > 0 ) {
 					$page = get_post( $pageid );
 
@@ -179,7 +179,7 @@ endif;
  */
 if ( ! function_exists( 'QHFZBIO_lpboxes' ) ):
 function QHFZBIO_lpboxes( $sid = 1 ) {
-	$options = cryout_get_option(
+	$options = MrGiraffe_get_option(
 				array(
 					 'theme_lpboxmaintitle' . $sid,
 					 'theme_lpboxmaindesc' . $sid,
@@ -208,9 +208,9 @@ function QHFZBIO_lpboxes( $sid = 1 ) {
 
 	$args = apply_filters( 'QHFZBIO_boxes_query_args', array(
 		'showposts' => $options['theme_lpboxcount' . $sid],
-		'cat' => cryout_localize_cat( $cat ),
+		'cat' => MrGiraffe_localize_cat( $cat ),
 		'ignore_sticky_posts' => 1,
-		'lang' => cryout_localize_code()
+		'lang' => MrGiraffe_localize_code()
 	), $options['theme_lpboxcat' . $sid], $sid );
 
     $custom_query->query( $args );
@@ -228,7 +228,7 @@ function QHFZBIO_lpboxes( $sid = 1 ) {
 						<?php if ( $options['theme_lpboxmargins' . $sid] == 1 ) { echo 'lp-boxes-padding'; }?>">
     		<?php while ( $custom_query->have_posts() ) :
 		            $custom_query->the_post();
-					if ( cryout_has_manual_excerpt( $custom_query->post ) ) {
+					if ( MrGiraffe_has_manual_excerpt( $custom_query->post ) ) {
 						$excerpt = get_the_excerpt();
 					} elseif ( has_excerpt() ) {
 						$excerpt = QHFZBIO_custom_excerpt( get_the_excerpt(), $options['theme_lpboxlength' . $sid] );
@@ -300,8 +300,8 @@ endif;
  */
 if ( ! function_exists( 'QHFZBIO_lptext' ) ):
 function QHFZBIO_lptext( $what = 'one' ) {
-	$pageid = cryout_get_option( 'theme_lptext' . $what );
-	$pageid = cryout_localize_id( $pageid );
+	$pageid = MrGiraffe_get_option( 'theme_lptext' . $what );
+	$pageid = MrGiraffe_localize_id( $pageid );
 	if ( intval( $pageid ) > 0 ) {
 		$page = get_post( $pageid );
 		$data = array(
@@ -345,7 +345,7 @@ endif;
 if ( ! function_exists( 'QHFZBIO_lpindex' ) ):
 function QHFZBIO_lpindex() {
 
-	$theme_lpposts = cryout_get_option('theme_lpposts');
+	$theme_lpposts = MrGiraffe_get_option('theme_lpposts');
 
 	switch ($theme_lpposts) {
 
@@ -368,7 +368,7 @@ function QHFZBIO_lpindex() {
 
 			if ( $custom_query->have_posts() ) :  ?>
 				<section id="lp-posts"> <div class="lp-posts-inside">
-				<div id="content-masonry" class="content-masonry" <?php cryout_schema_microdata( 'blog' ); ?>> <?php
+				<div id="content-masonry" class="content-masonry" <?php MrGiraffe_schema_microdata( 'blog' ); ?>> <?php
 					while ( $custom_query->have_posts() ) : $custom_query->the_post();
 						get_template_part( 'content/content', get_post_format() );
 					endwhile; ?>

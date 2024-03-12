@@ -1,10 +1,10 @@
 <?php
 
 ///////// CUSTOM CUSTOMIZERS /////////
-function cryout_customizer_extras($wp_customize){
+function MrGiraffe_customizer_extras($wp_customize){
 
-class Cryout_Customize_Link_Control extends WP_Customize_Control {
-			public $type = 'cryout-link';
+class MrGiraffe_Customize_Link_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-link';
 			public function render_content() {
 				if ( !empty( $this->description ) ) { ?>
 					<li class="customize-section-description-container">
@@ -16,10 +16,10 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 				}
 				echo '<a href="' . esc_url( $this->value() ) . '" target="_blank">' . esc_html( $this->label ) .'</a>';
 			}
-	} // class Cryout_Customize_Link_Control
+	} // class MrGiraffe_Customize_Link_Control
 
-	class Cryout_Customize_About_Section extends WP_Customize_Section {
-		public $type = 'cryout-about-section';
+	class MrGiraffe_Customize_About_Section extends WP_Customize_Section {
+		public $type = 'MrGiraffe-about-section';
 		public $button = FALSE;
 		public $button_label = '';
 		public function json() {
@@ -29,7 +29,7 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 			return $json;
 		}
 		protected function render_template() { ?>
-		<li id="accordion-section-{{ data.id }}" class="accordion-section control-section customize-cryoutspecial-about-section control-section-{{ data.type }}">
+		<li id="accordion-section-{{ data.id }}" class="accordion-section control-section customize-MrGiraffespecial-about-section control-section-{{ data.type }}">
 			<h3 class="accordion-section-title" tabindex="0">
 				{{ data.title }}
 
@@ -66,95 +66,95 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 			</ul>
 		</li>
 		<?php }
-	} // Cryout_Customize_About_Section()
+	} // MrGiraffe_Customize_About_Section()
 
-	class Cryout_Customize_About_Control extends WP_Customize_Control {
-			public $type = 'cryout-about';
+	class MrGiraffe_Customize_About_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-about';
 			public function render_content() {
 					if ( ! empty( $this->label ) ) { ?>
                         <span class="customize-control-title"><?php echo esc_html( $this->label ) ?></span>
 					<?php }
 					if ( ! empty( $this->description ) ) { ?>
-                        <span class="description customize-control-description cryout-nomove"><?php echo wp_kses_post( $this->description ) ?></span>
+                        <span class="description customize-control-description MrGiraffe-nomove"><?php echo wp_kses_post( $this->description ) ?></span>
                     <?php } ?>
-					<span class="customize-control-content customize-cryoutspecial-about-link"><?php echo wp_kses_post( $this->value() ) ?></span>
+					<span class="customize-control-content customize-MrGiraffespecial-about-link"><?php echo wp_kses_post( $this->value() ) ?></span>
 			<?php
 			}
-	} // class Cryout_Customize_About_Control
+	} // class MrGiraffe_Customize_About_Control
 
-	class Cryout_Customize_Spacer_Control extends WP_Customize_Control {
-			public $type = 'cryout-spacer';
+	class MrGiraffe_Customize_Spacer_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-spacer';
 			public function render_content() { ?>
-					<div class="customize-control-content customize-cryoutcontrol-spacer">
+					<div class="customize-control-content customize-MrGiraffecontrol-spacer">
 						<hr class="spacer">
 					</div>
 			<?php
 			}
-	} // class Cryout_Customize_Description_Control
+	} // class MrGiraffe_Customize_Description_Control
 
-	class Cryout_Customize_Description_Control extends WP_Customize_Control {
-			public $type = 'cryout-description';
+	class MrGiraffe_Customize_Description_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-description';
 			public function render_content() {
 					if ( ! empty( $this->label ) ) { ?>
-                        <span class="customize-control-title customize-cryoutcontrol-description"><?php echo esc_html( $this->label ) ?></span>
+                        <span class="customize-control-title customize-MrGiraffecontrol-description"><?php echo esc_html( $this->label ) ?></span>
 					<?php }
 					if ( ! empty( $this->description ) ) { ?>
-                        <span class="description customize-control-description cryout-nomove customize-cryoutcontrol-description-desc"><?php echo wp_kses_post( $this->description ) ?></span>
+                        <span class="description customize-control-description MrGiraffe-nomove customize-MrGiraffecontrol-description-desc"><?php echo wp_kses_post( $this->description ) ?></span>
                     <?php } ?>
-					<span class="customize-control-content customize-cryoutcontrol-description-value"><?php echo wp_kses_post( $this->value() ) ?></span>
+					<span class="customize-control-content customize-MrGiraffecontrol-description-value"><?php echo wp_kses_post( $this->value() ) ?></span>
 			<?php
 			}
-	} // class Cryout_Customize_Description_Control
+	} // class MrGiraffe_Customize_Description_Control
 
-	class Cryout_Customize_Hint_Control extends WP_Customize_Control {
-			public $type = 'cryout-hint';
+	class MrGiraffe_Customize_Hint_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-hint';
 			public function render_content() {
 					if ( ! empty( $this->label ) ) { ?>
-                        <span class="customize-control-title customize-cryoutcontrol-hint"><?php echo esc_html( $this->label ) ?></span>
+                        <span class="customize-control-title customize-MrGiraffecontrol-hint"><?php echo esc_html( $this->label ) ?></span>
 					<?php }
 					if ( ! empty( $this->description ) ) { ?>
-                        <span class="description customize-control-description cryout-nomove customize-cryoutcontrol-hint-desc"><?php echo wp_kses_post( $this->description ) ?></span>
+                        <span class="description customize-control-description MrGiraffe-nomove customize-MrGiraffecontrol-hint-desc"><?php echo wp_kses_post( $this->description ) ?></span>
                     <?php } ?>
-					<span class="customize-control-content customize-cryoutcontrol-hint-value"><?php echo wp_kses_post( $this->value() ) ?></span>
+					<span class="customize-control-content customize-MrGiraffecontrol-hint-value"><?php echo wp_kses_post( $this->value() ) ?></span>
 			<?php
 			}
-	} // class Cryout_Customize_Hint_Control
+	} // class MrGiraffe_Customize_Hint_Control
 
-	class Cryout_Customize_Notice_Control extends WP_Customize_Control {
-			public $type = 'cryout-notice';
+	class MrGiraffe_Customize_Notice_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-notice';
 			public function render_content() {
 					if (empty($this->input_attrs['class'])) $this->input_attrs['class'] = '';
 					if ( ! empty( $this->label ) ) { ?>
-                        <span class="customize-control-title customize-cryoutcontrol-notice customize-cryoutcontrol-notice-<?php echo esc_attr( $this->input_attrs['class'] ) ?>"><?php echo esc_html( $this->label ) ?></span>
+                        <span class="customize-control-title customize-MrGiraffecontrol-notice customize-MrGiraffecontrol-notice-<?php echo esc_attr( $this->input_attrs['class'] ) ?>"><?php echo esc_html( $this->label ) ?></span>
 					<?php }
 					if ( ! empty( $this->description ) ) { ?>
-                        <span class="description customize-control-description cryout-nomove customize-cryoutcontrol-notice-desc customize-cryoutcontrol-notice-<?php echo esc_attr( $this->input_attrs['class'] ) ?>-desc"><?php echo wp_kses_post( $this->description ) ?></span>
+                        <span class="description customize-control-description MrGiraffe-nomove customize-MrGiraffecontrol-notice-desc customize-MrGiraffecontrol-notice-<?php echo esc_attr( $this->input_attrs['class'] ) ?>-desc"><?php echo wp_kses_post( $this->description ) ?></span>
                     <?php } ?>
-					<span class="customize-control-content customize-cryoutcontrol-notice-value customize-cryoutcontrol-notice-<?php echo esc_attr( $this->input_attrs['class'] ) ?>-value"><?php echo wp_kses_post( $this->value() ) ?></span>
+					<span class="customize-control-content customize-MrGiraffecontrol-notice-value customize-MrGiraffecontrol-notice-<?php echo esc_attr( $this->input_attrs['class'] ) ?>-value"><?php echo wp_kses_post( $this->value() ) ?></span>
 			<?php
 			}
-	} // class Cryout_Customize_Notice_Control
+	} // class MrGiraffe_Customize_Notice_Control
 
-	class Cryout_Customize_Blank_Control extends WP_Customize_Control {
-			public $type = 'cryout-blank';
+	class MrGiraffe_Customize_Blank_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-blank';
 			public function render_content() {
 				echo '&nbsp;';
 			}
-	} // class Cryout_Customize_Blank_Control
+	} // class MrGiraffe_Customize_Blank_Control
 
-	class Cryout_Customize_Null_Control extends WP_Customize_Control {
+	class MrGiraffe_Customize_Null_Control extends WP_Customize_Control {
 			public $type = NULL;
 			public function render_content() {
 				return;
 			}
-	} // class Cryout_Customize_Null_Control
+	} // class MrGiraffe_Customize_Null_Control
 
 
-	class Cryout_Customize_Font_Control extends WP_Customize_Control {
-			public $type = 'cryout-font';
+	class MrGiraffe_Customize_Font_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-font';
 			private $fonts = array();
 			public function render_content() {
-				$this->fonts = cryout_get_theme_structure('fonts');
+				$this->fonts = MrGiraffe_get_theme_structure('fonts');
 				if (!empty($this->input_attrs['no_inherit'])) unset($this->fonts['Inherit']);
 				?>
 				<label>
@@ -170,7 +170,7 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 						foreach ( $this->fonts as $fgroup => $fsubs ): ?>
 							<optgroup label='<?php echo esc_attr( $fgroup ); ?>'>
 							<?php foreach($fsubs as $item):
-								$item_show = explode(',',$item); ?> <option style='font-family:<?php echo cryout_clean_gfont($item); ?>;' value='<?php echo esc_attr( $item ); ?>' <?php selected( $this->value(), $item ); ?>> <?php echo cryout_clean_gfont( $item_show[0] ); ?> </option> <?php endforeach; // fsubs ?>
+								$item_show = explode(',',$item); ?> <option style='font-family:<?php echo MrGiraffe_clean_gfont($item); ?>;' value='<?php echo esc_attr( $item ); ?>' <?php selected( $this->value(), $item ); ?>> <?php echo MrGiraffe_clean_gfont( $item_show[0] ); ?> </option> <?php endforeach; // fsubs ?>
 							</optgroup>
 						<?php endforeach; // $this->fonts ?>
 					</select>
@@ -180,25 +180,25 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 
 			public function enqueue() {
 				// font control requires select2 library
-				wp_enqueue_script( 'cryout-select2-js', get_template_directory_uri() . '/cryout/js/select2.min.js', array('jquery'), _CRYOUT_THEME_VERSION );
-				wp_enqueue_style( 'cryout-select2-css', get_template_directory_uri() . '/cryout/css/select2.min.css', NULL, _CRYOUT_THEME_VERSION );
+				wp_enqueue_script( 'MrGiraffe-select2-js', get_template_directory_uri() . '/MrGiraffe/js/select2.min.js', array('jquery'), _MrGiraffe_THEME_VERSION );
+				wp_enqueue_style( 'MrGiraffe-select2-css', get_template_directory_uri() . '/MrGiraffe/css/select2.min.css', NULL, _MrGiraffe_THEME_VERSION );
 				// google fonts enqueues for the font selectors preview
 				$gfonts = array();
-				$cryout_theme_structure = cryout_get_theme_structure();
-				$cryout_theme_options = cryout_get_option();
-				foreach ($cryout_theme_structure['google-font-enabled-fields'] as $item) {
-					if ( preg_match('/^(.*)\/gfont$/i', $cryout_theme_options[$item], $bits) ) $gfonts[] = $bits[1];
+				$MrGiraffe_theme_structure = MrGiraffe_get_theme_structure();
+				$MrGiraffe_theme_options = MrGiraffe_get_option();
+				foreach ($MrGiraffe_theme_structure['google-font-enabled-fields'] as $item) {
+					if ( preg_match('/^(.*)\/gfont$/i', $MrGiraffe_theme_options[$item], $bits) ) $gfonts[] = $bits[1];
 				};
 				if ( count($gfonts) ):
-					wp_enqueue_style( 'cryout-googlefonts', '//fonts.googleapis.com/css?family=' . implode( "|" , array_unique($gfonts) ), null, _CRYOUT_THEME_VERSION );
+					wp_enqueue_style( 'MrGiraffe-googlefonts', '//fonts.googleapis.com/css?family=' . implode( "|" , array_unique($gfonts) ), null, _MrGiraffe_THEME_VERSION );
 				endif;
 			} // enqueue()
 
-	} // class Cryout_Customize_Font_Control
+	} // class MrGiraffe_Customize_Font_Control
 
 
-	class Cryout_Customize_Slider_Control extends WP_Customize_Control {
-			public $type = 'cryout-slider';
+	class MrGiraffe_Customize_Slider_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-slider';
 			public function __construct($manager, $id, $args = array(), $options = array()) {
 				parent::__construct( $manager, $id, $args );
 			} // __construct()
@@ -213,7 +213,7 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 					step="<?php echo esc_attr( $this->input_attrs['step'] ) ?>" min="<?php echo esc_attr( $this->input_attrs['min'] ) ?>" max="<?php echo esc_attr( $this->input_attrs['max'] ) ?>" />
 				<div class="slider"></div>
 				<?php if ( ! empty( $this->description ) ) : ?>
-					 <span class="description cryout-nomove customize-control-description"><?php echo wp_kses_post( $this->description ) ?></span>
+					 <span class="description MrGiraffe-nomove customize-control-description"><?php echo wp_kses_post( $this->description ) ?></span>
 				<?php endif; ?>
 			<?php
 			} // render_content()
@@ -221,16 +221,16 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 			public function enqueue() {
 				wp_enqueue_script( 'jquery-ui-core' );
 				wp_enqueue_script( 'jquery-ui-slider' );
-				wp_enqueue_script( 'cryout-customizer-controls-js', get_template_directory_uri() . '/cryout/js/customizer-controls.js', array('jquery'), _CRYOUT_THEME_VERSION );
-				wp_enqueue_style( 'jquery-ui-slider', get_template_directory_uri() . '/cryout/css/jquery-ui.structure.css', NULL, _CRYOUT_THEME_VERSION );
-				wp_enqueue_style( 'jquery-ui-slider-theme', get_template_directory_uri() . '/cryout/css//jquery-ui.theme.css', NULL, _CRYOUT_THEME_VERSION );
+				wp_enqueue_script( 'MrGiraffe-customizer-controls-js', get_template_directory_uri() . '/MrGiraffe/js/customizer-controls.js', array('jquery'), _MrGiraffe_THEME_VERSION );
+				wp_enqueue_style( 'jquery-ui-slider', get_template_directory_uri() . '/MrGiraffe/css/jquery-ui.structure.css', NULL, _MrGiraffe_THEME_VERSION );
+				wp_enqueue_style( 'jquery-ui-slider-theme', get_template_directory_uri() . '/MrGiraffe/css//jquery-ui.theme.css', NULL, _MrGiraffe_THEME_VERSION );
 			} // enqueue()
 
-	} // class Cryout_Customize_Slider_Control
+	} // class MrGiraffe_Customize_Slider_Control
 
 
-	class Cryout_Customize_SliderTwo_Control extends WP_Customize_Control {
-			public $type = 'cryout-slidertwo';
+	class MrGiraffe_Customize_SliderTwo_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-slidertwo';
 			public function __construct($manager, $id, $args = array(), $options = array()) {
 				parent::__construct( $manager, $id, $args );
 			} // __construct()
@@ -245,7 +245,7 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 					max="<?php echo esc_attr( $this->input_attrs['max'] ) ?>" size="<?php echo esc_attr( $this->input_attrs['total'] ) ?>"/>
 				<div class="slidertwo"></div>
 				<?php if ( ! empty( $this->description ) ) : ?>
-					 <span class="description cryout-nomove customize-control-description"><?php echo wp_kses_post( $this->description ) ?></span>
+					 <span class="description MrGiraffe-nomove customize-control-description"><?php echo wp_kses_post( $this->description ) ?></span>
 				<?php endif; ?>
 			<?php
 			} // render_content()
@@ -253,16 +253,16 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 			public function enqueue() {
 				wp_enqueue_script( 'jquery-ui-core' );
 				wp_enqueue_script( 'jquery-ui-slider' );
-				wp_enqueue_script( 'cryout-customizer-controls-js', get_template_directory_uri() . '/cryout/js/customizer-controls.js', array('jquery'), _CRYOUT_THEME_VERSION );
-				wp_enqueue_style( 'jquery-ui-slider', get_template_directory_uri() . '/cryout/css/jquery-ui.structure.css' );
-				wp_enqueue_style( 'jquery-ui-slider-theme', get_template_directory_uri() . '/cryout/css//jquery-ui.theme.css' );
+				wp_enqueue_script( 'MrGiraffe-customizer-controls-js', get_template_directory_uri() . '/MrGiraffe/js/customizer-controls.js', array('jquery'), _MrGiraffe_THEME_VERSION );
+				wp_enqueue_style( 'jquery-ui-slider', get_template_directory_uri() . '/MrGiraffe/css/jquery-ui.structure.css' );
+				wp_enqueue_style( 'jquery-ui-slider-theme', get_template_directory_uri() . '/MrGiraffe/css//jquery-ui.theme.css' );
 			} // enqueue()
 
-	} // class Cryout_Customize_Slider_Control
+	} // class MrGiraffe_Customize_Slider_Control
 
 
-	class Cryout_Customize_NumberSlider_Control extends WP_Customize_Control {
-			public $type = 'cryout-numberslider';
+	class MrGiraffe_Customize_NumberSlider_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-numberslider';
 			public function __construct($manager, $id, $args = array(), $options = array()) {
 				parent::__construct( $manager, $id, $args );
 			} // __construct()
@@ -278,7 +278,7 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 				</div>
 				<div class="slider"></div>
 				<?php if ( ! empty( $this->description ) ) : ?>
-					 <span class="description cryout-nomove customize-control-description"><?php echo wp_kses_post( $this->description ) ?></span>
+					 <span class="description MrGiraffe-nomove customize-control-description"><?php echo wp_kses_post( $this->description ) ?></span>
 				<?php endif; ?>
 			<?php
 			} // render_content()
@@ -286,16 +286,16 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 			public function enqueue() {
 				wp_enqueue_script( 'jquery-ui-core' );
 				wp_enqueue_script( 'jquery-ui-slider' );
-				wp_enqueue_script( 'cryout-customizer-controls-js', get_template_directory_uri() . '/cryout/js/customizer-controls.js', array('jquery'), _CRYOUT_THEME_VERSION );
-				wp_enqueue_style( 'jquery-ui-slider', get_template_directory_uri() . '/cryout/css/jquery-ui.structure.css', NULL, _CRYOUT_THEME_VERSION );
-				wp_enqueue_style( 'jquery-ui-slider-theme', get_template_directory_uri() . '/cryout/css//jquery-ui.theme.css', NULL, _CRYOUT_THEME_VERSION );
+				wp_enqueue_script( 'MrGiraffe-customizer-controls-js', get_template_directory_uri() . '/MrGiraffe/js/customizer-controls.js', array('jquery'), _MrGiraffe_THEME_VERSION );
+				wp_enqueue_style( 'jquery-ui-slider', get_template_directory_uri() . '/MrGiraffe/css/jquery-ui.structure.css', NULL, _MrGiraffe_THEME_VERSION );
+				wp_enqueue_style( 'jquery-ui-slider-theme', get_template_directory_uri() . '/MrGiraffe/css//jquery-ui.theme.css', NULL, _MrGiraffe_THEME_VERSION );
 			} // enqueue()
 
-	} // class Cryout_Customize_NumberSlider_Control
+	} // class MrGiraffe_Customize_NumberSlider_Control
 
 
-	class Cryout_Customize_RadioImage_Control extends WP_Customize_Control {
-			public $type = 'cryout-radioimage';
+	class MrGiraffe_Customize_RadioImage_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-radioimage';
 			public function __construct($manager, $id, $args = array(), $options = array()) {
 				parent::__construct( $manager, $id, $args );
 			} // __construct()
@@ -322,19 +322,19 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 					endforeach; ?>
 				</div><!-- .buttonset -->
 
-				<?php if ( ! empty( $this->description ) ) { ?> <span class="description cryout-nomove customize-control-description"><?php echo wp_kses_post( $this->description ) ?></span><?php } ?>
+				<?php if ( ! empty( $this->description ) ) { ?> <span class="description MrGiraffe-nomove customize-control-description"><?php echo wp_kses_post( $this->description ) ?></span><?php } ?>
 			<?php
 			} // render_content()
 
 			public function enqueue() {
 				wp_enqueue_script( 'jquery-ui-core' );
 				wp_enqueue_script( 'jquery-ui-button' );
-				wp_enqueue_script( 'cryout-customizer-controls-js', get_template_directory_uri() . '/cryout/js/customizer-controls.js', array('jquery'), _CRYOUT_THEME_VERSION );
+				wp_enqueue_script( 'MrGiraffe-customizer-controls-js', get_template_directory_uri() . '/MrGiraffe/js/customizer-controls.js', array('jquery'), _MrGiraffe_THEME_VERSION );
 			}
-	} // class Cryout_Customize_RadioImage_Control
+	} // class MrGiraffe_Customize_RadioImage_Control
 
-	class Cryout_Customize_SelectShort_Control extends WP_Customize_Control {
-			public $type = 'cryout-selectshort';
+	class MrGiraffe_Customize_SelectShort_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-selectshort';
 			public function render_content() {
 				if ( empty( $this->choices ) )
 					return;
@@ -355,10 +355,10 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 				</select>
 				<?php
 			} // render_content
-	} // Cryout_Customize_SelectShort_Control
+	} // MrGiraffe_Customize_SelectShort_Control
 
-	class Cryout_Customize_Select2_Control extends WP_Customize_Control {
-			public $type = 'cryout-select2';
+	class MrGiraffe_Customize_Select2_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-select2';
 			public function render_content() {
 				if ( empty( $this->choices ) )
 					return;
@@ -381,14 +381,14 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 			} // render_content
 
 			public function enqueue() {
-				wp_enqueue_script( 'cryout-select2-js', get_template_directory_uri() . '/cryout/js/select2.min.js', array('jquery'), _CRYOUT_THEME_VERSION );
-				wp_enqueue_style( 'cryout-select2-css', get_template_directory_uri() . '/cryout/css/select2.min.css', NULL, _CRYOUT_THEME_VERSION );
+				wp_enqueue_script( 'MrGiraffe-select2-js', get_template_directory_uri() . '/MrGiraffe/js/select2.min.js', array('jquery'), _MrGiraffe_THEME_VERSION );
+				wp_enqueue_style( 'MrGiraffe-select2-css', get_template_directory_uri() . '/MrGiraffe/css/select2.min.css', NULL, _MrGiraffe_THEME_VERSION );
 			} // enqueue()
 
-	} // Cryout_Customize_Select2_Control
+	} // MrGiraffe_Customize_Select2_Control
 
-	class Cryout_Customize_OptSelect_Control extends WP_Customize_Control {
-			public $type = 'cryout-optselect';
+	class MrGiraffe_Customize_OptSelect_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-optselect';
 			public function render_content() {
 				if ( empty( $this->choices ) )
 					return;
@@ -414,12 +414,12 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 				</label>
 				<?php
 			} // render_content
-	} // Cryout_Customize_OptSelect_Control
+	} // MrGiraffe_Customize_OptSelect_Control
 
-	class Cryout_Customize_IconSelect_Control extends WP_Customize_Control {
-			public $type = 'cryout-iconselect';
+	class MrGiraffe_Customize_IconSelect_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-iconselect';
 			public function render_content() {
-				$this->icons = cryout_get_theme_structure('block-icons');
+				$this->icons = MrGiraffe_get_theme_structure('block-icons');
 				?>
 				<label>
 					<?php if ( ! empty( $this->label ) ) : ?>
@@ -441,16 +441,16 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 
 			public function enqueue() {
 				// theme icons font enqueue for the icon selector preview
-				wp_enqueue_style( 'cryout-theme-fontfaces', get_template_directory_uri() . '/resources/fonts/fontfaces.css', null, _CRYOUT_THEME_VERSION );
-				wp_enqueue_style( 'cryout-select2-css', get_template_directory_uri() . '/cryout/css/select2.min.css', NULL, _CRYOUT_THEME_VERSION );
-				wp_enqueue_script( 'cryout-customizer-controls-js', get_template_directory_uri() . '/cryout/js/customizer-controls.js', array('jquery'), _CRYOUT_THEME_VERSION );
-				wp_enqueue_script( 'cryout-select2-js', get_template_directory_uri() . '/cryout/js/select2.min.js', array('jquery'), _CRYOUT_THEME_VERSION );
+				wp_enqueue_style( 'MrGiraffe-theme-fontfaces', get_template_directory_uri() . '/resources/fonts/fontfaces.css', null, _MrGiraffe_THEME_VERSION );
+				wp_enqueue_style( 'MrGiraffe-select2-css', get_template_directory_uri() . '/MrGiraffe/css/select2.min.css', NULL, _MrGiraffe_THEME_VERSION );
+				wp_enqueue_script( 'MrGiraffe-customizer-controls-js', get_template_directory_uri() . '/MrGiraffe/js/customizer-controls.js', array('jquery'), _MrGiraffe_THEME_VERSION );
+				wp_enqueue_script( 'MrGiraffe-select2-js', get_template_directory_uri() . '/MrGiraffe/js/select2.min.js', array('jquery'), _MrGiraffe_THEME_VERSION );
 			} // enqueue()
 
-	} // class Cryout_Customize_IconSelect_Control
+	} // class MrGiraffe_Customize_IconSelect_Control
 
-	class Cryout_Customize_Toggle_Control extends WP_Customize_Control {
-			public $type = 'cryout-toggle';
+	class MrGiraffe_Customize_Toggle_Control extends WP_Customize_Control {
+			public $type = 'MrGiraffe-toggle';
 			public function render_content() { ?>
 				<?php if ( ! empty( $this->label ) ) : ?>
 					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
@@ -475,11 +475,11 @@ class Cryout_Customize_Link_Control extends WP_Customize_Control {
 			} // render_content()
 
 			public function enqueue() {
-				wp_enqueue_script( 'cryout-customizer-controls-js', get_template_directory_uri() . '/cryout/js/customizer-controls.js', array('jquery'), _CRYOUT_THEME_VERSION );
+				wp_enqueue_script( 'MrGiraffe-customizer-controls-js', get_template_directory_uri() . '/MrGiraffe/js/customizer-controls.js', array('jquery'), _MrGiraffe_THEME_VERSION );
 			} // enqueue()
 
-	} // class Cryout_Customize_Toggle_Control
+	} // class MrGiraffe_Customize_Toggle_Control
 
-} // cryout_customizer_extras()
+} // MrGiraffe_customizer_extras()
 
 // FIN

@@ -27,7 +27,7 @@ function QHFZBIO_comment( $comment, $args, $depth ) {
 		case '' :
 		default :
 		?>
-			<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>"<?php cryout_schema_microdata( 'comment' ); ?>>
+			<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>"<?php MrGiraffe_schema_microdata( 'comment' ); ?>>
 
 				<article>
 
@@ -35,7 +35,7 @@ function QHFZBIO_comment( $comment, $args, $depth ) {
 
 						<div class="comment-meta">
 							<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-							<time datetime="<?php comment_time( 'c' );?>" <?php cryout_schema_microdata( 'time' );?>>
+							<time datetime="<?php comment_time( 'c' );?>" <?php MrGiraffe_schema_microdata( 'time' );?>>
 
 								<span class="comment-date">
 									<?php /* translators: 1: date, 2: time */
@@ -57,12 +57,12 @@ function QHFZBIO_comment( $comment, $args, $depth ) {
 							<span class="comment-await"><em><?php _e( 'Your comment is awaiting moderation.', 'QHFZBIO' ); ?></em></span>
 						<?php endif; ?>
 						<div class="comment-avatar">
-								<?php echo get_avatar( $comment, 80, '', '', array( 'extra_attr' => cryout_schema_microdata('image', 0) )  ); ?>
-								<div class="comment-author" <?php cryout_schema_microdata( 'comment-author' ); ?>>
-									<?php printf(  '%s ', sprintf( '<span class="author-name fn"' . cryout_schema_microdata( 'author-name', 0) . '>%s</span>', get_comment_author_link() ) ); ?>
+								<?php echo get_avatar( $comment, 80, '', '', array( 'extra_attr' => MrGiraffe_schema_microdata('image', 0) )  ); ?>
+								<div class="comment-author" <?php MrGiraffe_schema_microdata( 'comment-author' ); ?>>
+									<?php printf(  '%s ', sprintf( '<span class="author-name fn"' . MrGiraffe_schema_microdata( 'author-name', 0) . '>%s</span>', get_comment_author_link() ) ); ?>
 								</div> <!-- .comment-author -->
 						</div>
-						<div class="comment-body" <?php cryout_schema_microdata( 'text' ); ?>>
+						<div class="comment-body" <?php MrGiraffe_schema_microdata( 'text' ); ?>>
 							<?php comment_text(); ?>
 						</div><!-- .comment-body -->
 					</div>
@@ -89,7 +89,7 @@ endif;
 /** Number of comments on loop post if comments are enabled. */
 if ( ! function_exists( 'QHFZBIO_comments_on' ) ) :
 function QHFZBIO_comments_on() {
-	$meta_blog_comment = cryout_get_option( 'theme_meta_blog_comment' );
+	$meta_blog_comment = MrGiraffe_get_option( 'theme_meta_blog_comment' );
     // Only show comments if they're open, or are closed but with comments already posted, if the theme's meta comments are enabled and if it's not a single post
     if ( ( comments_open() || get_comments_number() ) && ! post_password_required() && $meta_blog_comment && ! is_single() ) :
 			echo '<span class="comments-link" title="' . sprintf( esc_attr__('Comments on "%s"', 'QHFZBIO'), esc_attr( get_the_title() ) ) . '"><i class="icon-comments icon-metas" title="' . esc_attr__('Comments', 'QHFZBIO') . '"></i>';
@@ -108,7 +108,7 @@ endif;
 /** Number of comments on single post if comments are enabled. */
 if ( ! function_exists( 'QHFZBIO_comments_on_single' ) ) :
 function QHFZBIO_comments_on_single() {
-	$meta_single_comment = cryout_get_option( 'theme_meta_single_comment' );
+	$meta_single_comment = MrGiraffe_get_option( 'theme_meta_single_comment' );
     // Only show comments if they're open, or are closed but with comments already posted, if the theme's meta comments are enabled and if it's not a single post
     if ( ( comments_open() || get_comments_number() ) && $meta_single_comment && is_single() ) :
 			echo '<span class="comments-link" title="' . esc_attr__('Jump to comments', 'QHFZBIO') . '">
@@ -129,7 +129,7 @@ endif;
 if ( ! function_exists( 'QHFZBIO_comments_microdata' ) ) :
 function QHFZBIO_comments_microdata() {
 
-	cryout_schema_microdata('comment-meta', 0); // no echo
+	MrGiraffe_schema_microdata('comment-meta', 0); // no echo
 
 } // QHFZBIO_comments_microdata()
 endif;
@@ -173,6 +173,6 @@ function QHFZBIO_comments_form_textarea( $arg ) {
 	return $arg;
 } // QHFZBIO_comments_form_textarea()
 
-/* Hooks are located in cryout_master_hook() in core.php */
+/* Hooks are located in MrGiraffe_master_hook() in core.php */
 
 /* FIN */

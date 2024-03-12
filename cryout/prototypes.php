@@ -2,27 +2,27 @@
 /**
  * Framework prototypes
  *
- * @package Cryout Framework
+ * @package MrGiraffe Framework
  */
 
-function cryout_sanitize_tn($input){
+function MrGiraffe_sanitize_tn($input){
 	return preg_replace( '/[^a-z0-9-]/i', '-', $input );
 }
 
-function cryout_sanitize_tnl($input){
+function MrGiraffe_sanitize_tnl($input){
 	return ucwords(preg_replace( '/[^a-z0-9]/i', ' ', $input ));
 }
 
-function cryout_sanitize_tn_fn($input){
+function MrGiraffe_sanitize_tn_fn($input){
 	return preg_replace( '/[^a-z0-9]/i', '_', $input );
 }
 
-function cryout_sanitize_tnp($input){
+function MrGiraffe_sanitize_tnp($input){
 	return preg_replace( '/-[^-]*$/i', '', $input );
 }
 
 // needed by the theme options array
-function cryout_gen_values( $from, $to, $step = 1, $attr = array() ){
+function MrGiraffe_gen_values( $from, $to, $step = 1, $attr = array() ){
 	// prepend extra values
 	if ( !empty($attr['pre']) && is_array($attr['pre']) )  $data = $attr['pre'];
 													  else $data = array();
@@ -50,42 +50,42 @@ function cryout_gen_values( $from, $to, $step = 1, $attr = array() ){
 	if ( !empty($attr['post']) && is_array($attr['post']) )  $data = array_merge($data,$attr['post']);
 
 	return $data;
-} // cryout_gen_values()
+} // MrGiraffe_gen_values()
 
 /**
  * Returns the theme's general options array using the theme's own options function
- * Relies on _CRYOUT_THEME_NAME to distinguish between the correct options arrays
+ * Relies on _MrGiraffe_THEME_NAME to distinguish between the correct options arrays
  */
-function cryout_get_theme_options($sub=''){
+function MrGiraffe_get_theme_options($sub=''){
 	$opts = array();
-	if ( function_exists( preg_replace( '/[^a-z0-9]/i', '_', _CRYOUT_THEME_NAME ) . '_get_theme_options') ) $opts = call_user_func( preg_replace( '/[^a-z0-9]/i', '_', _CRYOUT_THEME_NAME) . '_get_theme_options' );
+	if ( function_exists( preg_replace( '/[^a-z0-9]/i', '_', _MrGiraffe_THEME_NAME ) . '_get_theme_options') ) $opts = call_user_func( preg_replace( '/[^a-z0-9]/i', '_', _MrGiraffe_THEME_NAME) . '_get_theme_options' );
 	if ( !empty($sub) && !empty($opts[$sub]) ) return $opts[$sub];
 	                                      else return $opts;
-} // cryout_get_theme_options()
+} // MrGiraffe_get_theme_options()
 
 /**
  * Returns the theme's structure array (used by the Customizer) using the theme's own structure function
- * Relies on _CRYOUT_THEME_NAME to distinguish between the correct options arrays
+ * Relies on _MrGiraffe_THEME_NAME to distinguish between the correct options arrays
  */
-function cryout_get_theme_structure($sub=''){
+function MrGiraffe_get_theme_structure($sub=''){
 	$opts = array();
-	if ( function_exists( preg_replace( '/[^a-z0-9]/i', '_', _CRYOUT_THEME_NAME ) . '_get_theme_structure' ) ) $opts = call_user_func( preg_replace( '/[^a-z0-9]/i', '_', _CRYOUT_THEME_NAME ) . '_get_theme_structure' );
+	if ( function_exists( preg_replace( '/[^a-z0-9]/i', '_', _MrGiraffe_THEME_NAME ) . '_get_theme_structure' ) ) $opts = call_user_func( preg_replace( '/[^a-z0-9]/i', '_', _MrGiraffe_THEME_NAME ) . '_get_theme_structure' );
 	if ( !empty($sub) && !empty($opts[$sub]) ) return $opts[$sub];
 	                                      else return $opts;
-} // cryout_get_theme_structure()
+} // MrGiraffe_get_theme_structure()
 
 /**
  * Returns a single theme option or an array of options based on their names
  * Used by all front-end functionality to read option values
  */
-function cryout_get_option($subs = array()) {
-	global $cryout_theme_options;
-//	if ( !empty($cryout_theme_options) ):  // OPTIMIZATION DISABLED DUE TO CUSTOMIZER / CACHING ISSUE
+function MrGiraffe_get_option($subs = array()) {
+	global $MrGiraffe_theme_options;
+//	if ( !empty($MrGiraffe_theme_options) ):  // OPTIMIZATION DISABLED DUE TO CUSTOMIZER / CACHING ISSUE
 		// get options from global options array
-//		$opts = $cryout_theme_options;
+//		$opts = $MrGiraffe_theme_options;
 //	else:
 		// no global options array; re-read options from db
-		$opts = cryout_get_theme_options();
+		$opts = MrGiraffe_get_theme_options();
 //	endif;
 	$returns = array();
 	if ( is_array($subs)&&!empty($subs) ) {
@@ -105,15 +105,15 @@ function cryout_get_option($subs = array()) {
 } // cyout_get_option()
 
 // performs options migration between versions
-function cryout_maybe_migrate_options( $options ) {
+function MrGiraffe_maybe_migrate_options( $options ) {
 	if (empty($options)) return false;
-	global ${_CRYOUT_THEME_NAME . '_big'};
-	$theme_structure = ${_CRYOUT_THEME_NAME . '_big'};
+	global ${_MrGiraffe_THEME_NAME . '_big'};
+	$theme_structure = ${_MrGiraffe_THEME_NAME . '_big'};
 	if (empty($theme_structure['migration'])) return $options;
-	$current = floatval( get_option( _CRYOUT_THEME_NAME . '_migrated' ) );
+	$current = floatval( get_option( _MrGiraffe_THEME_NAME . '_migrated' ) );
 
 	$migrated = false;
-	if ( !empty( $options[_CRYOUT_THEME_NAME . '_db'] ) && !empty( $theme_structure['migration'] ) ) {
+	if ( !empty( $options[_MrGiraffe_THEME_NAME . '_db'] ) && !empty( $theme_structure['migration'] ) ) {
 		foreach ($theme_structure['migration'] as $version => $pairs) {
 			if ( (float)$version > $current ) {
 			// cycle through migration sets
@@ -129,18 +129,18 @@ function cryout_maybe_migrate_options( $options ) {
 		} // foreach migration
 	}
 	if ($migrated) {
-		update_option( _CRYOUT_THEME_NAME . '_migrated', $current );
-		delete_option( _CRYOUT_THEME_NAME . '_settings');
-		update_option( _CRYOUT_THEME_NAME . '_settings', $options );
+		update_option( _MrGiraffe_THEME_NAME . '_migrated', $current );
+		delete_option( _MrGiraffe_THEME_NAME . '_settings');
+		update_option( _MrGiraffe_THEME_NAME . '_settings', $options );
 	}
 	return $options;
-} // cryout_maybe_migrate_options()
+} // MrGiraffe_maybe_migrate_options()
 
 /**
  * Checks if a value is logically true or false
  * Returns true if option has any of the arbitrary 'enabled' values or false otherwise
  */
-function cryout_is_true( $key ){
+function MrGiraffe_is_true( $key ){
 	if ( in_array( strtolower($key), array( true, 1, "1" , 'enabled', 'enable', 'show' ) ) ) return true;
 	return false;
 }
@@ -148,14 +148,14 @@ function cryout_is_true( $key ){
 /**
  * Sanitizes a RGB colour code to make sure it starts with #
  */
-function cryout_color_clean($color){
+function MrGiraffe_color_clean($color){
 	if (strlen($color)>1): return "#".str_replace("#","",$color);
 	else: return $color;
 	endif;
-} // cryout_color_clean()
+} // MrGiraffe_color_clean()
 
 /**
- * cryout_gen_values() generates pre-set options array based on option limits and types
+ * MrGiraffe_gen_values() generates pre-set options array based on option limits and types
  * This function is located in admin/options.php because it is needed by the options array
  */
 
@@ -164,15 +164,15 @@ function cryout_color_clean($color){
 /**
  *
  */
-function cryout_optset($var,$val1,$val2='',$val3='',$val4=''){
+function MrGiraffe_optset($var,$val1,$val2='',$val3='',$val4=''){
 	$vals = array($val1,$val2,$val3,$val4);
 	if (in_array($var,$vals)): return false; else: return true; endif;
-} // cryout_optset()
+} // MrGiraffe_optset()
 
 /**
  * Converts hex colour code to RGB series to be used in a rgba() CSS colour definition
  */
-function cryout_hex2rgb($hex) {
+function MrGiraffe_hex2rgb($hex) {
    $hex = str_replace("#", "", $hex);
    if (preg_match("/^([a-f0-9]{3}|[a-f0-9]{6})$/i",$hex)):
         if(strlen($hex) == 3) {
@@ -188,13 +188,13 @@ function cryout_hex2rgb($hex) {
         return implode(",", $rgb); // returns the rgb values separated by commas
    else: return "";  // input string is not a valid hex color code
    endif;
-} // cryout_hex2rgb()
+} // MrGiraffe_hex2rgb()
 
 /**
  * Adds a differential value to a RGB colour code
  * Returns a hex colour code
  */
-function cryout_hexadder($hex,$inc) {
+function MrGiraffe_hexadder($hex,$inc) {
    $hex = str_replace("#", "", $hex);
    if (preg_match("/^([a-f0-9]{3}|[a-f0-9]{6})$/i",$hex)):
         if(strlen($hex) == 3) {
@@ -220,13 +220,13 @@ function cryout_hexadder($hex,$inc) {
 		return $newhex;
    else: return "";  // input string is not a valid hex color code
    endif;
-} // cryout_hexadder()
+} // MrGiraffe_hexadder()
 
 /**
  * Adds or subtracts a differential value to or from a RGB colour code
  * Returns a hex colour code; Sign of the operation is decided based on the colour lightness
  */
-function cryout_hexdiff($hex,$inc,$f='') {
+function MrGiraffe_hexdiff($hex,$inc,$f='') {
    // $f = '-' | '+'
    $hex = str_replace("#", "", $hex);
    if (preg_match("/^([a-f0-9]{3}|[a-f0-9]{6})$/i",$hex)):
@@ -261,47 +261,47 @@ function cryout_hexdiff($hex,$inc,$f='') {
 		return $newhex;
    else: return "";  // input string is not a valid hex color code
    endif;
-} // cryout_hexdiff()
+} // MrGiraffe_hexdiff()
 
 /**
 * Checks the browser agent string for mobile ids and adds "mobile" class to body if true
 * @return array list of classes.
 */
-function cryout_mobile_body_class( $classes ){
+function MrGiraffe_mobile_body_class( $classes ){
 	$browser = ( ! empty( $_SERVER['HTTP_USER_AGENT']) ? sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) : '');
 	$keys = 'mobile|android|mobi|tablet|ipad|opera mini|series 60|s60|blackberry';
 	if ( preg_match( "/($keys)/i", $browser ) ) : $classes[] = 'mobile'; endif; // mobile browser detected
 	$keys = 'iphone|ipad|ipod';
-	if ( preg_match( "/($keys)/i", $browser ) && (true == cryout_get_option( _CRYOUT_THEME_PREFIX . '_mobileonios')) ) : $classes[] = 'mobile-ios'; endif; // extra class for iOS devices
+	if ( preg_match( "/($keys)/i", $browser ) && (true == MrGiraffe_get_option( _MrGiraffe_THEME_PREFIX . '_mobileonios')) ) : $classes[] = 'mobile-ios'; endif; // extra class for iOS devices
 	return $classes;
-} // cryout_mobile_body_class()
+} // MrGiraffe_mobile_body_class()
 
 /**
  * Normalizes tags widget font
  */
-function cryout_normalizetags( $tags_html ) {
+function MrGiraffe_normalizetags( $tags_html ) {
 	return preg_replace( '/font-size:.*?;/i', '', $tags_html );
-}; // cryout_normalizetags()
+}; // MrGiraffe_normalizetags()
 
 /**
  *	Returns the cleaned up Google font name to be displayed in the font list and used in custom styling
  */
-function cryout_clean_gfont( $font, $identifier = '(:\d+)?\/gfont$' ){
+function MrGiraffe_clean_gfont( $font, $identifier = '(:\d+)?\/gfont$' ){
 	return preg_replace( "/$identifier/i", '', $font );
-} // cryout_clean_gfont()
+} // MrGiraffe_clean_gfont()
 
 /**
  *	Returns the correct Google font name style to be used in the frontend
  *  based on the configured font identifier
  */
-function cryout_font_select( $font, $gfont, $echo = 0 ) {
+function MrGiraffe_font_select( $font, $gfont, $echo = 0 ) {
 	// replace with general font if option is set to inherit
 	if ( preg_match('/inherit/i', $font ) && empty($gfont) ) {
-		$general_fonts = cryout_get_option( array( _CRYOUT_THEME_PREFIX . '_fgeneral', _CRYOUT_THEME_PREFIX . '_fgeneralgoogle' ) );
-		$font = $general_fonts[ _CRYOUT_THEME_PREFIX . '_fgeneral' ];
-		$gfont = $general_fonts[ _CRYOUT_THEME_PREFIX . '_fgeneralgoogle' ];
+		$general_fonts = MrGiraffe_get_option( array( _MrGiraffe_THEME_PREFIX . '_fgeneral', _MrGiraffe_THEME_PREFIX . '_fgeneralgoogle' ) );
+		$font = $general_fonts[ _MrGiraffe_THEME_PREFIX . '_fgeneral' ];
+		$gfont = $general_fonts[ _MrGiraffe_THEME_PREFIX . '_fgeneralgoogle' ];
 	};
-	$font = cryout_clean_gfont( $font );
+	$font = MrGiraffe_clean_gfont( $font );
 	$output = '';
 	if ( !empty($gfont) ):
 		$fontname = preg_replace( '/[:&].*/', '', preg_replace( '/\+/', ' ', $gfont ) );
@@ -315,12 +315,12 @@ function cryout_font_select( $font, $gfont, $echo = 0 ) {
 	} else {
 		return $output;
 	}
-} // cryout_font_select()
+} // MrGiraffe_font_select()
 
 /**
  * Cleans up the Google font identifier used in the style enques
  */
-function cryout_gfontclean( $gfont, $weight = '' ) {
+function MrGiraffe_gfontclean( $gfont, $weight = '' ) {
 	if (preg_match('/^([\w\s]+):?([\d,]+)?(&a?m?p?;?(subset|display)=.*)?$/i', $gfont, $bits)) {
 		// first part is the font name
 		if (empty($bits[1])) $bits[1] = '';
@@ -336,19 +336,19 @@ function cryout_gfontclean( $gfont, $weight = '' ) {
 		return esc_attr($gfont);
 	}
 	return esc_attr( $gfont );
-} // cryout_gfontcleanup()
+} // MrGiraffe_gfontcleanup()
 
 /*
  * Remove inline logo styling
  */
-function cryout_filter_wp_logo_img( $input ) {
+function MrGiraffe_filter_wp_logo_img( $input ) {
 	return preg_replace( '/(height=".*?"|width=".*?")/i', '', $input );
 }
 
 /**
  * Returns the first attached post image (or none if images were not uploaded directly to post).
  */
-function cryout_post_first_image( $postID, $size = 'cryout-featured' ) {
+function MrGiraffe_post_first_image( $postID, $size = 'MrGiraffe-featured' ) {
 	$args = array(
 		'numberposts' 	=> 1,
 		'orderby'		=> 'ID',
@@ -369,34 +369,34 @@ function cryout_post_first_image( $postID, $size = 'cryout-featured' ) {
 			$image_attributes['id'] = $attachment->ID;
 			return $image_attributes;	}
 	}
-}; // cryout_post_first_image()
+}; // MrGiraffe_post_first_image()
 
 /**
  * Returns the needed image data array based on attachment ID
  */
-function cryout_get_picture( $attachment_id, $size = '' ){
+function MrGiraffe_get_picture( $attachment_id, $size = '' ){
 	$image = wp_get_attachment_image_src( $attachment_id, $size );
 	if (!empty($image[0])) return $image;
 						  else return array(
-							0 => apply_filters( _CRYOUT_THEME_SLUG . '_preview_img_src', ''),
-							1 => apply_filters( _CRYOUT_THEME_SLUG . '_preview_img_w', ''),
-							2 => apply_filters( _CRYOUT_THEME_SLUG . '_preview_img_h', ''),
+							0 => apply_filters( _MrGiraffe_THEME_SLUG . '_preview_img_src', ''),
+							1 => apply_filters( _MrGiraffe_THEME_SLUG . '_preview_img_w', ''),
+							2 => apply_filters( _MrGiraffe_THEME_SLUG . '_preview_img_h', ''),
 						  );
-} // cryout_get_picture()
+} // MrGiraffe_get_picture()
 
 /**
  * Returns the needed image src based on attachment ID
  */
-function cryout_get_picture_src( $attachment_id, $size ='' ){
-	$image = cryout_get_picture( $attachment_id, $size );
+function MrGiraffe_get_picture_src( $attachment_id, $size ='' ){
+	$image = MrGiraffe_get_picture( $attachment_id, $size );
 	if (!empty($image[0])) return $image[0];
 						  else return '';
-} // cryout_get_picture_src()
+} // MrGiraffe_get_picture_src()
 
 /**
  * Manually generate required srcset with correct aspect ratio for the theme's featured image
  */
-function cryout_get_featured_srcset( $attachment_id, $sizes = array() ) {
+function MrGiraffe_get_featured_srcset( $attachment_id, $sizes = array() ) {
 	$datas = array();
 	foreach ($sizes as $size) {
 		if ( $image = wp_get_attachment_image_src( $attachment_id, $size ) ) {
@@ -416,14 +416,14 @@ function cryout_get_featured_srcset( $attachment_id, $sizes = array() ) {
 
 	return $srcset;
 
-} // cryout_get_featured_srcset()
+} // MrGiraffe_get_featured_srcset()
 
 /**
  * Returns featured image sizes for srcset functionality based on magazine layout option
  */
-function cryout_gen_featured_sizes( $default = 1440, $magazinelayout = false, $landingpage = false ) {
+function MrGiraffe_gen_featured_sizes( $default = 1440, $magazinelayout = false, $landingpage = false ) {
 	if ( $landingpage ) {
-		$magazinelayout = apply_filters( _CRYOUT_THEME_SLUG . '_lppostslayout_filter', $magazinelayout );
+		$magazinelayout = apply_filters( _MrGiraffe_THEME_SLUG . '_lppostslayout_filter', $magazinelayout );
 	};
 	if ( $magazinelayout > 1 ) {
 		$column =  50;
@@ -431,74 +431,74 @@ function cryout_gen_featured_sizes( $default = 1440, $magazinelayout = false, $l
 		$column = 100;
 	};
 	return "(max-width: 800px) 100vw,(max-width: 1152px) ${column}vw, ${default}px";
-} // cryout_gen_featured_sizes()
+} // MrGiraffe_gen_featured_sizes()
 
 /**
  * Shorter detection of blog page (when separate from homepage) 
  */
-function cryout_on_blog() {
+function MrGiraffe_on_blog() {
 	if ( ( 'page' == get_option( 'show_on_front' )) && is_home() ) return true; 
 	return false;
-} // cryout_on_blog()
+} // MrGiraffe_on_blog()
 
 /**
  * Detects if theme has landing page functionality enabled and active
  */
-function cryout_is_landingpage() {
-	$landingpage = cryout_get_option( _CRYOUT_THEME_PREFIX . '_landingpage');
-	return apply_filters( _CRYOUT_THEME_SLUG . '_is_landingpage', ($landingpage && ('page' == get_option( 'show_on_front' )) ) );
-} // cryout_is_landingpage()
+function MrGiraffe_is_landingpage() {
+	$landingpage = MrGiraffe_get_option( _MrGiraffe_THEME_PREFIX . '_landingpage');
+	return apply_filters( _MrGiraffe_THEME_SLUG . '_is_landingpage', ($landingpage && ('page' == get_option( 'show_on_front' )) ) );
+} // MrGiraffe_is_landingpage()
 
 /**
  * Detects if the code currently executed is on the landing page and the landing page is enabled and active
  */
-function cryout_on_landingpage() {
-	$landingpage = cryout_get_option( _CRYOUT_THEME_PREFIX . '_landingpage');
-	return apply_filters( _CRYOUT_THEME_SLUG . '_on_landingpage', ( $landingpage && ('page' == get_option( 'show_on_front' )) && is_front_page() ) );
-} // cryout_on_landingpage()
+function MrGiraffe_on_landingpage() {
+	$landingpage = MrGiraffe_get_option( _MrGiraffe_THEME_PREFIX . '_landingpage');
+	return apply_filters( _MrGiraffe_THEME_SLUG . '_on_landingpage', ( $landingpage && ('page' == get_option( 'show_on_front' )) && is_front_page() ) );
+} // MrGiraffe_on_landingpage()
 
 /**
 * Retrieves and filters the theme's general layout
 */
-if ( ! function_exists( 'cryout_get_layout' ) ) :
-function cryout_get_layout( $option_name = '' ) {
+if ( ! function_exists( 'MrGiraffe_get_layout' ) ) :
+function MrGiraffe_get_layout( $option_name = '' ) {
 	global $post;
-	if (empty($option_name)) $option_name = _CRYOUT_THEME_PREFIX . '_sitelayout';
+	if (empty($option_name)) $option_name = _MrGiraffe_THEME_PREFIX . '_sitelayout';
 
 	if ( get_post() && is_singular() ) {
-		$meta_layout = get_post_meta( $post->ID, '_cryout_layout', true );
-		if (empty($meta_layout)) $meta_layout = get_post_meta( $post->ID, '_' . _CRYOUT_THEME_PREFIX . '_layout', true ); // backwards compatibility
+		$meta_layout = get_post_meta( $post->ID, '_MrGiraffe_layout', true );
+		if (empty($meta_layout)) $meta_layout = get_post_meta( $post->ID, '_' . _MrGiraffe_THEME_PREFIX . '_layout', true ); // backwards compatibility
 	}
 
 	if ( !empty( $meta_layout ) ) {
 		$theme_layout =  $meta_layout;
 	}
-	else $theme_layout = cryout_get_option( $option_name );
+	else $theme_layout = MrGiraffe_get_option( $option_name );
 
 	// allow the layout value to be filtered
-	$theme_layout = apply_filters( _CRYOUT_THEME_SLUG . '_general_layout', $theme_layout );
+	$theme_layout = apply_filters( _MrGiraffe_THEME_SLUG . '_general_layout', $theme_layout );
 
 	return $theme_layout;
-} // cryout_get_layout()
+} // MrGiraffe_get_layout()
 endif;
 
 /**
  * Outputs inline background image styling
  * Used by the header image and post featured images
  */
-function cryout_echo_bgimage( $image_url, $classes = NULL ) {
+function MrGiraffe_echo_bgimage( $image_url, $classes = NULL ) {
 	echo ' style="background-image: url(' . esc_url( $image_url ) . ')" ';
 	if (!empty($classes)):
 		if (is_array($classes)) $classes = implode( ' ', $classes );
 		echo ' class="' . esc_attr( $classes ) . '" ';
 	endif;
-}; // cryout_echo_bgimage()
+}; // MrGiraffe_echo_bgimage()
 
 /**
 * Retrieves the IDs for images in a gallery.
 * Returns array list of image IDs from the post gallery.
 */
-function cryout_get_gallery_images() {
+function MrGiraffe_get_gallery_images() {
        $images = array();
 
        if ( function_exists( 'get_post_galleries' ) ) {
@@ -526,27 +526,27 @@ function cryout_get_gallery_images() {
        }
 
        return $images;
-} // cryout_get_gallery_images()
+} // MrGiraffe_get_gallery_images()
 
 /**
  * Checks for manual excerpts on the current post
  */
-function cryout_has_manual_excerpt( $post = null ){
+function MrGiraffe_has_manual_excerpt( $post = null ){
 	if ( empty($post) ) global $post;
 
 	// test manual excerpt
-	if ( !empty( $post->post_excerpt ) ) return apply_filters( 'cryout_has_manual_excerpt', true, $post );
+	if ( !empty( $post->post_excerpt ) ) return apply_filters( 'MrGiraffe_has_manual_excerpt', true, $post );
 
 	// test use of more or nextpage tags
-	if ( strpos( $post->post_content, '<!--more-->' ) || strpos( $post->post_content, '<!--nextpage-->' ) ) return apply_filters( 'cryout_has_manual_excerpt', true, $post );
+	if ( strpos( $post->post_content, '<!--more-->' ) || strpos( $post->post_content, '<!--nextpage-->' ) ) return apply_filters( 'MrGiraffe_has_manual_excerpt', true, $post );
 
-	return apply_filters( 'cryout_has_manual_excerpt', false, $post );
-} // cryout_has_manual_excerpt()
+	return apply_filters( 'MrGiraffe_has_manual_excerpt', false, $post );
+} // MrGiraffe_has_manual_excerpt()
 
 /**
  * Retrieves prettified categories list
  */
-function cryout_categories_for_customizer( $what = 0, $label_all = '', $label_off = '', $all = TRUE, $off = TRUE ) {
+function MrGiraffe_categories_for_customizer( $what = 0, $label_all = '', $label_off = '', $all = TRUE, $off = TRUE ) {
 	$categories = $labels = array();
 	$cats = get_categories( array( 'hide_empty' => false ) );
 	if ($off) {
@@ -575,12 +575,12 @@ function cryout_categories_for_customizer( $what = 0, $label_all = '', $label_of
 			return array_combine($categories,$labels);
 		break;
 	}
-} // cryout_categories_for_customizer()
+} // MrGiraffe_categories_for_customizer()
 
 /**
  * Retrieves prettified pages list
  */
-function cryout_pages_for_customizer( $what = 0, $label_off = '', $off = TRUE ) {
+function MrGiraffe_pages_for_customizer( $what = 0, $label_off = '', $off = TRUE ) {
 	$pages = array(); $labels = array();
 	$pags = get_pages( );
 	if ( count( $pags ) > 0 ):
@@ -606,16 +606,16 @@ function cryout_pages_for_customizer( $what = 0, $label_off = '', $off = TRUE ) 
 			return array_combine($pages,$labels);
 		break;
 	}
-} // cryout_pages_for_customizer()
+} // MrGiraffe_pages_for_customizer()
 
 /**
  * Retrieves serious sliders list if available
  */
-function cryout_serious_slides_for_customizer( $what = 0, $label_unavailable = '', $label_off = '' ) {
-	global $cryout_serious_slider;
+function MrGiraffe_serious_slides_for_customizer( $what = 0, $label_unavailable = '', $label_off = '' ) {
+	global $MrGiraffe_serious_slider;
 	$slides = array(); $labels = array();
-	if (!empty($cryout_serious_slider)):
-		$sliders = $cryout_serious_slider->get_sliders_list();
+	if (!empty($MrGiraffe_serious_slider)):
+		$sliders = $MrGiraffe_serious_slider->get_sliders_list();
 		if (count($sliders)>0) {
 			foreach ($sliders as $id=>$name) {
 				$slides[] = $id;
@@ -641,15 +641,15 @@ function cryout_serious_slides_for_customizer( $what = 0, $label_unavailable = '
 			return array_combine($slides,$labels);
 		break;
 	}
-} // cryout_serious_slides()
+} // MrGiraffe_serious_slides()
 
 /**
  * Adds Schema.org structured data (microdata) to the HTML markup
  * More details at http://schema.org
  * Testing tools at https://developers.google.com/structured-data/testing-tool/
  */
-if ( ! function_exists( 'cryout_schema_microdata' ) ) :
-function cryout_schema_microdata($location = '', $echo = 1) {
+if ( ! function_exists( 'MrGiraffe_schema_microdata' ) ) :
+function MrGiraffe_schema_microdata($location = '', $echo = 1) {
 
 	$output = '';
 
@@ -791,12 +791,12 @@ function cryout_schema_microdata($location = '', $echo = 1) {
 		return $output;
 	}
 
-} // cryout_schema_microdata
+} // MrGiraffe_schema_microdata
 endif;
 
 /* Add publisher field for the structured data on pages and posts */
-if ( ! function_exists( 'cryout_schema_publisher' ) ):
-function cryout_schema_publisher() {
+if ( ! function_exists( 'MrGiraffe_schema_publisher' ) ):
+function MrGiraffe_schema_publisher() {
 	if ( ! function_exists('get_custom_logo') ) return;
 	$html = get_custom_logo();
 	preg_match( '@src="([^"]+)"@', $html, $match );
@@ -810,33 +810,33 @@ function cryout_schema_publisher() {
          <meta itemprop="name" content="<?php esc_attr( bloginfo( 'name' ) ); ?>">
     </span>
 <?php
-}// cryout_schema_publisher()
+}// MrGiraffe_schema_publisher()
 endif;
 // hooked in core.php
 
 /* Add mainEntityOfPage field for the structured data on pages and posts */
-if ( ! function_exists( 'cryout_schema_main' ) ):
-function cryout_schema_main() {
+if ( ! function_exists( 'MrGiraffe_schema_main' ) ):
+function MrGiraffe_schema_main() {
 	echo '<link itemprop="mainEntityOfPage" href="' . esc_url( get_page_link() ) . '" />';
-}// cryout_schema_main()
+}// MrGiraffe_schema_main()
 endif;
 // hooked in core.php
 
 /* Adds skip to content link at the top of text */
-if ( ! function_exists( 'cryout_skiplink' ) ):
-function cryout_skiplink() {
+if ( ! function_exists( 'MrGiraffe_skiplink' ) ):
+function MrGiraffe_skiplink() {
 	?>
-		<a class="skip-link screen-reader-text" href="#main" title="<?php esc_attr_e( 'Skip to content', 'cryout' ); ?>"> <?php _e( 'Skip to content', 'cryout' ); ?> </a>
+		<a class="skip-link screen-reader-text" href="#main" title="<?php esc_attr_e( 'Skip to content', 'MrGiraffe' ); ?>"> <?php _e( 'Skip to content', 'MrGiraffe' ); ?> </a>
 	<?php
-}// cryout_skiplink()
+}// MrGiraffe_skiplink()
 endif;
 // hooked in core.php
 
 /**
 * Creates breadcrumbs with page sublevels and category sublevels.
 */
-if ( ! function_exists( 'cryout_breadcrumbs' ) ) :
-function cryout_breadcrumbs(
+if ( ! function_exists( 'MrGiraffe_breadcrumbs' ) ) :
+function MrGiraffe_breadcrumbs(
 			$separator = '<i class="icon-angle-right"></i>',						// separator between crumbs
 			$home = '<i class="icon-homebread"></i>', 							// text for the 'Home' item
 			$showCurrent = 1,										// whether to show current post/page title in breadcrumbs
@@ -860,13 +860,13 @@ function cryout_breadcrumbs(
 	$homeLink = sprintf( '<a href="%3$s" title="%2$s">%1$s<span class="screen-reader-text">%2$s</span></a>', $home, $text_home, esc_url( home_url() ) );
 	if ( is_front_page() || is_home() ) { return; }	// don't display breadcrumbs on the homepage (yet)
 
-	$exclude_templates = apply_filters( 'cryout_breadcrumbs_excluded_templates', array() );
+	$exclude_templates = apply_filters( 'MrGiraffe_breadcrumbs_excluded_templates', array() );
 	if (!empty($exclude_templates)) foreach ($exclude_templates as $exclude_template) {
 		if (is_page_template( $exclude_template ) ) return; // don't display breadcrumbs on excluded page templates
 	}
 
 	// integrate layout class and microdata in wrapper_pre
-	$wrapper_pre = sprintf( $wrapper_pre, $layout_class, cryout_schema_microdata( 'breadcrumbs', 0 ) );
+	$wrapper_pre = sprintf( $wrapper_pre, $layout_class, MrGiraffe_schema_microdata( 'breadcrumbs', 0 ) );
 
 	// woocommerce sections display their own breadcrumbs
 	if ( function_exists('woocommerce_breadcrumb') && is_woocommerce() ){
@@ -974,14 +974,14 @@ function cryout_breadcrumbs(
 	$output .= $wrapper_post;
 	echo wp_kses_post( $output );
 
-} // cryout_breadcrumbs()
+} // MrGiraffe_breadcrumbs()
 endif;
 
 /**
  * Social menu custom walker
  * Used by the theme's social menu to output clean socials
  */
-class Cryout_Social_Menu_Walker extends Walker_Nav_Menu {
+class MrGiraffe_Social_Menu_Walker extends Walker_Nav_Menu {
 
 	/**
 	 * Starts the element output.
@@ -1000,14 +1000,14 @@ class Cryout_Social_Menu_Walker extends Walker_Nav_Menu {
 		$classes[] = 'menu-item-' . $item->ID;
 
 		// Filters the arguments for a single nav menu item.
-		$args = apply_filters( 'cryout_social_menu_item_args', $args, $item, $depth );
+		$args = apply_filters( 'MrGiraffe_social_menu_item_args', $args, $item, $depth );
 
 		// Filters the CSS class(es) applied to a menu item's list item element.
-		$class_names = join( ' ', apply_filters( 'cryout_social_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
+		$class_names = join( ' ', apply_filters( 'MrGiraffe_social_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
 		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
 		// Filters the ID applied to a menu item's list item element.
-		$id = apply_filters( 'cryout_social_menu_item_id', 'menu-item-'. $item->ID, $item, $args, $depth );
+		$id = apply_filters( 'MrGiraffe_social_menu_item_id', 'menu-item-'. $item->ID, $item, $args, $depth );
 		$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
 		//$output .= $indent . '<li' . $id . $class_names .'>';
@@ -1033,7 +1033,7 @@ class Cryout_Social_Menu_Walker extends Walker_Nav_Menu {
 		$title = apply_filters( 'the_title', $item->title, $item->ID );
 
 		// Filters a menu item's title.
-		$title = apply_filters( 'cryout_social_menu_item_title', $title, $item, $args, $depth );
+		$title = apply_filters( 'MrGiraffe_social_menu_item_title', $title, $item, $args, $depth );
 
 		$item_output = $args->before;
 		$item_output .= '<a'. $attributes .' '. $class_names .'>';
@@ -1042,7 +1042,7 @@ class Cryout_Social_Menu_Walker extends Walker_Nav_Menu {
 		$item_output .= $args->after;
 
 		// Filters a menu item's starting output.
-		$output .= apply_filters( 'cryout_social_menu_start_el', $item_output, $item, $depth, $args );
+		$output .= apply_filters( 'MrGiraffe_social_menu_start_el', $item_output, $item, $depth, $args );
 	}
 
 	/**
@@ -1059,12 +1059,12 @@ class Cryout_Social_Menu_Walker extends Walker_Nav_Menu {
 		//$output .= "</li>{$n}";
 	}
 
-} // Cryout_Social_Menu_Walker
+} // MrGiraffe_Social_Menu_Walker
 
 /* Polylang / WPML compatibility enhancements */
 
 // return localized post id
-function cryout_localize_id( $id, $type = 'post' ) {
+function MrGiraffe_localize_id( $id, $type = 'post' ) {
 	if ( empty($id) ) return;
 	if ( function_exists('pll_get_post') )
 		return pll_get_post( $id ); // Polylang
@@ -1073,10 +1073,10 @@ function cryout_localize_id( $id, $type = 'post' ) {
 	elseif ( function_exists('icl_object_id') )
 		return icl_object_id( $id ); // WMPL old
 	return $id;
-} // cryout_localize_id()
+} // MrGiraffe_localize_id()
 
 // return localized category id
-function cryout_localize_cat( $slug, $tax = 'category' ) {
+function MrGiraffe_localize_cat( $slug, $tax = 'category' ) {
 	if (empty($slug)) return $slug;
 	//$cat = get_term_by( 'slug', esc_attr($slug), $tax );
 	$cat = get_terms( array('taxonomy' => $tax, 'slug' => esc_attr($slug), 'lang' => '' ) );
@@ -1091,16 +1091,16 @@ function cryout_localize_cat( $slug, $tax = 'category' ) {
 	elseif ( function_exists('icl_object_id') )
 		return icl_object_id( $id, $tax ); // WMPL old
 	return $id;
-} // cryout_localize_cat()
+} // MrGiraffe_localize_cat()
 
 // retrieve locale code
-function cryout_localize_code() {
+function MrGiraffe_localize_code() {
 	if ( function_exists('pll_current_language') )
 		return pll_current_language(); // Polylang
 	if ( defined('ICL_LANGUAGE_CODE') )
 		return ICL_LANGUAGE_CODE; // WPML
 	return '';
-} // cryout_localize_code()
+} // MrGiraffe_localize_code()
 
 
 // FIN!

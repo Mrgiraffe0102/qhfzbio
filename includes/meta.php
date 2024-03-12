@@ -32,20 +32,20 @@ function QHFZBIO_layout_meta_box() {
     	global $QHFZBIO_big;
 	$options = $QHFZBIO_big['options'][0];
 	$custom = ( get_post_custom( $post->ID ) ? get_post_custom( $post->ID ) : false );
-	$layout = ( isset( $custom['_cryout_layout'][0] ) ? $custom['_cryout_layout'][0] : '0' );
+	$layout = ( isset( $custom['_MrGiraffe_layout'][0] ) ? $custom['_MrGiraffe_layout'][0] : '0' );
     ?>
 	<p>
     	<?php foreach ($options['choices'] as $value => $data ) {
             $data['url'] = sprintf( $data['url'], get_template_directory_uri() ); ?>
 
     		<label>
-                <input type="radio" name="_cryout_layout" <?php checked( $value == $layout ); ?> value="<?php echo esc_attr( $value ); ?>" />
+                <input type="radio" name="_MrGiraffe_layout" <?php checked( $value == $layout ); ?> value="<?php echo esc_attr( $value ); ?>" />
                 <span><img src="<?php echo esc_url( $data['url'] ) ?>" alt="<?php echo esc_html(  $data['label'] ) ?>" title="<?php echo esc_html(  $data['label'] ) ?>"/></span>
             </label>
 
     	<?php } ?>
-    	<label id="cryout_layout_default">
-            <input type="radio" name="_cryout_layout" <?php checked( '0' == $layout ); ?> value="0" />
+    	<label id="MrGiraffe_layout_default">
+            <input type="radio" name="_MrGiraffe_layout" <?php checked( '0' == $layout ); ?> value="0" />
             <span><img src="<?php echo esc_url( get_template_directory_uri() ) ?>/admin/images/0def.png" alt="<?php _e( 'Default Theme Layout', 'QHFZBIO' ); ?>" title="<?php _e( 'Default Theme Layout', 'QHFZBIO' ); ?>" /></span>
         </label>
 	</p>
@@ -56,7 +56,7 @@ function QHFZBIO_meta_style( $hook ) {
     if ( 'post.php' != $hook && 'post-new.php' != $hook && 'page.php' != $hook ) {
         return;
     }
-    wp_enqueue_style( 'QHFZBIO_meta_style', get_template_directory_uri() . '/admin/css/meta.css', NULL, _CRYOUT_THEME_VERSION );
+    wp_enqueue_style( 'QHFZBIO_meta_style', get_template_directory_uri() . '/admin/css/meta.css', NULL, _MrGiraffe_THEME_VERSION );
 }
 
 add_action( 'admin_enqueue_scripts', 'QHFZBIO_meta_style' );
@@ -74,10 +74,10 @@ function QHFZBIO_save_custom_post_metadata() {
 
     	global $QHFZBIO_big;
     	$valid_layouts = $QHFZBIO_big['options'][0]['choices'];
-	$layout = ( isset( $_POST['_cryout_layout'] ) && array_key_exists( sanitize_text_field( $_POST['_cryout_layout'] ), $valid_layouts ) ? sanitize_text_field( $_POST['_cryout_layout'] ) : '0' );
+	$layout = ( isset( $_POST['_MrGiraffe_layout'] ) && array_key_exists( sanitize_text_field( $_POST['_MrGiraffe_layout'] ), $valid_layouts ) ? sanitize_text_field( $_POST['_MrGiraffe_layout'] ) : '0' );
 
 	// Layout - Update
-	update_post_meta( $post->ID, '_cryout_layout', $layout );
+	update_post_meta( $post->ID, '_MrGiraffe_layout', $layout );
 } //QHFZBIO_save_custom_post_metadata()
 
 // Hook the save post custom meta data into

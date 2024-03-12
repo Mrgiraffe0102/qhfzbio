@@ -15,11 +15,11 @@ get_header(); ?>
 	<div id="container" class="<?php QHFZBIO_get_layout_class(); ?>">
 
 		<main id="main" class="main">
-			<?php cryout_before_content_hook(); ?>
+			<?php MrGiraffe_before_content_hook(); ?>
 
 			<?php get_template_part( 'content/content', 'page' ); ?>
 
-			<?php cryout_after_content_hook(); ?>
+			<?php MrGiraffe_after_content_hook(); ?>
 		</main><!-- #main -->
 
 		<?php QHFZBIO_get_sidebar(); ?>

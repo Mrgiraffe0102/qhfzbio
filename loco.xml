@@ -4,7 +4,7 @@
     <project>
       <source>
         <exclude>
-            <directory>cryout</directory>
+            <directory>MrGiraffe</directory>
             <directory>resources</directory>
         </exclude>
       </source>
@@ -16,20 +16,20 @@
       </template>
     </project>
   </domain>
-  <domain name="cryout">
-    <project name="Framework" slug="cryout">
+  <domain name="MrGiraffe">
+    <project name="Framework" slug="MrGiraffe">
       <source>
-        <directory>cryout</directory>
+        <directory>MrGiraffe</directory>
 		<exclude>
-			<directory>cryout/js</directory>
-			<directory>cryout/css</directory>
+			<directory>MrGiraffe/js</directory>
+			<directory>MrGiraffe/css</directory>
 		</exclude>
       </source>
       <target>
-        <directory>cryout/languages</directory>
+        <directory>MrGiraffe/languages</directory>
       </target>
       <template>
-        <file>cryout/languages/cryout.pot</file>
+        <file>MrGiraffe/languages/MrGiraffe.pot</file>
       </template>
     </project>
   </domain>

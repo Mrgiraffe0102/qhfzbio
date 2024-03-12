@@ -103,20 +103,20 @@ function QHFZBIO_conditionals( $control ) {
 	);
 
 	foreach ($conditionals as $elem) {
-		if ( $control->id == sprintf( '%1$s_settings[%2$s]', cryout_sanitize_tn(_CRYOUT_THEME_NAME), $elem['id'] ) && 
-			$control->manager->get_setting( sprintf( '%1$s_settings[%2$s]', cryout_sanitize_tn(_CRYOUT_THEME_NAME), $elem['parent'] ) )->value() == $elem['value'] 
+		if ( $control->id == sprintf( '%1$s_settings[%2$s]', MrGiraffe_sanitize_tn(_MrGiraffe_THEME_NAME), $elem['id'] ) && 
+			$control->manager->get_setting( sprintf( '%1$s_settings[%2$s]', MrGiraffe_sanitize_tn(_MrGiraffe_THEME_NAME), $elem['parent'] ) )->value() == $elem['value'] 
 		) return true;
 	};
 
 	// handle landing page hint
-	if ( ( $control->id == sprintf( '%1$s_settings[%2$s_landingpage_notice]', cryout_sanitize_tn(_CRYOUT_THEME_NAME), _CRYOUT_THEME_PREFIX ) ) && 
+	if ( ( $control->id == sprintf( '%1$s_settings[%2$s_landingpage_notice]', MrGiraffe_sanitize_tn(_MrGiraffe_THEME_NAME), _MrGiraffe_THEME_PREFIX ) ) && 
 		('posts' == get_option('show_on_front')) 
 	) return true;
 	
 	// handle landing page slider banner hint
-	if ( ( $control->id == sprintf( '%1$s_settings[%2$s_headerorbannerhint]', cryout_sanitize_tn(_CRYOUT_THEME_NAME), _CRYOUT_THEME_PREFIX ) ) && 
-			( $control->manager->get_setting( sprintf( '%1$s_settings[%2$s_landingpage]', cryout_sanitize_tn(_CRYOUT_THEME_NAME), _CRYOUT_THEME_PREFIX ) )->value() == 1 ) && 
-			( $control->manager->get_setting( sprintf( '%1$s_settings[%2$s_lpslider]', cryout_sanitize_tn(_CRYOUT_THEME_NAME), _CRYOUT_THEME_PREFIX ) )->value() == 1 )
+	if ( ( $control->id == sprintf( '%1$s_settings[%2$s_headerorbannerhint]', MrGiraffe_sanitize_tn(_MrGiraffe_THEME_NAME), _MrGiraffe_THEME_PREFIX ) ) && 
+			( $control->manager->get_setting( sprintf( '%1$s_settings[%2$s_landingpage]', MrGiraffe_sanitize_tn(_MrGiraffe_THEME_NAME), _MrGiraffe_THEME_PREFIX ) )->value() == 1 ) && 
+			( $control->manager->get_setting( sprintf( '%1$s_settings[%2$s_lpslider]', MrGiraffe_sanitize_tn(_MrGiraffe_THEME_NAME), _MrGiraffe_THEME_PREFIX ) )->value() == 1 )
 	) return true;
 
     return false;
@@ -128,75 +128,75 @@ $QHFZBIO_big = array(
 /************* general info ***************/
 
 'info_sections' => array(
-	'cryoutspecial-about-theme' => array(
-		'title' => apply_filters( 'cryout_about_theme_name', sprintf( __( 'About %s', 'cryout' ), cryout_sanitize_tnl(_CRYOUT_THEME_NAME) ) ),
+	'MrGiraffespecial-about-theme' => array(
+		'title' => apply_filters( 'MrGiraffe_about_theme_name', sprintf( __( 'About %s', 'MrGiraffe' ), MrGiraffe_sanitize_tnl(_MrGiraffe_THEME_NAME) ) ),
 		'desc' => '<img src=" ' . get_template_directory_uri() . '/admin/images/logo-about-header.png" ><br>',
 		'button' => TRUE,
-		'button_label' => __( 'Get Plus', 'cryout' ),
+		'button_label' => __( 'Get Plus', 'MrGiraffe' ),
 	),
 ), // info_sections
 
 'info_settings' => array(
 	'plus_link' => array(
 		'label' => '',
-		'default' => apply_filters( 'cryout_about_theme_plus_link', sprintf( '<a class="customizer-plus-link" href="https://www.cryoutcreations.eu/wordpress-themes/' . cryout_sanitize_tn( _CRYOUT_THEME_NAME ) . '" target="_blank">%s</a>', __( 'Upgrade to Plus', 'cryout' ) ) ),
-		'desc' =>  apply_filters( 'cryout_about_theme_plus_desc', sprintf( __('Find out what features you\'re missing out on and how the Plus version of %1$s can improve your site.', 'cryout'), cryout_sanitize_tnl( _CRYOUT_THEME_NAME ) ) . '<br><br><img src=" ' . get_template_directory_uri() . '/admin/images/features.png" >' ),
-		'section' => 'cryoutspecial-about-theme',
+		'default' => apply_filters( 'MrGiraffe_about_theme_plus_link', sprintf( '<a class="customizer-plus-link" href="https://www.MrGiraffecreations.eu/wordpress-themes/' . MrGiraffe_sanitize_tn( _MrGiraffe_THEME_NAME ) . '" target="_blank">%s</a>', __( 'Upgrade to Plus', 'MrGiraffe' ) ) ),
+		'desc' =>  apply_filters( 'MrGiraffe_about_theme_plus_desc', sprintf( __('Find out what features you\'re missing out on and how the Plus version of %1$s can improve your site.', 'MrGiraffe'), MrGiraffe_sanitize_tnl( _MrGiraffe_THEME_NAME ) ) . '<br><br><img src=" ' . get_template_directory_uri() . '/admin/images/features.png" >' ),
+		'section' => 'MrGiraffespecial-about-theme',
 	),
 	'support_link_faqs' => array(
 		'label' => '',
-		'default' => apply_filters( 'cryout_about_theme_docs_link', sprintf( '<a href="https://www.cryoutcreations.eu/wordpress-themes/' . cryout_sanitize_tn( _CRYOUT_THEME_NAME ) . '" target="_blank">%s</a>', __( 'Read the Docs', 'cryout' ) ) ),
+		'default' => apply_filters( 'MrGiraffe_about_theme_docs_link', sprintf( '<a href="https://www.MrGiraffecreations.eu/wordpress-themes/' . MrGiraffe_sanitize_tn( _MrGiraffe_THEME_NAME ) . '" target="_blank">%s</a>', __( 'Read the Docs', 'MrGiraffe' ) ) ),
 		'desc' =>  '',
-		'section' => 'cryoutspecial-about-theme',
+		'section' => 'MrGiraffespecial-about-theme',
 	),
 	'support_link_forum' => array(
 		'label' => '',
-		'default' => apply_filters( 'cryout_about_theme_forum_link', sprintf( '<a href="https://www.cryoutcreations.eu/forums/f/wordpress/' . cryout_sanitize_tn( _CRYOUT_THEME_NAME ) . '" target="_blank">%s</a>', __( 'Browse the Forum', 'cryout' ) ) ),
+		'default' => apply_filters( 'MrGiraffe_about_theme_forum_link', sprintf( '<a href="https://www.MrGiraffecreations.eu/forums/f/wordpress/' . MrGiraffe_sanitize_tn( _MrGiraffe_THEME_NAME ) . '" target="_blank">%s</a>', __( 'Browse the Forum', 'MrGiraffe' ) ) ),
 		'desc' => '',
-		'section' => 'cryoutspecial-about-theme',
+		'section' => 'MrGiraffespecial-about-theme',
 	),
 /*	'premium_support_link' => array(
 		'label' => '',
-		'default' => apply_filters( 'cryout_about_theme_support_link', sprintf( '<a href="https://www.cryoutcreations.eu/priority-support" target="_blank">%s</a>', __( 'Priority Support', 'cryout' ) ) ),
+		'default' => apply_filters( 'MrGiraffe_about_theme_support_link', sprintf( '<a href="https://www.MrGiraffecreations.eu/priority-support" target="_blank">%s</a>', __( 'Priority Support', 'MrGiraffe' ) ) ),
 		'desc' => '',
-		'section' => 'cryoutspecial-about-theme',
+		'section' => 'MrGiraffespecial-about-theme',
 	),*/
 	'rating_url' => array(
 		'label' => '',
-		'default' => apply_filters( 'cryout_about_theme_review_link', sprintf( '<a href="https://wordpress.org/support/view/theme-reviews/' . cryout_sanitize_tn( _CRYOUT_THEME_NAME ) . '#postform" target="_blank">%s</a>', sprintf( __( 'Rate %s on WordPress.org', 'cryout' ) , cryout_sanitize_tnl(_CRYOUT_THEME_NAME) ) ) ),
+		'default' => apply_filters( 'MrGiraffe_about_theme_review_link', sprintf( '<a href="https://wordpress.org/support/view/theme-reviews/' . MrGiraffe_sanitize_tn( _MrGiraffe_THEME_NAME ) . '#postform" target="_blank">%s</a>', sprintf( __( 'Rate %s on WordPress.org', 'MrGiraffe' ) , MrGiraffe_sanitize_tnl(_MrGiraffe_THEME_NAME) ) ) ),
 		'desc' => '',
-		'section' => 'cryoutspecial-about-theme',
+		'section' => 'MrGiraffespecial-about-theme',
 	),
 	'management' => array(
 		'label' => '',
-		'default' => apply_filters( 'cryout_about_theme_manage_link', sprintf( '<a href="themes.php?page=about-' . cryout_sanitize_tn( _CRYOUT_THEME_NAME ) . '-theme">%s</a>', __('Manage Theme Settings', 'cryout') ) ),
+		'default' => apply_filters( 'MrGiraffe_about_theme_manage_link', sprintf( '<a href="themes.php?page=about-' . MrGiraffe_sanitize_tn( _MrGiraffe_THEME_NAME ) . '-theme">%s</a>', __('Manage Theme Settings', 'MrGiraffe') ) ),
 		'desc' => '',
-		'section' => 'cryoutspecial-about-theme',
+		'section' => 'MrGiraffespecial-about-theme',
 	),
 ), // info_settings
 
 'panel_overrides' => array(
 	'background' => array(
-        'title' => __( 'Background', 'cryout' ),
-		'desc' => __( 'Background Settings.', 'cryout' ),
+        'title' => __( 'Background', 'MrGiraffe' ),
+		'desc' => __( 'Background Settings.', 'MrGiraffe' ),
 		'priority' => 50,
-		'section' => 'cryoutoverride-theme_siteidentity',
+		'section' => 'MrGiraffeoverride-theme_siteidentity',
 		'replaces' => 'background_image',
 		'type' => 'section',
 	),
 	'theme_header_section' => array(
-		'title' => __( 'Header Image', 'cryout' ),
-		'desc' => __( 'Header Image Settings.', 'cryout' ),
+		'title' => __( 'Header Image', 'MrGiraffe' ),
+		'desc' => __( 'Header Image Settings.', 'MrGiraffe' ),
 		'priority' => 50,
-		'section' => 'cryoutoverride-theme_siteidentity',
+		'section' => 'MrGiraffeoverride-theme_siteidentity',
 		'replaces' => 'header_image',
 		'type' => 'section',
 	),
 	'identity' => array(
-		'title' => __( 'Site Identity', 'cryout' ),
+		'title' => __( 'Site Identity', 'MrGiraffe' ),
 		'desc' => '',
 		'priority' => 50,
-		'section' => 'cryoutoverride-theme_siteidentity',
+		'section' => 'MrGiraffeoverride-theme_siteidentity',
 		'replaces' => 'title_tagline',
 		'type' => 'section',
 	),
@@ -212,7 +212,7 @@ $QHFZBIO_big = array(
 
 'panels' => array(
 
-	array('id'=>'theme_siteidentity', 'title'=>__('Site Identity','QHFZBIO'), 'callback'=>'', 'identifier'=>'cryoutoverride-' ),
+	array('id'=>'theme_siteidentity', 'title'=>__('Site Identity','QHFZBIO'), 'callback'=>'', 'identifier'=>'MrGiraffeoverride-' ),
 	array('id'=>'theme_layout_section', 'title'=>__('Layout','QHFZBIO'), 'callback'=>'' ),
 	array('id'=>'theme_header_section', 'title'=>__('Header','QHFZBIO'), 'callback'=>'' ),
 	array('id'=>'theme_landingpage', 'title'=>__('Landing Page','QHFZBIO'), 'callback'=>'' ),
@@ -405,7 +405,7 @@ $QHFZBIO_big = array(
 	'id' => 'theme_headerhints',
 		'type' => 'notice',
 		'label' => '',
-		'desc' => sprintf( __( 'Fine tune the visibility of these elements from the theme\'s %s','QHFZBIO' ), '<a data-type="section" data-id="cryout-theme_headercontent" class="cryout-customizer-focus"><strong>' . __('Header options', 'QHFZBIO') . ' &raquo;</strong></a>' ),
+		'desc' => sprintf( __( 'Fine tune the visibility of these elements from the theme\'s %s','QHFZBIO' ), '<a data-type="section" data-id="MrGiraffe-theme_headercontent" class="MrGiraffe-customizer-focus"><strong>' . __('Header options', 'QHFZBIO') . ' &raquo;</strong></a>' ),
 		'input_attrs' => array( 'class' => '' ),
 		'priority' => 55,
 		'addon' => TRUE, // this option gets added to built-in WordPress section
@@ -414,7 +414,7 @@ $QHFZBIO_big = array(
 	'id' => 'theme_headerorbannerhint',
 		'type' => 'notice',
 		'label' => '',
-		'desc' => sprintf( __( 'Configure the image currently visible on the homepage from the theme\'s options under %s','QHFZBIO' ), '<a data-type="section" data-id="cryout-theme_lpslider" class="cryout-customizer-focus"><strong>' . __('Landing Page > Slider > Banner Image', 'QHFZBIO') . ' &raquo;</strong></a>' ),
+		'desc' => sprintf( __( 'Configure the image currently visible on the homepage from the theme\'s options under %s','QHFZBIO' ), '<a data-type="section" data-id="MrGiraffe-theme_lpslider" class="MrGiraffe-customizer-focus"><strong>' . __('Landing Page > Slider > Banner Image', 'QHFZBIO') . ' &raquo;</strong></a>' ),
 		'input_attrs' => array( 'class' => '' ),
 		'priority' => 9,
 		'active_callback' => 'QHFZBIO_conditionals',
@@ -482,7 +482,7 @@ $QHFZBIO_big = array(
 		'type' => 'notice',
 		'input_attrs' => array( 'class' => '' ),
 		'label' => '',
-		'desc' => sprintf( __( 'Edit the site\'s title, tagline and logo from the %s panel','QHFZBIO' ), '<a data-type="section" data-id="title_tagline" class="cryout-customizer-focus"><strong>' . __('Site Identity', 'QHFZBIO') . ' </strong></a>' ),
+		'desc' => sprintf( __( 'Edit the site\'s title, tagline and logo from the %s panel','QHFZBIO' ), '<a data-type="section" data-id="title_tagline" class="MrGiraffe-customizer-focus"><strong>' . __('Site Identity', 'QHFZBIO') . ' </strong></a>' ),
 	'section' => 'theme_headercontent' ),
 	array(
 	'id' => 'theme_titleaccent',
@@ -577,7 +577,7 @@ $QHFZBIO_big = array(
 		'type' => 'notice',
 		'label' => '',
 		'input_attrs' => array( 'class' => 'warning' ),
-		'desc' => sprintf( __( "To activate the Landing Page, make sure to set the WordPress <strong>Front Page displays</strong> option to %s","QHFZBIO" ), "<a data-type='section' data-id='static_front_page' class='cryout-customizer-focus'><strong>" . __("use a static page", "QHFZBIO") . " &raquo;</strong></a>" ),
+		'desc' => sprintf( __( "To activate the Landing Page, make sure to set the WordPress <strong>Front Page displays</strong> option to %s","QHFZBIO" ), "<a data-type='section' data-id='static_front_page' class='MrGiraffe-customizer-focus'><strong>" . __("use a static page", "QHFZBIO") . " &raquo;</strong></a>" ),
 		'active_callback' => 'QHFZBIO_conditionals',
 	'section' => 'theme_lpgeneral' ),
 	array(
@@ -594,7 +594,7 @@ $QHFZBIO_big = array(
 		'type' => 'notice',
 		'label' => '',
 		'input_attrs' => array( 'class' => 'notice' ),
-		'desc' => sprintf( __( "Select the front (static) page in WordPress' %s","QHFZBIO" ), "<a data-type='section' data-id='static_front_page' class='cryout-customizer-focus'><strong>" . __("Homepage Settings", "QHFZBIO") . " &raquo;</strong></a>" ),
+		'desc' => sprintf( __( "Select the front (static) page in WordPress' %s","QHFZBIO" ), "<a data-type='section' data-id='static_front_page' class='MrGiraffe-customizer-focus'><strong>" . __("Homepage Settings", "QHFZBIO") . " &raquo;</strong></a>" ),
 		'active_callback' => 'QHFZBIO_conditionals',
 	'section' => 'theme_lpfcontent' ),
 	array(
@@ -618,7 +618,7 @@ $QHFZBIO_big = array(
 			__("Header Image","QHFZBIO"),
 			__("Disabled","QHFZBIO")
 		),
-		'desc' => sprintf( __("To create an advanced slider, use our <a href='%s' target='_blank'>Serious Slider</a> plugin or any other slider plugin.","QHFZBIO"), 'https://wordpress.org/plugins/cryout-serious-slider/' ),
+		'desc' => sprintf( __("To create an advanced slider, use our <a href='%s' target='_blank'>Serious Slider</a> plugin or any other slider plugin.","QHFZBIO"), 'https://wordpress.org/plugins/MrGiraffe-serious-slider/' ),
 	'section' => 'theme_lpslider' ),
 	array(
 	'id' => 'theme_lpsliderimage',
@@ -645,8 +645,8 @@ $QHFZBIO_big = array(
 	'id' => 'theme_lpsliderserious',
 		'type' => 'select',
 		'label' => __('Serious Slider','QHFZBIO'),
-		'values' => cryout_serious_slides_for_customizer(1, 0),
-		'labels' => cryout_serious_slides_for_customizer(2, __(' - Please install, activate or update Serious Slider plugin - ', 'QHFZBIO'), __(' - No sliders defined - ', 'QHFZBIO') ),
+		'values' => MrGiraffe_serious_slides_for_customizer(1, 0),
+		'labels' => MrGiraffe_serious_slides_for_customizer(2, __(' - Please install, activate or update Serious Slider plugin - ', 'QHFZBIO'), __(' - No sliders defined - ', 'QHFZBIO') ),
 		'desc' => __('Select the desired slider from the list. Sliders can be administered in the dashboard.','QHFZBIO'),
 		'active_callback' => 'QHFZBIO_conditionals',
 	'section' => 'theme_lpslider' ),
@@ -760,8 +760,8 @@ $QHFZBIO_big = array(
 	'id' => 'theme_lpblockone#',
 		'type' => 'select',
 		'label' => '',
-		'values' => cryout_pages_for_customizer(1, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
-		'labels' => cryout_pages_for_customizer(2, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
+		'values' => MrGiraffe_pages_for_customizer(1, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
+		'labels' => MrGiraffe_pages_for_customizer(2, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
 		'desc' => '&nbsp;',
 		'priority' => 26,
 	'section' => 'theme_lpblocks#' ),
@@ -779,8 +779,8 @@ $QHFZBIO_big = array(
 	'id' => 'theme_lpblocktwo#',
 		'type' => 'select',
 		'label' => '',
-		'values' => cryout_pages_for_customizer(1, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
-		'labels' => cryout_pages_for_customizer(2, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
+		'values' => MrGiraffe_pages_for_customizer(1, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
+		'labels' => MrGiraffe_pages_for_customizer(2, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
 		'desc' => '&nbsp;',
 		'priority' => 28,
 	'section' => 'theme_lpblocks#' ),
@@ -798,8 +798,8 @@ $QHFZBIO_big = array(
 	'id' => 'theme_lpblockthree#',
 		'type' => 'select',
 		'label' => '',
-		'values' => cryout_pages_for_customizer(1, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
-		'labels' => cryout_pages_for_customizer(2, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
+		'values' => MrGiraffe_pages_for_customizer(1, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
+		'labels' => MrGiraffe_pages_for_customizer(2, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
 		'desc' => '&nbsp;',
 		'priority' => 30,
 	'section' => 'theme_lpblocks#' ),
@@ -817,8 +817,8 @@ $QHFZBIO_big = array(
 	'id' => 'theme_lpblockfour#',
 		'type' => 'select',
 		'label' => '',
-		'values' => cryout_pages_for_customizer(1, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
-		'labels' => cryout_pages_for_customizer(2, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
+		'values' => MrGiraffe_pages_for_customizer(1, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
+		'labels' => MrGiraffe_pages_for_customizer(2, sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
 		'desc' => '&nbsp;',
 		'priority' => 32,
 	'section' => 'theme_lpblocks#' ),
@@ -848,8 +848,8 @@ $QHFZBIO_big = array(
 	'id' => 'theme_lpboxcat#',
 		'type' => 'select',
 		'label' => __('Boxes Content','QHFZBIO'),
-		'values' => cryout_categories_for_customizer(1, __('All Categories', 'QHFZBIO'), sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
-		'labels' => cryout_categories_for_customizer(2, __('All Categories', 'QHFZBIO'), sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
+		'values' => MrGiraffe_categories_for_customizer(1, __('All Categories', 'QHFZBIO'), sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
+		'labels' => MrGiraffe_categories_for_customizer(2, __('All Categories', 'QHFZBIO'), sprintf( '- %s -', __('Disabled', 'QHFZBIO') ) ),
 		'desc' => '',
 		'priority' => 30,
 	'section' => 'theme_lpboxes#' ),
@@ -950,32 +950,32 @@ $QHFZBIO_big = array(
 	'id' => 'theme_lptextone',
 		'type' => 'select',
 		'label' => sprintf( __('Text Area %d','QHFZBIO'), 1),
-		'values' => cryout_pages_for_customizer(1, __('Disabled', 'QHFZBIO') ),
-		'labels' => cryout_pages_for_customizer(2, __('Disabled', 'QHFZBIO') ),
+		'values' => MrGiraffe_pages_for_customizer(1, __('Disabled', 'QHFZBIO') ),
+		'labels' => MrGiraffe_pages_for_customizer(2, __('Disabled', 'QHFZBIO') ),
 		'desc' => '',
 	'section' => 'theme_lptexts' ),
 	array(
 	'id' => 'theme_lptexttwo',
 		'type' => 'select',
 		'label' => sprintf( __('Text Area %d','QHFZBIO'), 2),
-		'values' => cryout_pages_for_customizer(1, __('Disabled', 'QHFZBIO') ),
-		'labels' => cryout_pages_for_customizer(2, __('Disabled', 'QHFZBIO') ),
+		'values' => MrGiraffe_pages_for_customizer(1, __('Disabled', 'QHFZBIO') ),
+		'labels' => MrGiraffe_pages_for_customizer(2, __('Disabled', 'QHFZBIO') ),
 		'desc' => '',
 	'section' => 'theme_lptexts' ),
 	array(
 	'id' => 'theme_lptextthree',
 		'type' => 'select',
 		'label' => sprintf( __('Text Area %d','QHFZBIO'), 3),
-		'values' => cryout_pages_for_customizer(1, __('Disabled', 'QHFZBIO') ),
-		'labels' => cryout_pages_for_customizer(2, __('Disabled', 'QHFZBIO') ),
+		'values' => MrGiraffe_pages_for_customizer(1, __('Disabled', 'QHFZBIO') ),
+		'labels' => MrGiraffe_pages_for_customizer(2, __('Disabled', 'QHFZBIO') ),
 		'desc' => '',
 	'section' => 'theme_lptexts' ),
 	array(
 	'id' => 'theme_lptextfour',
 		'type' => 'select',
 		'label' => sprintf( __('Text Area %d','QHFZBIO'), 4),
-		'values' => cryout_pages_for_customizer(1, __('Disabled', 'QHFZBIO') ),
-		'labels' => cryout_pages_for_customizer(2, __('Disabled', 'QHFZBIO') ),
+		'values' => MrGiraffe_pages_for_customizer(1, __('Disabled', 'QHFZBIO') ),
+		'labels' => MrGiraffe_pages_for_customizer(2, __('Disabled', 'QHFZBIO') ),
 		'desc' => '',
 	'section' => 'theme_lptexts' ),
 
@@ -2080,7 +2080,7 @@ $QHFZBIO_big = array(
 	'id' => 'theme_socials_right_sidebar',
 		'type' => 'checkbox',
 		'label' => __( 'Display in Right Sidebar', 'QHFZBIO' ),
-		'desc' => sprintf( __( 'Select where social icons should be displayed.<br><br><strong>Social Icons are defined using the <a href="%1$s" target="_blank">socials menu</a></strong>. Read the <a href="%2$s" target="_blank">theme documentation</a> for detailed information.', 'QHFZBIO' ), 'nav-menus.php?action=locations', 'http://www.cryoutcreations.eu/wordpress-tutorials/use-new-social-menu' ),
+		'desc' => sprintf( __( 'Select where social icons should be displayed.<br><br><strong>Social Icons are defined using the <a href="%1$s" target="_blank">socials menu</a></strong>. Read the <a href="%2$s" target="_blank">theme documentation</a> for detailed information.', 'QHFZBIO' ), 'nav-menus.php?action=locations', 'http://www.MrGiraffecreations.eu/wordpress-tutorials/use-new-social-menu' ),
 	'section' => 'theme_socials' ),
 
 	//////////////////////////////////////////////////// Miscellaneous ////////////////////////////////////////////////////
